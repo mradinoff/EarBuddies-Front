@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import Routes from "./Routes";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const styles = {
+    fontFamily: "sans-serif",
+    textAlign: "center"
+  };
+
+const Root = () => (
+    <div style={styles}>
+      <Routes />
+    </div>
+  );
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();
