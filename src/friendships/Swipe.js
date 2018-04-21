@@ -1,12 +1,12 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import Swipeable from 'react-swipeable';
 import './swipe.css';
-("use strict");
+//("use strict");
 
 const FRIENDSHIPS_URL = "http://localhost:3000/friendships.json";
-const USERS_URL = "http://localhost:3000/users.json";
+//const USERS_URL = "http://localhost:3000/users.json";
 
 const IMG_1 = `https://unsplash.it/342/249`;
 const IMG_2 = `https://unsplash.it/342/250`;
