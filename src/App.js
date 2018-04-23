@@ -30,6 +30,7 @@ class App extends Component {
         }
       })
       .then(res => {
+        console.log("res: ", res);
         res.data.map(item => {
           return item.events.map(event => {
             return this.setState({
