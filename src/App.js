@@ -20,7 +20,8 @@ class App extends Component {
   componentDidMount = async () => {
     await this.getLocation();
 
-    console.log(this.state.lat);
+    console.log("lat: ", this.state.lat);
+    console.log("lon: ", this.state.lon);
 
     axios
       .get("https://earbuddies1.herokuapp.com/venues.json", {
@@ -96,11 +97,10 @@ class App extends Component {
     this.setState({
       loading: true
     });
-    
+
     const nav = navigator.geolocation;
     nav.getCurrentPosition(position => {
-      console.log("lat: ", position.coords.latitude);
-      console.log("lon: ", position.coords.longitude);
+      
       this.setState({
         lat: position.coords.latitude,
         lon: position.coords.longitude
