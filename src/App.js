@@ -79,6 +79,10 @@ class App extends Component {
     console.log(this.state.genre);
     console.log(this.state.events);
 
+    if (this.state.events.length === 0) {
+      return <h1>Loading...</h1>
+    }
+
     return (
       <div>
         <Nav />
@@ -87,7 +91,7 @@ class App extends Component {
         <Swipe />
         <Search genres={["Rock", "Jazz", "Blue"]} onSubmit={this.onInputSetState} />
         <Concerts concerts={this.state.events} />
-        
+
       </div>
     )
   }
