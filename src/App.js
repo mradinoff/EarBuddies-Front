@@ -26,6 +26,8 @@ class App extends Component {
       loading: true
     });
 
+    console.log(this.state.lat);
+
     axios
       .get("https://earbuddies1.herokuapp.com/venues.json", {
         params: {
