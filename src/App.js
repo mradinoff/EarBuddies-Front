@@ -8,7 +8,7 @@ class App extends Component {
 
   state = {
     lat: "",
-    lon: ""
+    lon: "",
   }
 
   componentDidMount = async () => {
