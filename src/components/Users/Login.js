@@ -27,10 +27,10 @@ class Login extends Component {
       redirect: false
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    
   }
 
-  handleClick = (e) => {
+  handleClick = () => {
     let url = "https://earbuddies1.herokuapp.com/user_token";
     
     let postData = {
@@ -90,7 +90,7 @@ class Login extends Component {
               label="Submit"
               primary={true}
               style={style}
-              onClick={event => this.handleClick(event)}
+              onClick={this.handleClick}
             />
           </div>
         
