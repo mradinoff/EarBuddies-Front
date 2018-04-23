@@ -40,7 +40,6 @@ class App extends Component {
         <h1>This is Home page</h1>
         <PopOver />
         <Swipe />
-        <Concerts/>
       </div>
     )
   }
