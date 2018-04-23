@@ -5,8 +5,8 @@ import Swipeable from 'react-swipeable';
 import './swipe.css';
 //("use strict");
 
-const FRIENDSHIPS_URL = "http://localhost:3000/friendships.json";
-//const USERS_URL = "http://localhost:3000/users.json";
+const FRIENDSHIPS_URL = "https://earbuddies1.herokuapp.com/friendships.json";
+const USERS_URL = "https://earbuddies1.herokuapp.com/users.json";
 
 const IMG_1 = `https://unsplash.it/342/249`;
 const IMG_2 = `https://unsplash.it/342/250`;
