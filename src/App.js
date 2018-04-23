@@ -83,7 +83,7 @@ class App extends Component {
       <div>
         <Nav />
         <h1>This is Home page</h1>
-        <PopOver />
+
         <Swipe />
         <Search genres={["Rock", "Jazz", "Blue"]} onSubmit={this.onInputSetState} />
         <Concerts concerts={this.state.events} />
