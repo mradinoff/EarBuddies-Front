@@ -9,22 +9,16 @@ class App extends Component {
   state = {
     // lat: "-33.871478599999996",
     // lon: "151.20472279999998",
-    lat: "",
-    lon: "",
+    lat: null,
+    lon: null,
     events: [],
     genres: [],
     loading: false
   };
 
-  componentWillMount = async () => {
-    await this.getLocation();
-  }
 
   componentDidMount = async () => {
-    
-    await this.setState({
-      loading: true
-    });
+    await this.getLocation();
 
     console.log(this.state.lat);
 
@@ -99,6 +93,10 @@ class App extends Component {
   };
 
   getLocation = () => {
+    this.setState({
+      loading: true
+    });
+    
     const nav = navigator.geolocation;
     nav.getCurrentPosition(position => {
       console.log("lat: ", position.coords.latitude);
@@ -111,7 +109,7 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.loading) {
+    if (this.state.loading && !this.state.lat && !this.state.lon) {
       return <h1>Loading...</h1>;
     }
 
