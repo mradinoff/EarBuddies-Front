@@ -3,42 +3,29 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import FlatButton from 'material-ui/FlatButton';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-class HomeButton extends Component {
-  static muiName = 'FlatButton';
 
-  render() {
-    return (
-      <FlatButton {...this.props} label="Home" />
-    );
-  }
-}
-
-
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      redirect: false
+      password_confirmation: "",
+      success: ""
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
-    let url = "https://earbuddies1.herokuapp.com/user_token";
+    let url = "https://earbuddies1.herokuapp.com/users.json";
     let self = this;
     let postData = {
-          auth: {
           email: this.state.email,
-          password: this.state.password
-        }
+          password: this.state.password,
+          password_confirmation: this.state.password_confirmation
     }
 
     let axiosConfig = {
@@ -51,10 +38,9 @@ class Login extends Component {
     axios.post(url, postData, axiosConfig)
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);
-        let token = res.data.jwt;
-        localStorage.setItem('jwtToken', token);
-        if(res.status === 201) {
-          this.setState({redirect: true})
+        console.log('new user url:', res.data.url);
+        if (res.status === 201) {
+          this.setState({ success: 'Success your account was created!' })
         }
       })
       .catch((err) => {
@@ -68,8 +54,7 @@ class Login extends Component {
       <div>
         <MuiThemeProvider>
           <div>
-            <AppBar title="Login"
-            iconElementRight= {<HomeButton onClick={<Redirect to="/"/>} />} />
+            <AppBar title="Sign Up" />
             <TextField
               hintText="Enter your Email"
               floatingLabelText="Email"
@@ -87,6 +72,15 @@ class Login extends Component {
               }
             />
             <br />
+            <TextField
+              type="password"
+              hintText="Password confirmation"
+              floatingLabelText="Password Confirmation"
+              onChange={(event, newValue) =>
+                this.setState({ password_confirmation: newValue })
+              }
+            />
+            <br />
             <RaisedButton
               label="Submit"
               primary={true}
@@ -95,7 +89,7 @@ class Login extends Component {
             />
           </div>
         </MuiThemeProvider>
-        {this.state.redirect ? <Redirect to='/'/>:null}
+        <p>{this.state.success}</p>
       </div>
     );
   }
@@ -104,4 +98,4 @@ const style = {
   margin: 15
 };
 
-export default Login;
+export default SignUp;
