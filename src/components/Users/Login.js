@@ -62,13 +62,18 @@ class Login extends Component {
 
   }
 
+  goToHomePage = () => {
+    this.props.history.push('/');
+  }
+
   render() {
     return (
       <div>
         
           <div>
             <AppBar title="Login"
-            iconElementRight= {<HomeButton onClick={<Redirect to="/"/>} />} />
+            iconElementRight= {<HomeButton onClick={this.goToHomePage} />} 
+            />
             <TextField
               hintText="Enter your Email"
               floatingLabelText="Email"
