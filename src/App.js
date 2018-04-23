@@ -7,10 +7,10 @@ import _ from "lodash";
 
 class App extends Component {
   state = {
-    // lat: "-33.871478599999996",
-    // lon: "151.20472279999998",
-    lat: null,
-    lon: null,
+    lat: "-33.871478599999996",
+    lon: "151.20472279999998",
+    // lat: null,
+    // lon: null,
     events: [],
     genres: [],
     loading: false
