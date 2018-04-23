@@ -15,15 +15,10 @@ import { Link } from 'react-router-dom'
 
 
 
-class Login extends Component {
-  static muiName = 'FlatButton';
+const signOut = function () {
 
-  render() {
-    return (
-      <FlatButton {...this.props} label="Login" />
-    );
-  }
 }
+
 
 
 class Nav extends Component {
@@ -50,43 +45,6 @@ class Nav extends Component {
   }
 
 }
-
-// const Nav = () => {
-//   <header>
-//     <nav className="navbar navbar-nav navbar-dark bg-dark justify-content-between sticky-top">
-//       <div className="container-fluid">
-//         <div className="navbar-header">
-//           <NavLink className="logo" to="/" exact={true} activeClassName="is-active">
-//             Welcome to Burning Airlines
-//           </NavLink>
-//         </div>
-//         {!window.localStorage.accessToken ? (
-//           <div>
-//             <NavLink to="/login" exact={true} activeClassName="is-active">
-//               Login
-//             </NavLink>
-//             |
-//             <NavLink to="/signup" activeClassName="is-active">
-//               Signup
-//             </NavLink>
-//           </div>
-//         ) : (
-//           <div>
-//             <NavLink to="/logout" activeClassName="is-active">
-//               logout
-//             </NavLink>
-//             |
-//             <NavLink to="/reservations" activeClassName="is-active">
-//               Your Reservations
-//             </NavLink>
-//           </div>
-//         )}
-//       </div>
-//     </nav>
-//   </header>
-// }
-
-
 
 
 export default Nav;
