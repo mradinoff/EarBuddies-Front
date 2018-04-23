@@ -90,7 +90,8 @@ class App extends Component {
 
         <Swipe />
         <Search genres={["Rock", "Jazz", "Blue"]} onSubmit={this.onInputSetState} />
-        <Concerts concerts={this.state.events} />
+        <Concerts concerts={this.state.events}
+                  history={this.props.history}/>
 
       </div>
     )
