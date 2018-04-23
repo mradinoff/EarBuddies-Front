@@ -6,21 +6,21 @@ class ConcertList extends Component{
   constructor(props){
     super(props)
     this.state = {name: ''};
-    this._handleClick = this._handleClick.bind(this);
+    //this._handleClick = this._handleClick.bind(this);
   }
 
 
-  _handleClick(e){
-    e.preventDefault();
-    console.log(e.target)
-    this.state = {name: e.target.text}
-    this.state.Origin, this.state.Destination
-    this.props.eventClick(this.state.name);
-    this.setState({Origin: ''})
-    this.setState({Destination: ''})
-  }
+  // _handleClick(e){
+  //   e.preventDefault();
+  //   console.log(e.target)
+  //   //this.state = {name: e.target.text}
+  //   // this.state.Origin, this.state.Destination
+  //   // this.props.eventClick(this.state.name);
+  //   // this.setState({Origin: ''})
+  //   // this.setState({Destination: ''})
+  // }
 
-  render (props, ){
+  render (props){
     <Concerts name = {this.props.name}/>
     return(
       <div>

@@ -5,9 +5,9 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Swipe from "./components/friendships/Swipe"
 import Concerts from "./components/concerts/Concerts"
-import Profile from "./components/users/Profile"
-import SignUp from "./components/users/SignUp";
-import Login from "./components/users/Login";
+import Profile from "./components/Users/Profile"
+import SignUp from "./components/Users/SignUp";
+import Login from "./components/Users/Login";
 
 const muiTheme = getMuiTheme({
   datePicker: {

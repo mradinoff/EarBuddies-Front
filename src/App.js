@@ -2,12 +2,12 @@ import React, { PureComponent as Component } from 'react';
 import PopOver from './playground/PopOver';
 import Swipe from './components/friendships/Swipe';
 import Concerts from './components/concerts/Concerts';
-import Profile from './components/users/Profile';
+//import Profile from './components/Users/Profile';
 import Nav from './components/nav/Nav'
-import styles from './index.css';
+import './index.css';
 import axios from 'axios';
 import Search from "./components/Search/Search";
-import _ from 'lodash';
+//import _ from 'lodash';
 
 class App extends Component {
 
@@ -28,9 +28,9 @@ class App extends Component {
     })
       .then(res => {
         res.data.map(item => {
-          item.events.map(event => {
+          return item.events.map(event => {
 
-            this.setState({
+            return this.setState({
               //Saving all events from all venues to this.state.events
               events: [...this.state.events, event],
               genres: [...this.state.genres, event.genre]
@@ -52,7 +52,7 @@ class App extends Component {
     .then(res => {
       console.log(res)
       res.data.map(event => {
-        this.setState({
+        return this.setState({
           //Saving all events from all venues to this.state.events
           events: res.data,
           genres: [...this.state.genres, event.genre]

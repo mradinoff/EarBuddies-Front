@@ -5,7 +5,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import FlatButton from 'material-ui/FlatButton';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 class HomeButton extends Component {
@@ -31,9 +31,9 @@ class Login extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     let url = "https://earbuddies1.herokuapp.com/user_token";
-    let self = this;
+    
     let postData = {
           auth: {
           email: this.state.email,
