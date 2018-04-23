@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "./App";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import Swipe from "./friendships/Swipe"
-import Concerts from "./concerts/Concerts"
-import Profile from "./components/Users/Profile"
+import Swipe from "./components/friendships/Swipe"
+import Concerts from "./components/concerts/Concerts"
+import Profile from "./components/users/Profile"
 import SignUp from "./components/users/SignUp";
 import Login from "./components/users/Login";
 

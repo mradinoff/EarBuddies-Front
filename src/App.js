@@ -1,8 +1,8 @@
 import React, { PureComponent as Component } from 'react';
 import PopOver from './playground/PopOver';
-import Swipe from './friendships/Swipe';
-import Concerts from './concerts/Concerts';
-import Profile from './components/Users/Profile';
+import Swipe from './components/friendships/Swipe';
+import Concerts from './components/concerts/Concerts';
+import Profile from './components/users/Profile';
 import Nav from './components/nav/Nav'
 import styles from './index.css';
 import axios from 'axios';
