@@ -7,15 +7,18 @@ import _ from "lodash";
 
 class App extends Component {
   state = {
-    // lat: "-33.871478599999996",
-    // lon: "151.20472279999998",
-    lat: null,
-    lon: null,
+    lat: "-33.871478599999996",
+    lon: "151.20472279999998",
+    // lat: null,
+    // lon: null,
     events: [],
     genres: [],
     loading: false
   };
 
+  componentWillUnmount = () => {
+    navigator.geolocation.clearWatch(watchID);
+  }
 
   componentDidMount = async () => {
     await this.getLocation();
@@ -101,11 +104,22 @@ class App extends Component {
 
     const nav = navigator.geolocation;
     nav.getCurrentPosition(position => {
-      
       this.setState({
         lat: position.coords.latitude,
         lon: position.coords.longitude
       });
+    });
+
+    const watchID = navigator.geolocation.watchPosition(function(position) {
+      if (
+        this.state.lat !== position.coords.latitude &&
+        this.state.long !== position.coords.longitude
+      ) {
+        this.setState({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        });
+      }
     });
   };
 
