@@ -13,11 +13,12 @@ class App extends Component {
     // lon: null,
     events: [],
     genres: [],
-    loading: false
+    loading: false,
+    watchID: ''
   };
 
   componentWillUnmount = () => {
-    navigator.geolocation.clearWatch(watchID);
+    navigator.geolocation.clearWatch(this.state.watchID);
   }
 
   componentDidMount = async () => {
@@ -117,7 +118,8 @@ class App extends Component {
       ) {
         this.setState({
           lat: position.coords.latitude,
-          lon: position.coords.longitude
+          lon: position.coords.longitude,
+          watchID
         });
       }
     });
