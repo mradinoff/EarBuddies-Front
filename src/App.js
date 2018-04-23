@@ -1,5 +1,5 @@
 import React, { PureComponent as Component } from 'react';
-import PopOver from './playground/PopOver';
+//import PopOver from './playground/PopOver';
 import Swipe from './components/friendships/Swipe';
 import Concerts from './components/concerts/Concerts';
 //import Profile from './components/Users/Profile';

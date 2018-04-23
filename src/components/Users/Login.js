@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
@@ -66,7 +65,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
+        
           <div>
             <AppBar title="Login"
             iconElementRight= {<HomeButton onClick={<Redirect to="/"/>} />} />
@@ -94,7 +93,7 @@ class Login extends Component {
               onClick={event => this.handleClick(event)}
             />
           </div>
-        </MuiThemeProvider>
+        
         {this.state.redirect ? <Redirect to='/'/>:null}
       </div>
     );
