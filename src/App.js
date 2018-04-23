@@ -16,9 +16,12 @@ class App extends Component {
     loading: false
   };
 
+  componentWillMount = async () => {
+    await this.getLocation();
+  }
 
   componentDidMount = async () => {
-    await this.getLocation();
+    
     await this.setState({
       loading: true
     });
