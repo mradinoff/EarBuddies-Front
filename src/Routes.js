@@ -6,9 +6,11 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Swipe from "./components/friendships/Swipe"
 import Concert from "./components/concerts/Concert"
 import Profile from "./components/Users/Profile"
-//import SignUp from "./components/Users/SignUp";
+import Attending from "./components/friendships/Attending"
+import SignUp from "./components/Users/SignUp";
 import Login from "./components/Users/Login";
-import Nav from "./components/nav/Nav";
+import Venues from "./components/concerts/Venues";
+import Nav from './components/nav/Nav'
 
 
 const muiTheme = getMuiTheme({
@@ -25,9 +27,12 @@ const Routes = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={App} />
+        <Route exact path="/attending" component={Attending} />
+        <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" component={Profile} />
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/venues" component={Venues}/>
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
       </React.Fragment>
