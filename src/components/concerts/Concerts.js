@@ -20,7 +20,7 @@ class ConcertList extends Component{
   //   // this.setState({Destination: ''})
   // }
 
-  render (props){
+  render (){
     <Concerts name = {this.props.name}/>
     return(
       <div>
@@ -37,10 +37,13 @@ class ConcertList extends Component{
 class Concerts extends Component{
   constructor(props){
     super(props);
-    this.state = {name: []}
-    this.state = {concerts: []}
+    this.state = {
+      name: [],
+      concerts: []
+    }
+
     this.listConcerts = this.listConcerts.bind(this);
-    console.log(this);
+    //console.log(this);
   }
   onEventClick(event){
     this.setState({
@@ -61,7 +64,7 @@ class Concerts extends Component{
       }
       this.setState({concerts})}.bind(this))
   }
-  componentDidMount= this.listConcerts
+  //componentDidMount= this.listConcerts
   render(){
     return(
       <div>
