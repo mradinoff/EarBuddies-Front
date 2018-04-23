@@ -1,7 +1,10 @@
 import React, { PureComponent as Component } from 'react';
 import PopOver from './playground/PopOver';
-import Swipe from './friendships/Swipe';
-import Concerts from './concerts/Concerts';
+import Swipe from './components/friendships/Swipe';
+import Concerts from './components/concerts/Concerts';
+import Profile from './components/users/Profile';
+import Nav from './components/nav/Nav'
+import styles from './index.css';
 import axios from 'axios';
 import Search from "./components/Search/Search";
 import _ from 'lodash';
@@ -78,6 +81,7 @@ class App extends Component {
 
     return (
       <div>
+        <Nav />
         <h1>This is Home page</h1>
         <PopOver />
         <Swipe />

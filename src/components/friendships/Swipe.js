@@ -2,7 +2,7 @@ import React, { PureComponent as Component } from "react";
 import axios from "axios";
 //import ReactDOM from "react-dom";
 import Swipeable from 'react-swipeable';
-import './swipe.css';
+import './Swipe.css';
 //("use strict");
 
 const FRIENDSHIPS_URL = "https://earbuddies1.herokuapp.com/friendships.json";
