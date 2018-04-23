@@ -40,6 +40,7 @@ class Concerts extends Component{
     this.state = {name: []}
     this.state = {concerts: []}
     this.listConcerts = this.listConcerts.bind(this);
+    console.log(this);
   }
   onEventClick(event){
     this.setState({
@@ -50,7 +51,7 @@ class Concerts extends Component{
   listConcerts(){
     axios({
       method:'GET',
-      url: 'http://localhost:3333/events.json',
+      url: `https://earbuddies1.herokuapp.com/events.json`,
       responseType: 'json',
 
     }).then(function(c){
