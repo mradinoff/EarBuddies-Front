@@ -14,13 +14,11 @@ class SignUp extends Component {
       password_confirmation: "",
       success: ""
     };
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     let url = "https://earbuddies1.herokuapp.com/users.json";
-    let self = this;
+    
     let postData = {
           email: this.state.email,
           password: this.state.password,

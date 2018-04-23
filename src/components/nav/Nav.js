@@ -18,8 +18,8 @@ class Nav extends Component {
             <img src="" alt="logo" />
           </Link>
           {window.localStorage.jwtToken ? (
-            <Link onClick={this._signOut} to="/">
-              Logout
+            <Link to="/">
+              <button onClick={this._signOut}>Sign out</button>
             </Link>
           ) : (
             <div>
