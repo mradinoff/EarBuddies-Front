@@ -16,14 +16,12 @@ class ConcertList extends Component{
     this.state = {name: e.target.text}
     this.state.Origin, this.state.Destination
     this.props.eventClick(this.state.name);
-    console.log(this.state)
     this.setState({Origin: ''})
     this.setState({Destination: ''})
   }
 
   render (props, ){
     <Concerts name = {this.props.name}/>
-    console.log(this.props);
     return(
       <div>
         <ul>
@@ -42,7 +40,6 @@ class Concerts extends Component{
     this.state = {name: []}
     this.state = {concerts: []}
     this.listConcerts = this.listConcerts.bind(this);
-    console.log(this);
   }
   onEventClick(event){
     this.setState({
@@ -53,7 +50,7 @@ class Concerts extends Component{
   listConcerts(){
     axios({
       method:'GET',
-      url: 'https://earbuddies1.herokuapp.com/events.json',
+      url: 'http://localhost:3333/events.json',
       responseType: 'json',
 
     }).then(function(c){
