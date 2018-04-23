@@ -9,6 +9,7 @@ import Concert from "./components/concerts/Concert"
 import Profile from "./components/users/Profile"
 import SignUp from "./components/users/SignUp";
 import Login from "./components/users/Login";
+import Venues from "./components/concerts/Venues";
 
 
 const muiTheme = getMuiTheme({
@@ -25,9 +26,8 @@ const Routes = () => (
         <Route exact path="/" component={App} />
         <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" component={Profile} />
-
         <Route exact path="/login" component={Login}/>
-
+        <Route exact path="/venues" component={Venues}/>
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
     </Router>
