@@ -48,28 +48,26 @@ class Attending extends Component {
   }
 
   renderButton = (id) => {
-    for (var i = 0; i < this.state.friendships.length; i++) {
+    for (let i = 0; i < this.state.friendships.length; i++) {
       console.log("run loop");
 
         if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === false) {
           console.log("patchClick");
           return (<button onClick={() => this._handlePatchClick(id)}>Match</button>)
-        }
-        if (this.state.friendships[i].friend_id !== current_user.sub && this.state.friendships[i].user_id !== current_user.sub ) {
+        } else if (this.state.friendships[i].friend_id !== current_user.sub && this.state.friendships[i].user_id !== current_user.sub ) {
           console.log("PostClick");
           return (<button onClick={() => this._handlePostClick(id)}>Match</button>)
-        }
-        if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
-          console.log("Match found");
+        } else if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
+          console.log("Match found - friend id is current user");
           return (<p>EarBuddies!</p>)
-        }
-        if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
-          console.log("Match found");
+        } else if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
+          console.log("Match found - user id is current user");
           return (<p>EarBuddies!</p>)
-        }
-        if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
+        } else if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
           console.log("Pending found");
           return (<p>Already matched!</p>)
+        } else {
+          return (<button onClick={() => this._handlePostClick(id)}>Match</button>)
         }
 
       }
