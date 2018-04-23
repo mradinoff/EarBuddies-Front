@@ -3,6 +3,7 @@ import PopOver from './playground/PopOver';
 import Swipe from './components/friendships/Swipe';
 import Concerts from './components/concerts/Concerts';
 import Profile from './components/users/Profile';
+import Attending from './components/friendships/Attending';
 import Nav from './components/nav/Nav'
 import styles from './index.css';
 import axios from 'axios';

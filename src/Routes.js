@@ -6,6 +6,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Swipe from "./components/friendships/Swipe"
 import Concerts from "./components/concerts/Concerts"
 import Profile from "./components/users/Profile"
+import Attending from "./components/friendships/Attending"
 import SignUp from "./components/users/SignUp";
 import Login from "./components/users/Login";
 
@@ -21,8 +22,9 @@ const Routes = () => (
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/Swipe" component={Swipe} />
-        <Route exact path="/Profile" component={Profile} />
+        <Route exact path="/swipe" component={Swipe} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/attending" component={Attending} />
         <Route exact path="/events" component={Concerts}/>
         <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/login" component={Login}/>
