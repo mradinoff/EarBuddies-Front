@@ -5,10 +5,11 @@ class ConcertList extends Component{
   constructor(props){
     super(props)
     this.state = {name: ''};
-    this._handleClick = this._handleClick.bind(this);
+    //this._handleClick = this._handleClick.bind(this);
   }
 
 
+<<<<<<< HEAD
   _handleClick(c){
 
     //console.log(e.target)
@@ -25,6 +26,19 @@ class ConcertList extends Component{
 
 
   render (props){
+=======
+  // _handleClick(e){
+  //   e.preventDefault();
+  //   console.log(e.target)
+  //   //this.state = {name: e.target.text}
+  //   // this.state.Origin, this.state.Destination
+  //   // this.props.eventClick(this.state.name);
+  //   // this.setState({Origin: ''})
+  //   // this.setState({Destination: ''})
+  // }
+
+  render (){
+>>>>>>> 6fc194227c88e020f6618bf8be3f046254c9e512
     <Concerts name = {this.props.name}/>
     return(
       <div>
@@ -42,10 +56,13 @@ class ConcertList extends Component{
 class Concerts extends Component{
   constructor(props){
     super(props);
-    this.state = {name: []}
-    this.state = {concerts: []}
+    this.state = {
+      name: [],
+      concerts: []
+    }
+
     this.listConcerts = this.listConcerts.bind(this);
-    console.log(this);
+    //console.log(this);
   }
   onEventClick(event){
     this.setState({
@@ -66,7 +83,7 @@ class Concerts extends Component{
       }
       this.setState({concerts})}.bind(this))
   }
-  componentDidMount= this.listConcerts
+  //componentDidMount= this.listConcerts
   render(){
     return(
       <div>

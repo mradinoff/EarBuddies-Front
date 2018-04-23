@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import FlatButton from 'material-ui/FlatButton';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 class HomeButton extends Component {
@@ -31,9 +30,9 @@ class Login extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     let url = "https://earbuddies1.herokuapp.com/user_token";
-    let self = this;
+    
     let postData = {
           auth: {
           email: this.state.email,
@@ -66,7 +65,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
+        
           <div>
             <AppBar title="Login"
             iconElementRight= {<HomeButton onClick={<Redirect to="/"/>} />} />
@@ -94,7 +93,7 @@ class Login extends Component {
               onClick={event => this.handleClick(event)}
             />
           </div>
-        </MuiThemeProvider>
+        
         {this.state.redirect ? <Redirect to='/'/>:null}
       </div>
     );
