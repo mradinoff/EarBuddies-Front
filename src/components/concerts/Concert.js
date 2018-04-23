@@ -5,6 +5,10 @@ import axios from 'axios';
 
 
 class Concert extends Component{
+  constructor(props){
+    super(props)
+    this.state = {venue: []}
+  }
     render (){
       if (this.props.events.length === 0){return ""}
       console.log(this.props)
@@ -20,6 +24,17 @@ class Concert extends Component{
         }
       }
       console.log(thisEvent);
+      if (thisEvent.length === 0){return ""}
+      axios({
+        method:'GET',
+        url: `https://earbuddies1.herokuapp.com/venues/${thisEvent[0].venue_id}.json`,
+        responseType: 'json',
+      }).then(function(v){
+        let venue = []
+        venue.push(v.data)
+        console.log(v.data)
+        this.setState({venue})}.bind(this))
+
       return(
       <div>
         {thisEvent.map(c => <li key={c.id}> {c.name}</li>)}
@@ -28,6 +43,7 @@ class Concert extends Component{
         {thisEvent.map(c => <li key={c.id}> {c.genre}</li>)}
         {thisEvent.map(c => <li key={c.id}> {c.ticket_url}</li>)}
         {thisEvent.map(c => <img key={c.id} src={c.image} alt={c.name}/>)}
+        {this.state.venue.map (v => <li key={v.id}> {v.name}</li>)}
       </div>
     )}
   }
