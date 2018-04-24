@@ -10,8 +10,8 @@ class Concert extends Component{
   constructor(props){
     super(props)
     this.state = {
-      venue: [],
-      concert: [this.props.location.state]
+      venue: '' ,
+      concert: this.props.location.state
     }
     this.findVenue = this.findVenue.bind(this);
     console.log(this.state.concert[0])
@@ -24,12 +24,13 @@ class Concert extends Component{
 
       axios({
         method:'GET',
-        url: `https://earbuddies1.herokuapp.com/venues/${this.state.concert[0].venue_id}.json`,
+        url: `https://earbuddies1.herokuapp.com/venues/${this.state.concert.venue_id}.json`,
         responseType: 'json',
 
       }).then(function(v){
+        console.log(v);
         let venue = []
-        venue.push(v.data)
+        venue.push(v.data.name)
         this.setState({venue})}.bind(this))
 
         }
@@ -77,16 +78,14 @@ class Concert extends Component{
     render (){
       return(
       <div>
-          {this.state.concert.map(c => <li key={c.id}> {c.name}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.description}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.date}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.genre}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.ticket_url}</li>)}
-          {this.state.concert.map(c => <img key={c.id} src={c.image} alt={c.name}/>)}
-          {this.state.venue.map (v => <li key={v.id}> {v.name}</li>)}
-          {/* will go to venue page */}
+          <img src={this.state.concert.image} alt=""/>
+          <h2>{this.state.concert.name}</h2>
+          <p>{this.state.concert.description}</p>
+          <p>{this.state.concert.date}</p>
+          <p>{this.state.venue}</p>
+          <p>{this.state.concert.genre}</p>
           <button onClick={this.addUserToEventList}>attending</button>
-          <button onClick={this.deleteUserFromEvent}>not attending</button>
+          {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
       </div>
     )}
   }
