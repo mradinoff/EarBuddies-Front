@@ -14,7 +14,6 @@ class Concert extends Component {
       concert: this.props.location.state,
       current_user: {}
     };
-    this.findVenue = this.findVenue.bind(this);
     console.log(this.state.concert[0])
     console.log(this.props.location.state);
   }
@@ -68,17 +67,6 @@ class Concert extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-          {this.state.concert.map(c => <li key={c.id}> {c.name}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.description}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.date}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.genre}</li>)}
-          {this.state.concert.map(c => <li key={c.id}> {c.ticket_url}</li>)}
-          {this.state.concert.map(c => <img key={c.id} src={c.image} alt={c.name}/>)}
-          {this.state.venue.map (v => <li key={v.id}> {v.name}</li>)}
-          {/* will go to venue page */}
-          <Attending />
-=======
         {this.state.concert.map(c => <li key={c.id}> {c.name}</li>)}
         {this.state.concert.map(c => <li key={c.id}> {c.description}</li>)}
         {this.state.concert.map(c => <li key={c.id}> {c.date}</li>)}
@@ -90,8 +78,7 @@ class Concert extends Component {
         {this.state.venue.map(v => <li key={v.id}> {v.name}</li>)}
         {/* will go to venue page */}
         <button onClick={this.addUserToEventList}>attending</button>
-        <button onClick={this.deleteUserFromEvent}>not attending</button>
->>>>>>> 4a2dca670f2b5b0eb6dcfdb64ff365fab8c3b02b
+        <Attending />
       </div>
     );
   }
