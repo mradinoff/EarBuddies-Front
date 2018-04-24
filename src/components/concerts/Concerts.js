@@ -28,7 +28,7 @@ class Concerts extends Component {
             <p className="card-text">{concert.description}</p>
             <a href={concert.ticket_url} className="btn btn-primary">Get Ticket</a>
           </div>
-          <a href={`/concerts/${concert.id}`} className="card-text alert-link">See detail</a>
+          <a onClick = {() => this._handleClick(concert)} value ={concert} href={`/events/${concert.id}`} className="card-text alert-link">See detail</a>
         </div>
       )
     })
