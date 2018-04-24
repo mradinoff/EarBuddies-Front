@@ -19,6 +19,7 @@ class Concert extends Component {
     console.log(this.props.location.state);
   }
   componentDidMount = () => {
+    this.findVenue();
     const token = localStorage.getItem("jwtToken");
     if (token) {
       const user = jwtDecoder(token);
@@ -27,6 +28,22 @@ class Concert extends Component {
       });
     }
   };
+
+
+  findVenue(state){
+
+      axios({
+        method:'GET',
+        url: `https://earbuddies1.herokuapp.com/venues/${this.state.concert.venue_id}.json`,
+        responseType: 'json',
+
+      }).then(function(v){
+        console.log(v);
+        let venue = []
+        venue.push(v.data.name)
+        this.setState({venue})}.bind(this))
+
+  }
 
   deleteUserFromEvent = () => {
     //console.log(current_user.sub);
