@@ -3,8 +3,10 @@ import axios from 'axios';
 import Attending from '../friendships/Attending.js'
 import jwtDecoder from "jwt-decode";
 
+
 // const token = localStorage.getItem('jwtToken');
 // const current_user = jwtDecoder(token);
+
 
 class Concert extends Component {
   constructor(props) {
