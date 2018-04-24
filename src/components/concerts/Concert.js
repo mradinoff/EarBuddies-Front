@@ -1,82 +1,72 @@
 import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
+import Attending from '../friendships/Attending.js'
 import jwtDecoder from "jwt-decode";
 
-const token = localStorage.getItem('jwtToken');
-const current_user = jwtDecoder(token);
+// const token = localStorage.getItem('jwtToken');
+// const current_user = jwtDecoder(token);
 
-
-class Concert extends Component{
-  constructor(props){
-    super(props)
+class Concert extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      venue: '' ,
-      concert: this.props.location.state
-    }
+      venue: [],
+      concert: this.props.location.state,
+      current_user: {}
+    };
     this.findVenue = this.findVenue.bind(this);
     console.log(this.state.concert[0])
+    console.log(this.props.location.state);
   }
   componentDidMount = () => {
-    this.findVenue();
-  }
-
-  findVenue(state){
-
-      axios({
-        method:'GET',
-        url: `https://earbuddies1.herokuapp.com/venues/${this.state.concert.venue_id}.json`,
-        responseType: 'json',
-
-      }).then(function(v){
-        console.log(v);
-        let venue = []
-        venue.push(v.data.name)
-        this.setState({venue})}.bind(this))
-
-        }
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      const user = jwtDecoder(token);
+      this.setState({
+        user
+      });
+    }
+  };
 
   deleteUserFromEvent = () => {
-  console.log(current_user.sub);
-  console.log(this.props.location.state)
-  console.log(parseInt(this.props.match.params.id));
+    //console.log(current_user.sub);
+    console.log(parseInt(this.props.match.params.id));
     axios({
       url: ``,
-      method: 'delete',
-      data:{ users : {
-        user_id: current_user.sub,
+      method: "delete",
+      data: {
+        user_id: this.state.current_user.sub,
         event_id: parseInt(this.props.match.params.id)
-        }
       }
-    }).then(response => {
-     console.log(response)
     })
-    .catch(error => {
-        console.log(error.response)
-    });
-
-  }
-
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
 
   addUserToEventList = () => {
-  console.log(current_user.sub);
-  console.log(parseInt(this.props.match.params.id));
+    //console.log(current_user.sub);
+    console.log(parseInt(this.props.match.params.id));
     axios({
-      url: 'https://earbuddies1.herokuapp.com/events_users',
-      method: 'post',
+      url: "https://earbuddies1.herokuapp.com/events_users",
+      method: "post",
       data: {
-        user_id: current_user.sub,
+        user_id: this.state.current_user.sub,
         event_id: parseInt(this.props.match.params.id)
       }
-    }).then(response => {
-     console.log(response)
     })
-    .catch(error => {
-        console.log(error.response)
-    });
-
-  }
-    render (){
-      return(
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+  render() {
+    return (
       <div>
           <img src={this.state.concert.image} alt=""/>
           <h2>{this.state.concert.name}</h2>
@@ -87,6 +77,7 @@ class Concert extends Component{
           <button onClick={this.addUserToEventList}>attending</button>
           {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
       </div>
-    )}
+    );
   }
-export default Concert
+}
+export default Concert;
