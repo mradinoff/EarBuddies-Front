@@ -14,12 +14,12 @@ class App extends Component {
     events: [],
     genres: [],
     loading: false,
-    watchID: ''
+    watchID: ""
   };
 
   componentWillUnmount = () => {
     navigator.geolocation.clearWatch(this.state.watchID);
-  }
+  };
 
   componentDidMount = async () => {
     await this.getLocation();
@@ -111,10 +111,10 @@ class App extends Component {
       });
     });
 
-    const watchID = navigator.geolocation.watchPosition(function(position) {
+    const watchID = navigator.geolocation.watchPosition(position => {
       if (
         this.state.lat !== position.coords.latitude &&
-        this.state.long !== position.coords.longitude
+        this.state.lon !== position.coords.longitude
       ) {
         this.setState({
           lat: position.coords.latitude,
@@ -126,11 +126,9 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.loading && !this.state.lat && !this.state.lon) {
+    if (this.state.loading) {
       return <h1>Loading...</h1>;
     }
-
-    console.log("genres from App: ", _.uniq(this.state.genres));
 
     return (
       <div style={styles.main}>
