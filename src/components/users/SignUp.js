@@ -5,7 +5,7 @@ import TextField from "material-ui/TextField";
 import axios from "axios";
 
 class SignUp extends Component {
-  
+
   state = {
     email: "",
     password: "",
