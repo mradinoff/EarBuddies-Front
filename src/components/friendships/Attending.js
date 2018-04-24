@@ -55,34 +55,34 @@ class Attending extends Component {
 
           if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === false) {
             console.log("patchClick");
-            return (<button onClick={() => this._handlePatchClick(id)}>Like this Buddy!</button>)
+            return (<button onClick={() => this._handlePatchClick(id)}>Like EarBuddy!</button>)
 
           } if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
             console.log("Match found - friend id is current user");
-            return (<button onClick={() => this._handleDeleteFriendCurrentClick(id)}>Buddies! Disconnect Buddy?</button>)
+            return (<button onClick={() => this._handleDeleteFriendCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
 
           } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
             console.log("Match found - user id is current user");
-            return (<button onClick={() => this._handleDeleteUserCurrentClick(id)}>Buddies! Disconnect Buddy?</button>)
+            return (<button onClick={() => this._handleDeleteUserCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
 
           } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
             console.log("Pending found");
-            return (<button onClick={() => this._handleDeleteUserCurrentClick(id)}>Cancel Buddy Request?</button>)
+            return (<button onClick={() => this._handleDeleteUserCurrentClick(id)}>Dislike EarBuddy</button>)
 
           } if (current_user.sub === id){
-            return (<button onClick={() => this._handleCancelAttendingClick(id)}>Not attending anymore?</button>)
+            return (<button>The best EarBuddy!</button>)
             console.log("User")
           }
         }
 
     } if (this.state.friendships.length < 1 && current_user.sub === id){
       console.log("User")
-      return (<button onClick={() => this._handleCancelAttendingClick(id)}>Not attending anymore?</button>)
+      return (<button>The best EarBuddy!</button>)
 
     }
     else {
       console.log("patchClick");
-      return (<button onClick={() => this._handlePostClick(id)}>Like this Buddy!</button>)
+      return (<button onClick={() => this._handlePostClick(id)}>Like EarBuddy!</button>)
     }
     }
 

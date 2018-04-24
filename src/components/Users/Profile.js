@@ -45,10 +45,19 @@ class Profile extends Component {
       <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
       <p>{this.state.user.bio}</p>
       <p><strong>Interests:</strong> {this.state.user.interests}</p>
-      <h3>{this.state.user.name}s Friends</h3>
+      <h3>Friends</h3>
       <div>
           { this.state.user.matched.map( f =>
               <p key={f.id}>{f.name}</p>
+          )}
+      </div>
+      <h3>Events</h3>
+      <div>
+          { this.state.user.events.map( e =>
+              <div>
+                <p key={e.id}>{e.name} {e.date} : <a href={e.ticket_url}>Tickets</a></p>
+
+              </div>
           )}
       </div>
 

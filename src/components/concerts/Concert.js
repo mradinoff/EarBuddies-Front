@@ -1,5 +1,6 @@
 import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
+import Attending from '../friendships/Attending.js'
 
 class Concert extends Component{
   constructor(props){
@@ -10,6 +11,7 @@ class Concert extends Component{
     }
     this.findVenue = this.findVenue.bind(this);
     console.log(this.state.concert[0])
+    console.log(this.props.location.state);
 
   }
   componentDidMount = () => {
@@ -40,7 +42,7 @@ class Concert extends Component{
           {this.state.concert.map(c => <img key={c.id} src={c.image} alt={c.name}/>)}
           {this.state.venue.map (v => <li key={v.id}> {v.name}</li>)}
           {/* will go to venue page */}
-
+          <Attending />
       </div>
     )}
   }
