@@ -196,7 +196,7 @@ class Attending extends Component {
 
     return(
       <div>
-        <h2>Users Attending</h2>
+        <h2>Attending</h2>
         <div>
             { this.state.users.map( u =>
               <div className="user-card" key={u.id}>

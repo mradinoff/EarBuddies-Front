@@ -12,12 +12,14 @@ class Concert extends Component {
     this.state = {
       venue: [],
       concert: this.props.location.state,
-      current_user: {}
+      current_user: {},
+      current_concert: {},
+      users: []
     };
-    console.log(this.state.concert[0])
-    console.log(this.props.location.state);
   }
   componentDidMount = () => {
+    this.findVenue();
+    this.findUsers();
     const token = localStorage.getItem("jwtToken");
     if (token) {
       const user = jwtDecoder(token);
@@ -26,6 +28,35 @@ class Concert extends Component {
       });
     }
   };
+
+
+  findVenue(state){
+
+      axios({
+        method:'GET',
+        url: `https://earbuddies1.herokuapp.com/venues/${this.state.concert.venue_id}.json`,
+        responseType: 'json',
+
+      }).then(function(v){
+        console.log(v);
+        let venue = []
+        venue.push(v.data.name)
+        this.setState({venue})}.bind(this))
+  }
+
+  findUsers(){
+
+    axios({
+      method:'GET',
+      url: `https://earbuddies1.herokuapp.com/events/${this.state.concert.id}.json`,
+      responseType: 'json',
+
+    }).then(function(res){
+      console.log(res);
+      this.setState({current_concert: res})}.bind(this)).then(() =>
+        this.setState({users: this.state.current_concert.data.users})).then(() => console.log(this.state.users));
+      }
+
 
   deleteUserFromEvent = () => {
     //console.log(current_user.sub);
@@ -67,18 +98,15 @@ class Concert extends Component {
   render() {
     return (
       <div>
-        {this.state.concert.map(c => <li key={c.id}> {c.name}</li>)}
-        {this.state.concert.map(c => <li key={c.id}> {c.description}</li>)}
-        {this.state.concert.map(c => <li key={c.id}> {c.date}</li>)}
-        {this.state.concert.map(c => <li key={c.id}> {c.genre}</li>)}
-        {this.state.concert.map(c => <li key={c.id}> {c.ticket_url}</li>)}
-        {this.state.concert.map(c => (
-          <img key={c.id} src={c.image} alt={c.name} />
-        ))}
-        {this.state.venue.map(v => <li key={v.id}> {v.name}</li>)}
-        {/* will go to venue page */}
-        <button onClick={this.addUserToEventList}>attending</button>
-        <Attending />
+          <img src={this.state.concert.image} alt=""/>
+          <h2>{this.state.concert.name}</h2>
+          <p>{this.state.concert.description}</p>
+          <p>{this.state.concert.date}</p>
+          <p>{this.state.venue}</p>
+          <p>{this.state.concert.genre}</p>
+          <button onClick={this.addUserToEventList}>attending</button>
+          {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
+            <Attending />
       </div>
     );
   }
