@@ -51,36 +51,47 @@ class Attending extends Component {
     if (this.state.friendships.length >= 1) {
 
       for (let i = 0; i < this.state.friendships.length; i++) {
-        console.log("run loop");
+        // console.log("run loop");
+        // console.log(this.state.friendships[i].friend_id !== current_user.sub);
+        // console.log(this.state.friendships[i].user_id !== current_user.sub);
+        // console.log(this.state.friendships[i].friend_id !== current_user.sub && this.state.friendships[i].user_id !== current_user.sub);
 
+          if (current_user.sub === id){
+            return (<button onClick={() => this._handleCancelAttendingClick(id)}>Not attending anymore?</button>)
+
+          }
+      
           if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === false) {
             console.log("patchClick");
             return (<button onClick={() => this._handlePatchClick(id)}>Match</button>)
 
-          } else if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
+          }
+
+          if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
             console.log("Match found - friend id is current user");
             return (<button onClick={() => this._handleDeleteClick(id)}>Buddies! Disconnect Buddy?</button>)
 
-          } else if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
+          }
+
+          if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
             console.log("Match found - user id is current user");
             return (<button onClick={() => this._handleDeleteClick(id)}>Buddies! Disconnect Buddy?</button>)
 
-          } else if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
+          }
+
+          if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
             console.log("Pending found");
             return (<button onClick={() => this._handleDeleteClick(id)}>Cancel Buddy Request?</button>)
+          }
 
-          } else if (current_user.sub === id){
-            return (<button onClick={() => this._handleCancelAttendingClick(id)}>Not attending anymore?</button>)
-            
-          } else {
-            return (<button onClick={() => this._handlePostClick(id)}>Match</button>)
+          if (this.state.friendships[i].friend_id !== current_user.sub && this.state.friendships[i].user_id !== current_user.sub) {
+            console.log("No match found");
+            return (<button onClick={() => this._handlePostClick(id)}>Like Buddy!</button>)
           }
         }
 
     } else if (this.state.friendships.length < 1 && current_user.sub === id){
       return (<button onClick={() => this._handleCancelAttendingClick(id)}>Not attending anymore?</button>)
-    } else {
-      return (<button onClick={() => this._handlePostClick(id)}>Match</button>)
     }
     }
 
@@ -123,21 +134,7 @@ class Attending extends Component {
   }
 
   _handleDeleteClick(id){
-    console.log("No friendship found = Inactive Friendship Made!");
-    console.log(id);
-    axios({
-      url: USERS_URL,
-      method: 'delete',
-      headers: {
-        authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ2MTEyNTEsInN1YiI6MTQsImVtYWlsIjoidGFyeW5AdGFyeW4uY29kZXMiLCJhZG1pbiI6bnVsbH0.owYVjK7yMwdXPnbxblZ7ODyWxrXtwlwBW14KBF7Znpo`
-      },
-      data: {
-        friendship: {
-          friend_id: id,
-          active: false
-        }
-      }
-    }).then(res => console.log(res))
+    console.log("Delete Friendship");
   }
 
 
