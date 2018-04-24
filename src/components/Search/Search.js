@@ -27,10 +27,11 @@ class Search extends Component {
 
   _handleSubmit = e => {
     e.preventDefault();
+    console.log(e.target[0].value)
     this.props.onSubmit("name", e.target[0].value);
     this.setState({
       name:""
-    })
+    });
   };
 
   renderOptions = () => {
