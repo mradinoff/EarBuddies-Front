@@ -5,6 +5,8 @@ const SERVER_URL = 'https://earbuddies1.herokuapp.com/venues.json';
 
 
 
+
+
 class Venues extends Component {
   constructor(props){
     super(props);
@@ -19,10 +21,11 @@ class Venues extends Component {
 }
 
 
- gallery() {
+gallery = () => {
   return(
     <div>
-      {this.state.venues.map(({name, address,}) => <p>{name} | {address} </p>)}
+      {console.log(this.state.venues)}
+      {this.state.venues.map(({name, address, events}) => <p key={name}>{name} | {address} | {events.map((e) => e.name )} </p>)}
     </div>
   );
 }
