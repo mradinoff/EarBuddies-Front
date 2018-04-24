@@ -5,10 +5,10 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Swipe from "./components/friendships/Swipe"
 import Concert from "./components/concerts/Concert"
-import Profile from "./components/users/Profile"
+import Profile from "./components/Users/Profile"
 import Attending from "./components/friendships/Attending"
 //import SignUp from "./components/Users/SignUp";
-import Login from "./components/users/Login";
+import Login from "./components/Users/Login";
 import Venues from "./components/concerts/Venues";
 import Nav from './components/nav/Nav'
 
