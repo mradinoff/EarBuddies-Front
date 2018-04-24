@@ -14,28 +14,18 @@ class Attending extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      users: this.props.users,
       friendships: []
     }
+    console.log(this.props.users);
     this._handlePatchClick = this._handlePatchClick.bind(this);
     this._handlePostClick = this._handlePostClick.bind(this);
   }
 
   componentDidMount = () => {
-    this.fetchUsers();
     this.fetchFriendships();
   }
 
-  fetchUsers = () => { // Fat arrow functions do not break the connection to this
-    axios({
-      url: USERS_URL,
-      method: 'get',
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => this.setState({users: res.data}))
-  }
 
   fetchFriendships = () => { // Fat arrow functions do not break the connection to this
     axios({
