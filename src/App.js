@@ -20,7 +20,8 @@ class App extends Component {
     genres: [],
     loading: false,
     watchID: "",
-    user: {}
+    user: {},
+    token: null
   };
 
   componentWillUnmount = () => {
@@ -37,7 +38,8 @@ class App extends Component {
     if (token) {
       const user = jwtDecoder(token);
       this.setState({
-        user
+        user,
+        token
       });
     }
 
@@ -152,7 +154,9 @@ class App extends Component {
         />
         <Concerts concerts={this.state.events} history={this.props.history} />
 
-        <AddPhoto user={this.state.user} />
+        {this.state.token && (
+          <AddPhoto user={this.state.user} />
+        )}
       </div>
     );
   }
