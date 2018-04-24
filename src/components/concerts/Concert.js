@@ -57,7 +57,7 @@ class Concert extends Component {
 
 
   deleteUserFromEvent = () => {
-    console.log(current_user.sub);
+    console.log(this.state.current_user.sub);
     console.log(parseInt(this.props.match.params.id));
     axios({
       url: ``,
@@ -76,7 +76,7 @@ class Concert extends Component {
   };
 
   addUserToEventList = () => {
-    console.log(current_user.sub);
+    console.log(this.state.current_user.sub);
     console.log(parseInt(this.props.match.params.id));
     axios({
       url: "https://earbuddies1.herokuapp.com/events_users",
