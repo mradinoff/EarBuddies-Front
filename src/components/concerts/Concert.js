@@ -2,8 +2,8 @@ import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
 import jwtDecoder from "jwt-decode";
 
-const token = localStorage.getItem('jwtToken');
-const current_user = jwtDecoder(token);
+// const token = localStorage.getItem('jwtToken');
+// const current_user = jwtDecoder(token);
 
 
 class Concert extends Component{
@@ -11,15 +11,21 @@ class Concert extends Component{
     super(props)
     this.state = {
       venue: [],
-      concert: [this.props.location.state]
+      concert: this.props.location.state,
+      current_user: {}
     }
     // this.findVenue = this.findVenue.bind(this);
     // console.log(this.state.concert[0])
   }
-  // componentDidMount = () => {
-  //   this.findVenue();
-  //   this.eventUserList();
-  // }
+  componentDidMount = () => {
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      const user = jwtDecoder(token);
+      this.setState({
+        user
+      });
+    }
+  }
 
   // findVenue(state){
   //
@@ -36,13 +42,13 @@ class Concert extends Component{
   //       }
 
   deleteUserFromEvent = () => {
-  console.log(current_user.sub);
+  //console.log(current_user.sub);
   console.log(parseInt(this.props.match.params.id));
     axios({
       url: 'https://earbuddies1.herokuapp.com/events_users',
       method: 'delete',
       data: {
-        user_id: current_user.sub,
+        user_id: this.state.current_user.sub,
         event_id: parseInt(this.props.match.params.id)
       }
     }).then(response => {
@@ -56,13 +62,13 @@ class Concert extends Component{
 
 
   addUserToEventList = () => {
-  console.log(current_user.sub);
+  //console.log(current_user.sub);
   console.log(parseInt(this.props.match.params.id));
     axios({
       url: 'https://earbuddies1.herokuapp.com/events_users',
       method: 'post',
       data: {
-        user_id: current_user.sub,
+        user_id: this.state.current_user.sub,
         event_id: parseInt(this.props.match.params.id)
       }
     }).then(response => {

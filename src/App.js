@@ -7,8 +7,8 @@ import _ from "lodash";
 import AddPhoto from "./components/Users/AddPhoto";
 import jwtDecoder from "jwt-decode";
 
-const token = localStorage.getItem("jwtToken");
-const user = jwtDecoder(token);
+// const token = localStorage.getItem("jwtToken");
+// const user = jwtDecoder(token);
 
 class App extends Component {
   state = {
@@ -19,7 +19,8 @@ class App extends Component {
     events: [],
     genres: [],
     loading: false,
-    watchID: ""
+    watchID: "",
+    user: {}
   };
 
   componentWillUnmount = () => {
@@ -31,6 +32,14 @@ class App extends Component {
 
     console.log("lat: ", this.state.lat);
     console.log("lon: ", this.state.lon);
+
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      const user = jwtDecoder(token);
+      this.setState({
+        user
+      });
+    }
 
     axios
       .get("https://earbuddies1.herokuapp.com/venues.json", {
@@ -142,9 +151,8 @@ class App extends Component {
           onSubmit={this.onInputSetState}
         />
         <Concerts concerts={this.state.events} history={this.props.history} />
-        {token && (
-          <AddPhoto token={token}/>
-        )}
+
+        <AddPhoto user={this.state.user} />
       </div>
     );
   }
