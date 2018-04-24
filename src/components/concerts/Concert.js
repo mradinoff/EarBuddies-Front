@@ -3,8 +3,8 @@ import axios from 'axios';
 import Attending from '../friendships/Attending.js'
 import jwtDecoder from "jwt-decode";
 
-// const token = localStorage.getItem('jwtToken');
-// const current_user = jwtDecoder(token);
+const token = localStorage.getItem('jwtToken');
+const current_user = jwtDecoder(token);
 
 class Concert extends Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class Concert extends Component {
 
 
   deleteUserFromEvent = () => {
-    //console.log(current_user.sub);
+    console.log(current_user.sub);
     console.log(parseInt(this.props.match.params.id));
     axios({
       url: ``,
@@ -78,7 +78,7 @@ class Concert extends Component {
   };
 
   addUserToEventList = () => {
-    //console.log(current_user.sub);
+    console.log(current_user.sub);
     console.log(parseInt(this.props.match.params.id));
     axios({
       url: "https://earbuddies1.herokuapp.com/events_users",
