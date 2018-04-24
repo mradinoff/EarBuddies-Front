@@ -4,6 +4,11 @@ import "./index.css";
 import axios from "axios";
 import Search from "./components/Search/Search";
 import _ from "lodash";
+import AddPhoto from "./components/Users/AddPhoto";
+import jwtDecoder from "jwt-decode";
+
+const token = localStorage.getItem("jwtToken");
+const user = jwtDecoder(token);
 
 class App extends Component {
   state = {
@@ -137,6 +142,9 @@ class App extends Component {
           onSubmit={this.onInputSetState}
         />
         <Concerts concerts={this.state.events} history={this.props.history} />
+        {token && (
+          <AddPhoto token={token}/>
+        )}
       </div>
     );
   }
