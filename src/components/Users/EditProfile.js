@@ -4,6 +4,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import AddPhoto from "./AddPhoto";
 import axios from "axios";
+import _ from "lodash";
+import jwtDecoder from "jwt-decode";
 
 const USER_URL = 'https://earbuddies1.herokuapp.com/users/14.json';
 const style = {
@@ -40,10 +42,10 @@ class EditProfile extends Component {
     }).then(res => this.setState({user: res.data}))
   }
 
-  _handleSubmit = () => {
-    let url = "https://earbuddies1.herokuapp.com/users.json";
-
-    console.log(this.state.bio);
+  _handleSubmit = (e) => {
+    e.preventDefault();
+    let url = `https://earbuddies1.herokuapp.com/user/${this.state.user.id}.json`;
+    console.log(url);
 
     axios({
       url: url,
@@ -52,7 +54,6 @@ class EditProfile extends Component {
         authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ1Mjc2MDMsInN1YiI6NywiZW1haWwiOiJ0YXJ5bkB0YXJ5bi5jb2RlcyIsImFkbWluIjp0cnVlfQ.1RBD0T6qoAe0fSL9hRhvPKdEvDgjPlnPvc9yi8FHTE8`
       },
       data: {
-        email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
         name: this.state.name,
@@ -60,12 +61,12 @@ class EditProfile extends Component {
         bio: this.state.bio,
         interests: this.state.interests
       }
-    }).then(res => this.setState({success: "Success your account was created!"}))
+    }).then(res => this.setState({success: "Success your account was updated!"}))
 
 }
 
 
-  handleChange = (event) => {
+  _handleChange = (event) => {
     if (event.target.id === "name-field") {
       this.setState({
         name: event.target.value,
@@ -127,48 +128,49 @@ class EditProfile extends Component {
             hintText="Name"
             floatingLabelText="Name"
             defaultValue={this.state.user.name}
-            onChange={this.handleChange}
+            onChange={this._handleChange}
           />
           <br />
           <TextField id="hometown-field"
             hintText="Hometown"
             floatingLabelText="Hometown"
             defaultValue={this.state.user.hometown}
-            onChange={this.handleChange}
+            onChange={this._handleChange}
           />
           <br />
           <TextField id="bio-field"
             hintText="Biography"
             floatingLabelText="Biography"
             defaultValue={this.state.user.bio}
-            onChange={this.handleChange}
+            onChange={this._handleChange}
           />
           <br />
           <TextField id="interests-field"
             hintText="Interests"
             floatingLabelText="Interests"
             defaultValue={this.state.user.interests}
-            onChange={this.handleChange}
+            onChange={this._handleChange}
           />
           <br />
           <TextField id="password-field"
             type="password"
             hintText="Enter your Password"
             floatingLabelText="Password"
-            onChange={this.handleChange}
+            onChange={this._handleChange}
           />
           <br />
           <TextField id="password-confirmation-field"
             type="password"
             hintText="Password confirmation"
             floatingLabelText="Password Confirmation"
-            onChange={this.handleChange}
+            onChange={this._handleChange}
           />
           <br />
 
           <br />
           <RaisedButton
             label="Submit"
+            type='submit'
             primary={true}
             style={style}
           />
