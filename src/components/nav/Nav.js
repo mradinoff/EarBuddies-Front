@@ -35,11 +35,10 @@ class Nav extends Component {
               <Link to="/signup">Sign Up</Link>
               <Link to="/login">Login</Link>
             </div>
-          )}
         </nav>
       </header>
-    );
+    )
   }
-}
+
 
 export default Nav;

@@ -19,6 +19,15 @@ class Concert extends Component {
     };
     this.findVenue = this.findVenue.bind(this);
   }
+}
+_venueClick = v => {
+  const venue = {
+    pathname: `/venues/${v.id}`,
+    state: v
+  };
+  this.props.history.push(venue);
+};
+
   componentDidMount = () => {
     this.findVenue();
     this.findUsers();
@@ -30,7 +39,6 @@ class Concert extends Component {
       });
     }
   };
-
 
   findVenue(state){
 
@@ -112,7 +120,7 @@ class Concert extends Component {
           <h2>{this.state.concert.name}</h2>
           <p>{this.state.concert.description}</p>
           <p>{this.state.concert.date}</p>
-          <p>{this.state.venue}</p>
+          <a onClick = {() => this._venueClick(this.state.venue)} value ={this.state.venue} href={`/venues/${this.state.venue.id}`}> {this.state.venue.name}</a>
           <p>{this.state.concert.genre}</p>
           <button onClick={this.addUserToEventList}>attending</button>
           {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
