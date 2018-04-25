@@ -50,7 +50,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div className="hero">
         <Select
           id="genre"
           name="form-field-name"
@@ -58,16 +58,31 @@ class Search extends Component {
           onChange={this.handleChange}
           options={this.state.options}
         />
-        <form className="form" onSubmit={this._handleSubmit}>
+        {/* <form className="form" onSubmit={this._handleSubmit}>
           <label>Name:</label>
-          <input 
-          type="text" 
+          <input
+          type="text"
           onChange={this.handleInputChange}
           value={this.state.name}
           />
-          <input 
-          type="submit"  
-          className="btn btn-outline-info" 
+          <input
+          type="submit"
+          className="btn btn-outline-info"
+          />
+        </form> */}
+
+        <form className="form fullWhite" onSubmit={this._handleSubmit}>
+          <svg className="test" viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false"><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fill-rule="evenodd"></path></svg>
+          {/* <label>name</label> */}
+          <input className="searchInput"
+          type="text"
+          onChange={this.handleInputChange}
+          value={this.state.name}
+          />
+          <input
+          type="submit"
+          className="btn btn-outline-info"
+          className="searchButton"
           />
         </form>
       </div>
