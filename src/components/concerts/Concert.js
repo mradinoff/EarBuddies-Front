@@ -2,7 +2,7 @@ import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
 import Attending from '../friendships/Attending.js'
 import jwtDecoder from "jwt-decode";
-
+import { Link } from "react-router-dom";
 
 // const token = localStorage.getItem('jwtToken');
 // const current_user = jwtDecoder(token);
@@ -112,7 +112,7 @@ class Concert extends Component {
           <h2>{this.state.concert.name}</h2>
           <p>{this.state.concert.description}</p>
           <p>{this.state.concert.date}</p>
-          <p>{this.state.venue}</p>
+          <Link to="/venues"><p>{this.state.venue}</p></Link>
           <p>{this.state.concert.genre}</p>
           <button onClick={this.addUserToEventList}>attending</button>
           {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
