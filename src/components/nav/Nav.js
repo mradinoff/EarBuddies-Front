@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './Home.css';
 
 // const signOut = function () {
 
@@ -14,8 +15,7 @@ class Nav extends Component {
     return (
       <header>
         <nav className="nav_bar">
-          <Link to="/">
-            <img src="" alt="logo" />
+          <Link to="/">EarBuddies
           </Link>
           {window.localStorage.jwtToken ? (
             <Link to="/">
