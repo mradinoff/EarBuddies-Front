@@ -31,13 +31,12 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/attending" component={Attending} />
-
+        <Route exact path="/home" component={Home} />
         <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" component={Profile} />
         <Route exact path="/EditProfile" component={EditProfile} />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/venues" component={Venues}/>
-        <Route exact path="/v"
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
       </React.Fragment>
