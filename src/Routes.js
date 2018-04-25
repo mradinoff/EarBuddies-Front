@@ -11,7 +11,8 @@ import Attending from "./components/friendships/Attending"
 import Login from "./components/Users/Login";
 import Venues from "./components/concerts/Venues";
 import Nav from './components/nav/Nav'
-import EditProfile from './components/Users/EditProfile'
+import Home from './components/nav/Home'
+import EditProfile from './components/Users/EditProfile';
 
 
 const muiTheme = getMuiTheme({
