@@ -19,6 +19,7 @@ class Nav extends Component {
 
           <Link to="/">
             <img src={logo} alt=""/>
+          </Link>
 
           </Link>
           {window.localStorage.jwtToken ? (
