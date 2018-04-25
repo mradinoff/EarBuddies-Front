@@ -19,6 +19,7 @@ class Concert extends Component {
     };
     this.findVenue = this.findVenue.bind(this);
   }
+
   componentDidMount = () => {
     this.findVenue();
     this.findUsers();
@@ -31,7 +32,6 @@ class Concert extends Component {
     }
   };
 
-
   findVenue(state){
 
       axios({
@@ -42,9 +42,8 @@ class Concert extends Component {
       }).then(function(v){
         console.log(v);
         let venue = []
-        venue.push(v.data.name)
+        venue.push(v.data)
         this.setState({venue})}.bind(this))
-
   }
 
   findUsers(){
@@ -100,7 +99,7 @@ class Concert extends Component {
       });
   };
   render() {
-
+    console.log(this.state.venue)
     if (this.state.users.length === 0) {
       return (
         <h2>Loading...</h2>
@@ -112,7 +111,7 @@ class Concert extends Component {
           <h2>{this.state.concert.name}</h2>
           <p>{this.state.concert.description}</p>
           <p>{this.state.concert.date}</p>
-          <Link to="/venues"><p>{this.state.venue}</p></Link>
+          <a>{this.state.venue.name}</a>
           <p>{this.state.concert.genre}</p>
           <button onClick={this.addUserToEventList}>attending</button>
           {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}

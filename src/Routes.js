@@ -7,7 +7,7 @@ import Swipe from "./components/friendships/Swipe"
 import Concert from "./components/concerts/Concert"
 import Profile from "./components/Users/Profile"
 import Attending from "./components/friendships/Attending"
-//import SignUp from "./components/Users/SignUp";
+import SignUp from "./components/Users/Sign-Up";
 import Login from "./components/Users/Login";
 import Venues from "./components/concerts/Venues";
 import Nav from './components/nav/Nav'
@@ -36,7 +36,9 @@ const Routes = () => (
         <Route exact path="/Profile" component={Profile} />
         <Route exact path="/EditProfile" component={EditProfile} />
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/venues" component={Venues}/>
+        <Route exact path="/venue" component={Venue}/>
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
       </React.Fragment>

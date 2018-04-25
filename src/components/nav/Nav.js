@@ -9,7 +9,7 @@ import './Home.css';
 
 class Nav extends Component {
   _signOut() {
-    localStorage.setItem("jwtToken", "");
+    localStorage.removeItem("jwtToken");
   }
 
   render() {
@@ -19,8 +19,8 @@ class Nav extends Component {
 
           <Link to="/">
             <img src={logo} alt=""/>
-
           </Link>
+
           {window.localStorage.jwtToken ? (
             <Link to="/">
               <button onClick={this._signOut}>Sign out</button>
