@@ -23,7 +23,6 @@ class App extends Component {
     genres: [],
     loading: false,
     watchID: "",
-    user: {},
     token: null
   };
 
@@ -36,15 +35,6 @@ class App extends Component {
 
     console.log("lat: ", this.state.lat);
     console.log("lon: ", this.state.lon);
-
-    const token = localStorage.getItem("jwtToken");
-    if (token) {
-      const user = jwtDecoder(token);
-      this.setState({
-        user,
-        token
-      });
-    }
 
     axios
       .get("https://earbuddies1.herokuapp.com/venues.json", {
@@ -150,19 +140,13 @@ class App extends Component {
     }
 
     return (
-      <div>
-      <Search
-        genres={_.uniq(this.state.genres)}
-        onSubmit={this.onInputSetState}
-      />
-        <div style={styles.main}>
+      <div style={styles.main}>
+        <Search
+          genres={_.uniq(this.state.genres)}
+          onSubmit={this.onInputSetState}
+        />
+        <Concerts concerts={this.state.events} history={this.props.history} />
 
-          <Concerts concerts={this.state.events} history={this.props.history} />
-
-          {this.state.token && (
-            <AddPhoto user={this.state.user} />
-          )}
-        </div>
       </div>
     );
   }
