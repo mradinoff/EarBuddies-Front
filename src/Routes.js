@@ -37,14 +37,14 @@ const Routes = () => (
         <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" render={props => (
           token ? (
-            <Profile token={token}/>
+            <Profile {...props} token={token}/>
           ) : (
             <Redirect to="/login" />
           )
         )} />
         <Route exact path="/EditProfile" render={props => (
           token ? (
-            <EditProfile token={token}/>
+            <EditProfile {...props} token={token}/>
           ) : (
             <Redirect to="/login" />
           )
