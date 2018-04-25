@@ -4,6 +4,10 @@ import Attending from '../friendships/Attending.js'
 import jwtDecoder from "jwt-decode";
 
 
+// const token = localStorage.getItem('jwtToken');
+// const current_user = jwtDecoder(token);
+
+
 class Concert extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +15,11 @@ class Concert extends Component {
       venue: [],
       concert: this.props.location.state,
       current_user: {},
-      current_concert: {},
       users: []
     };
+    this.findVenue = this.findVenue.bind(this);
+    console.log(this.state.concert[0])
+    console.log(this.props.location.state);
   }
   componentDidMount = () => {
     this.findVenue();
@@ -22,7 +28,7 @@ class Concert extends Component {
     if (token) {
       const user = jwtDecoder(token);
       this.setState({
-        user
+        current_user: user
       });
     }
   };
@@ -40,6 +46,7 @@ class Concert extends Component {
         let venue = []
         venue.push(v.data.name)
         this.setState({venue})}.bind(this))
+
   }
 
   findUsers(){
@@ -54,7 +61,6 @@ class Concert extends Component {
       this.setState({current_concert: res})}.bind(this)).then(() =>
         this.setState({users: this.state.current_concert.data.users})).then(() => console.log(this.state.users));
       }
-
 
   deleteUserFromEvent = () => {
     console.log(this.state.current_user.sub);
@@ -79,11 +85,13 @@ class Concert extends Component {
     console.log(this.state.current_user.sub);
     console.log(parseInt(this.props.match.params.id));
     axios({
-      url: "https://earbuddies1.herokuapp.com/events_users",
+      url: "https://earbuddies1.herokuapp.com/events_users.json",
       method: "post",
       data: {
-        user_id: this.state.current_user.sub,
-        event_id: parseInt(this.props.match.params.id)
+        events_user: {
+          user_id: this.state.current_user.sub,
+          event_id: parseInt(this.props.match.params.id)
+        }
       }
     })
       .then(response => {
@@ -94,6 +102,12 @@ class Concert extends Component {
       });
   };
   render() {
+
+    if (this.state.users.length === 0) {
+      return (
+        <h2>Loading...</h2>
+      )
+    }
     return (
       <div>
           <img src={this.state.concert.image} alt=""/>
@@ -104,7 +118,7 @@ class Concert extends Component {
           <p>{this.state.concert.genre}</p>
           <button onClick={this.addUserToEventList}>attending</button>
           {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
-            <Attending />
+          <Attending users={this.state.users}/>
       </div>
     );
   }

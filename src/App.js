@@ -7,6 +7,8 @@ import _ from "lodash";
 import AddPhoto from "./components/Users/AddPhoto";
 import jwtDecoder from "jwt-decode";
 import Hero from './components/Home/Hero'
+import Home from "./components/nav/Home";
+
 
 // const token = localStorage.getItem("jwtToken");
 // const user = jwtDecoder(token);
