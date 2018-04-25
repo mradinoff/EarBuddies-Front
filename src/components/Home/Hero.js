@@ -35,8 +35,7 @@ class Hero extends Component {
           />
           <input
           type="submit"
-          className="btn btn-outline-info"
-          className="searchButton"
+          className="btn btn-outline-info searchButton"
           />
         </form>
       </div>

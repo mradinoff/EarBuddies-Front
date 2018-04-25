@@ -3,10 +3,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import Dropzone from "react-dropzone";
 import CircularProgress from "material-ui/CircularProgress";
 import axios from "axios";
-import jwtDecoder from "jwt-decode";
-
-// const token = localStorage.getItem("jwtToken");
-// const user = jwtDecoder(token);
 
 class AddPhoto extends Component {
   state = {

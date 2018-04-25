@@ -4,16 +4,12 @@ import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import AddPhoto from "./AddPhoto";
 import axios from "axios";
-import _ from "lodash";
 import jwtDecoder from "jwt-decode";
 
-//const USER_URL = "https://earbuddies1.herokuapp.com/users/14.json";
 const style = {
   margin: 15
 };
 
-// const token = localStorage.getItem("jwtToken");
-// const user = jwtDecoder(token);
 
 class EditProfile extends Component {
   constructor(props) {

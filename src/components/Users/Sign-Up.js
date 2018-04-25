@@ -3,7 +3,6 @@ import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import axios from "axios";
-import jwtDecoder from "jwt-decode";
 
 class SignUp extends Component {
   state = {
