@@ -85,13 +85,13 @@ class Concert extends Component {
 
   deleteUserFromEvent = () => {
     console.log(this.state.current_user.sub);
-    console.log(parseInt(this.props.match.params.id));
+    console.log(parseInt(this.props.match.params.id, 10));
     axios({
       url: ``,
       method: "delete",
       data: {
         user_id: this.state.current_user.sub,
-        event_id: parseInt(this.props.match.params.id)
+        event_id: parseInt(this.props.match.params.id, 10)
       }
     })
       .then(response => {
@@ -104,14 +104,14 @@ class Concert extends Component {
 
   addUserToEventList = () => {
     console.log(this.state.current_user.sub);
-    console.log(parseInt(this.props.match.params.id));
+    console.log(parseInt(this.props.match.params.id, 10));
     axios({
       url: "https://earbuddies1.herokuapp.com/events_users.json",
       method: "post",
       data: {
         events_user: {
           user_id: this.state.current_user.sub,
-          event_id: parseInt(this.props.match.params.id)
+          event_id: parseInt(this.props.match.params.id, 10)
         }
       }
     })
@@ -123,7 +123,7 @@ class Concert extends Component {
       });
   };
   render() {
-    if (this.state.loading || this.state.venue[0] == undefined) {
+    if (this.state.loading || this.state.venue[0] === undefined) {
       return <h2>Loading...</h2>;
     }
     return (
