@@ -48,9 +48,13 @@ class EditProfile extends Component {
 
   _handleSubmit = e => {
     e.preventDefault();
+<<<<<<< HEAD
+    let url = `https://earbuddies1.herokuapp.com/users/${this.state.user.id}.json`;
+=======
     let url = `https://earbuddies1.herokuapp.com/user/${
       this.state.user.id
     }.json`;
+>>>>>>> 84a76f764025bd698ba16fbf18a33173450e6efe
     console.log(url);
 
     axios({

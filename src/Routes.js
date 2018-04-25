@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "./App";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
@@ -13,6 +13,7 @@ import Venues from "./components/concerts/Venues";
 import Nav from './components/nav/Nav'
 import Home from './components/nav/Home'
 import EditProfile from './components/Users/EditProfile';
+import Venue from './components/concerts/Venue';
 
 
 const muiTheme = getMuiTheme({
@@ -22,8 +23,6 @@ const muiTheme = getMuiTheme({
   flatButton: { primaryTextColor: "#5C67E1" }
 });
 
-const token = localStorage.getItem("jwtToken")
-
 const Routes = () => (
   <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
     <Router>
@@ -32,24 +31,13 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/attending" component={Attending} />
-        <Route exact path="/home" component={Home} />
+
         <Route exact path="/Swipe" component={Swipe} />
-        <Route exact path="/Profile" render={props => (
-          token ? (
-            <Profile {...props} token={token} />
-          ) : (
-            <Redirect to="/login" />
-          )
-        )} />
-        <Route exact path="/EditProfile" render={props => (
-          token ? (
-            <EditProfile {...props} token={token} />
-          ) : (
-            <Redirect to="/login" />
-          )
-        )} />
+        <Route exact path="/Profile" component={Profile} />
+        <Route exact path="/EditProfile" component={EditProfile} />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/venues" component={Venues}/>
+        <Route exact path="/v"
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
       </React.Fragment>
