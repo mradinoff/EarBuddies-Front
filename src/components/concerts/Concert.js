@@ -1,12 +1,10 @@
-import React, {PureComponent as Component} from 'react';
-import axios from 'axios';
-import Attending from '../friendships/Attending.js'
+import React, { PureComponent as Component } from "react";
+import axios from "axios";
+import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
-
 
 // const token = localStorage.getItem('jwtToken');
 // const current_user = jwtDecoder(token);
-
 
 class Concert extends Component {
   constructor(props) {
@@ -15,7 +13,8 @@ class Concert extends Component {
       venue: [],
       concert: this.props.location.state,
       current_user: {},
-      users: []
+      users: [],
+      loading: false
     };
     this.findVenue = this.findVenue.bind(this);
   }
@@ -32,32 +31,49 @@ class Concert extends Component {
     }
   };
 
-  findVenue(state){
-
-      axios({
-        method:'GET',
-        url: `https://earbuddies1.herokuapp.com/venues/${this.state.concert.venue_id}.json`,
-        responseType: 'json',
-
-      }).then(function(v){
+  findVenue(state) {
+    axios({
+      method: "GET",
+      url: `https://earbuddies1.herokuapp.com/venues/${
+        this.state.concert.venue_id
+      }.json`,
+      responseType: "json"
+    }).then(
+      function(v) {
         console.log(v);
-        let venue = []
-        venue.push(v.data)
-        this.setState({venue})}.bind(this))
+        let venue = [];
+        venue.push(v.data);
+        this.setState({ venue });
+      }.bind(this)
+    );
   }
 
-  findUsers(){
+  findUsers = async () => {
+    await this.setState({
+      loading: true
+    });
 
     axios({
-      method:'GET',
-      url: `https://earbuddies1.herokuapp.com/events/${this.state.concert.id}.json`,
-      responseType: 'json',
-
-    }).then(function(res){
-      console.log(res);
-      this.setState({current_concert: res})}.bind(this)).then(() =>
-        this.setState({users: this.state.current_concert.data.users})).then(() => console.log(this.state.users));
-      }
+      method: "GET",
+      url: `https://earbuddies1.herokuapp.com/events/${
+        this.state.concert.id
+      }.json`,
+      responseType: "json"
+    })
+      .then(
+        function(res) {
+          console.log(res);
+          this.setState({ current_concert: res });
+        }.bind(this)
+      )
+      .then(() =>
+        this.setState({ users: this.state.current_concert.data.users })
+      )
+      .then(() => {
+        this.setState({ loading: false })
+        console.log(this.state.users)
+      });
+  };
 
   deleteUserFromEvent = () => {
     console.log(this.state.current_user.sub);
@@ -99,23 +115,28 @@ class Concert extends Component {
       });
   };
   render() {
-    console.log(this.state.venue)
-    if (this.state.users.length === 0) {
-      return (
-        <h2>Loading...</h2>
-      )
+    console.log(this.state.venue);
+    if (this.state.loading) {
+      return <h2>Loading...</h2>;
     }
     return (
       <div>
-          <img src={this.state.concert.image} alt={this.state.concert.name}/>
-          <h2>{this.state.concert.name}</h2>
-          <p>{this.state.concert.description}</p>
-          <p>{this.state.concert.date}</p>
-          <a onClick = {() => this._venueClick(this.state.venue)} value ={this.state.venue} href={`/venues/${this.state.venue.id}`}> {this.state.venue.name}</a>
-          <p>{this.state.concert.genre}</p>
-          <button onClick={this.addUserToEventList}>attending</button>
-          {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
-          <Attending users={this.state.users}/>
+        <img src={this.state.concert.image} alt={this.state.concert.name} />
+        <h2>{this.state.concert.name}</h2>
+        <p>{this.state.concert.description}</p>
+        <p>{this.state.concert.date}</p>
+        <a
+          onClick={() => this._venueClick(this.state.venue)}
+          value={this.state.venue}
+          href={`/venues/${this.state.venue.id}`}
+        >
+          {" "}
+          {this.state.venue.name}
+        </a>
+        <p>{this.state.concert.genre}</p>
+        <button onClick={this.addUserToEventList}>attending</button>
+        {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
+        <Attending users={this.state.users} />  
       </div>
     );
   }

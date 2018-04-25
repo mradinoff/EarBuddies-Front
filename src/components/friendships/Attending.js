@@ -39,6 +39,7 @@ class Attending extends Component {
   }
 
   renderButton = (id) => {
+    console.log(id);
     if (this.state.friendships.length >= 1) {
 
       for (let i = 0; i < this.state.friendships.length; i++) {

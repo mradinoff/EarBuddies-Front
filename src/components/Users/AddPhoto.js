@@ -24,7 +24,7 @@ class AddPhoto extends Component {
     data.append("avatar", files[0]);
     console.log(data);
 
-    const url = `https://earbuddies1.herokuapp.com/users/${this.props.user.sub}.json`;
+    const url = `https://earbuddies1.herokuapp.com/users/${this.props.user.id}.json`;
 
     axios({
       url,
