@@ -7,7 +7,7 @@ import axios from "axios";
 import _ from "lodash";
 import jwtDecoder from "jwt-decode";
 
-const USER_URL = "https://earbuddies1.herokuapp.com/users/14.json";
+//const USER_URL = "https://earbuddies1.herokuapp.com/users/14.json";
 const style = {
   margin: 15
 };
@@ -32,16 +32,19 @@ class EditProfile extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props)
     this.fetchUser();
   };
 
   fetchUser = () => {
     // Fat arrow functions do not break the connection to this
+    const user = jwtDecoder(this.props.token);
+    console.log(user);
     axios({
-      url: USER_URL,
+      url: `https://earbuddies1.herokuapp.com/users/${user.sub}.json`,
       method: "get",
       headers: {
-        authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ1Mjc2MDMsInN1YiI6NywiZW1haWwiOiJ0YXJ5bkB0YXJ5bi5jb2RlcyIsImFkbWluIjp0cnVlfQ.1RBD0T6qoAe0fSL9hRhvPKdEvDgjPlnPvc9yi8FHTE8`
+        authorization: `Bearer ${this.props.token}`
       }
     }).then(res => this.setState({ user: res.data }));
   };
@@ -57,7 +60,7 @@ class EditProfile extends Component {
       url: url,
       method: "patch",
       headers: {
-        authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ1Mjc2MDMsInN1YiI6NywiZW1haWwiOiJ0YXJ5bkB0YXJ5bi5jb2RlcyIsImFkbWluIjp0cnVlfQ.1RBD0T6qoAe0fSL9hRhvPKdEvDgjPlnPvc9yi8FHTE8`
+        authorization: `Bearer ${this.props.token}`
       },
       data: {
         password: this.state.password,
