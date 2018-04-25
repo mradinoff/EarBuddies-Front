@@ -15,15 +15,28 @@ class Attending extends Component {
     super(props);
     this.state = {
       users: this.props.users,
-      friendships: []
+      friendships: [],
+      current_user: {}
     }
-    console.log(this.props.users);
     this._handlePatchClick = this._handlePatchClick.bind(this);
     this._handlePostClick = this._handlePostClick.bind(this);
   }
 
   componentDidMount = () => {
     this.fetchFriendships();
+    this.fetchUser();
+  }
+
+  fetchUser = () => {
+    console.log(`https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`);
+    axios({
+      url: `https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`,
+      method: 'get',
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => this.setState({current_user: res.data}))
   }
 
 
@@ -81,14 +94,15 @@ class Attending extends Component {
 
   _handlePatchClick(id){
     console.log("Friendship Found - Active Match made!");
+
     const user = _.find(this.state.users, (user) => {
       return user.id === id
     })
-
-    const friendship = _.find(user.friendships, (friendship) => {
+console.log(user);
+    const friendship = _.find(this.state.current_user.friendships, (friendship) => {
       return friendship.friend_id === current_user.sub
     })
-
+console.log(friendship);
   let CURRENT_URL = `https://earbuddies1.herokuapp.com/friendships/${friendship.id}.json`;
 
 
@@ -132,16 +146,17 @@ class Attending extends Component {
   }
 
   _handleDeleteUserCurrentClick(id){
-    console.log("No friendship found = Inactive Friendship Made!");
+    console.log("Inactive friendship found - Cancel Request");
 
     const user = _.find(this.state.users, (user) => {
       return user.id === current_user.sub
     })
     console.log(user);
 
-    const friendship = _.find(user.friendships, (friendship) => {
+    const friendship = _.find(this.state.current_user.friendships, (friendship) => {
       return friendship.friend_id === id
     })
+    console.log(id);
     console.log(friendship);
 
   let CURRENT_URL = `https://earbuddies1.herokuapp.com/friendships/${friendship.id}.json`;
@@ -157,14 +172,14 @@ class Attending extends Component {
   }
 
   _handleDeleteFriendCurrentClick(id){
-    console.log("No friendship found = Inactive Friendship Made!");
+    console.log("Active friendship found - Delete friendship");
 
     const user = _.find(this.state.users, (user) => {
       return user.id === id
     })
     console.log(user);
 
-    const friendship = _.find(user.friendships, (friendship) => {
+    const friendship = _.find(this.state.user.friendships, (friendship) => {
       return friendship.friend_id === current_user.sub
     })
     console.log(friendship);
@@ -185,7 +200,6 @@ class Attending extends Component {
 
 
   render() {
-
     return(
       <div>
         <h2>Attending</h2>
