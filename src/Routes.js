@@ -7,7 +7,7 @@ import Swipe from "./components/friendships/Swipe"
 import Concert from "./components/concerts/Concert"
 import Profile from "./components/Users/Profile"
 import Attending from "./components/friendships/Attending"
-import SignUp from "./components/Users/SignUp";
+import SignUp from "./components/Users/Sign-Up";
 import Login from "./components/Users/Login";
 import Venues from "./components/concerts/Venues";
 import Nav from './components/nav/Nav'
