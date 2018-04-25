@@ -14,10 +14,10 @@ class Attending extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: this.props.users,
+      users: props.users,
       friendships: []
     }
-    console.log(this.props.users);
+    console.log(props.users);
     this._handlePatchClick = this._handlePatchClick.bind(this);
     this._handlePostClick = this._handlePostClick.bind(this);
   }

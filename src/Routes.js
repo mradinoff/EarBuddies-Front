@@ -6,7 +6,6 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Swipe from "./components/friendships/Swipe"
 import Concert from "./components/concerts/Concert"
 import Profile from "./components/Users/Profile"
-import Attending from "./components/friendships/Attending"
 import SignUp from "./components/Users/Sign-Up";
 import Login from "./components/Users/Login";
 import Venues from "./components/concerts/Venues";
@@ -32,7 +31,6 @@ const Routes = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/attending" component={Attending} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" render={props => (

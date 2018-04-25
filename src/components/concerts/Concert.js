@@ -77,13 +77,13 @@ class Concert extends Component {
 
   deleteUserFromEvent = () => {
     console.log(this.state.current_user.sub);
-    console.log(parseInt(this.props.match.params.id));
+    console.log(parseInt(this.props.match.params.id, 10));
     axios({
       url: ``,
       method: "delete",
       data: {
         user_id: this.state.current_user.sub,
-        event_id: parseInt(this.props.match.params.id)
+        event_id: parseInt(this.props.match.params.id, 10)
       }
     })
       .then(response => {
@@ -96,14 +96,14 @@ class Concert extends Component {
 
   addUserToEventList = () => {
     console.log(this.state.current_user.sub);
-    console.log(parseInt(this.props.match.params.id));
+    console.log(parseInt(this.props.match.params.id, 10));
     axios({
       url: "https://earbuddies1.herokuapp.com/events_users.json",
       method: "post",
       data: {
         events_user: {
           user_id: this.state.current_user.sub,
-          event_id: parseInt(this.props.match.params.id)
+          event_id: parseInt(this.props.match.params.id, 10)
         }
       }
     })
@@ -135,8 +135,8 @@ class Concert extends Component {
         </a>
         <p>{this.state.concert.genre}</p>
         <button onClick={this.addUserToEventList}>attending</button>
-        {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
-        <Attending users={this.state.users} />  
+        <button onClick={this.deleteUserFromEvent}>not attending</button>
+        <Attending users={this.state.users} token={this.props.token}/>  
       </div>
     );
   }
