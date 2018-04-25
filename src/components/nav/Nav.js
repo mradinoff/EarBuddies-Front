@@ -8,7 +8,7 @@ import './Home.css';
 
 class Nav extends Component {
   _signOut() {
-    localStorage.setItem("jwtToken", "");
+    localStorage.removeItem("jwtToken");
   }
 
   render() {

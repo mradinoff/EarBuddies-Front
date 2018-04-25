@@ -5,13 +5,12 @@ import TextField from "material-ui/TextField";
 import axios from "axios";
 
 class SignUp extends Component {
-
   state = {
     email: "",
     password: "",
     password_confirmation: "",
     success: ""
-  }
+  };
 
   handleClick = () => {
     let url = "https://earbuddies1.herokuapp.com/users.json";
@@ -31,12 +30,21 @@ class SignUp extends Component {
 
     axios
       .post(url, postData, axiosConfig)
-      .then(res => {
-        console.log("RESPONSE RECEIVED: ", res);
-        console.log("new user url:", res.data.url);
-        if (res.status === 201) {
-          this.setState({ success: "Success your account was created!" });
-        }
+      .then(() => {
+        this.setState({ success: "Success your account was created!" });
+        axios({
+          url: "https://earbuddies1.herokuapp.com/user_token",
+          method: "post",
+          data: {
+            auth: {
+              email: this.state.email,
+              password: this.state.password
+            }
+          }
+        }).then(res => {
+          localStorage.setItem("jwtToken", res.jwt);
+          this.props.history.push("/EditProfile");
+        });
       })
       .catch(err => {
         console.log("AXIOS ERROR: ", err);

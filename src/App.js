@@ -8,9 +8,6 @@ import AddPhoto from "./components/Users/AddPhoto";
 import jwtDecoder from "jwt-decode";
 import Home from "./components/nav/Home";
 
-// const token = localStorage.getItem("jwtToken");
-// const user = jwtDecoder(token);
-
 class App extends Component {
   state = {
     lat: "-33.871478599999996",
@@ -21,7 +18,6 @@ class App extends Component {
     genres: [],
     loading: false,
     watchID: "",
-    user: {},
     token: null
   };
 
@@ -34,15 +30,6 @@ class App extends Component {
 
     console.log("lat: ", this.state.lat);
     console.log("lon: ", this.state.lon);
-
-    const token = localStorage.getItem("jwtToken");
-    if (token) {
-      const user = jwtDecoder(token);
-      this.setState({
-        user,
-        token
-      });
-    }
 
     axios
       .get("https://earbuddies1.herokuapp.com/venues.json", {
@@ -155,9 +142,6 @@ class App extends Component {
         />
         <Concerts concerts={this.state.events} history={this.props.history} />
 
-        {this.state.token && (
-          <AddPhoto user={this.state.user} />
-        )}
       </div>
     );
   }
