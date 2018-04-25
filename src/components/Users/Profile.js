@@ -33,7 +33,6 @@ class Profile extends Component {
 
 
   render() {
-    console.log(this.props);
 
   if (!this.state.user) {
     return (
