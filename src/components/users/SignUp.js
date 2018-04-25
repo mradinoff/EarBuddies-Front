@@ -3,6 +3,7 @@ import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import axios from "axios";
+import jwtDecoder from "jwt-decode";
 
 class SignUp extends Component {
   state = {
@@ -41,8 +42,8 @@ class SignUp extends Component {
               password: this.state.password
             }
           }
-        }).then(res => {
-          localStorage.setItem("jwtToken", res.jwt);
+        }).then(async (res) => {
+          await localStorage.setItem("jwtToken", res.jwt);
           this.props.history.push("/EditProfile");
         });
       })
