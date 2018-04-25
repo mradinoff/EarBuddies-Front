@@ -2,6 +2,10 @@ import React, { PureComponent as Component } from "react";
 import axios from "axios";
 import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
+import "./Concerts.css";
+import Anime from 'react-anime';
+
+let mapsLink = ""
 
 // const token = localStorage.getItem('jwtToken');
 // const current_user = jwtDecoder(token);
@@ -10,13 +14,17 @@ class Concert extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      venue: [],
+      venue: '',
       concert: this.props.location.state,
       current_user: {},
       users: [],
       loading: false
     };
     this.findVenue = this.findVenue.bind(this);
+    console.log(this.props.location.state);
+
+
+    mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.venue.latitude},+${this.state.venue.longitude}&zoom=14&scale=1&size=700x400&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:med%7Ccolor:0xff0000%7Clabel:1%7C${this.state.venue.latitude},+${this.state.venue.longitude}`
   }
 
   componentDidMount = () => {
@@ -52,6 +60,7 @@ class Concert extends Component {
         let venue = [];
         venue.push(v.data);
         this.setState({ venue });
+        console.log(venue);
       }.bind(this)
     );
   }
@@ -128,22 +137,57 @@ class Concert extends Component {
     }
     return (
       <div>
-        <img src={this.state.concert.image} alt={this.state.concert.name} />
-        <h2>{this.state.concert.name}</h2>
-        <p>{this.state.concert.description}</p>
-        <p>{this.state.concert.date}</p>
-        <a
-          onClick={() => this._venueClick(this.state.venue[0])}
-          value={this.state.venue[0]}
-          href={`/venues/${this.state.venue[0].id}`}
-        >
-          {this.state.venue[0].name}
-        </a>
-        <p>{this.state.concert.genre}</p>
-        <button onClick={this.addUserToEventList}>attending</button>
-        {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
-        <Attending users={this.state.users} />
-      </div>
+
+        <div className="concertHeader">
+          <div className="concertHeaderInner">
+            <h1 className="concertH1">{this.state.concert.name}</h1>
+          </div>
+        </div>
+
+
+        <div className="concertContainer">
+
+
+        <div className="concertMain">
+          <img className="concertImg" src={this.state.concert.image} alt={this.state.concert.name} />
+
+          <section className="eventDetails">
+            <h2>Details</h2>
+            <p className="descriptionP">{this.state.concert.description}</p>
+            <div className="dateLocation">
+              <h5>DATE AND TIME</h5>
+              <p>Fri. 25 May 2018</p>
+              <p>9:00 am – 3:00 pm AEST</p>
+              <p>{this.state.concert.date}</p>
+              <div className="location">
+                <h5>LOCATION</h5>
+                <a
+                  onClick={() => this._venueClick(this.state.venue[0])}
+                  value={this.state.venue[0]}
+                  href={`/venues/${this.state.venue[0].id}`}
+                >
+                  {this.state.venue[0].name}
+                </a>
+                <p>{this.state.venue[0].address}</p>
+                <button className="attendingBtn" onClick={this.addUserToEventList}>Attending</button>
+                {/* <p>{this.state.concert.genre}</p> */}
+              </div>
+            </div>
+          </section>
+
+
+
+
+        </div>
+      <section className="map">
+        <h2>Map</h2>
+        <img src= {mapsLink} alt={this.state.venue.name}/>
+      </section>
+          <div className="attendees">
+            <Attending users={this.state.users} />
+          </div>
+          </div>
+        </div>
     );
   }
 }

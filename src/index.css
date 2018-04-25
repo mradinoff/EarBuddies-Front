@@ -78,8 +78,9 @@ a:first-child img {
 
 .cardDesc {
   font-size: .9em;
-  flex: 1;
-  flex-basis: auto;
+  height: 5.52em;
+  overflow: scroll;
+  margin-bottom: 1em
 }
 
 .genreHeading {

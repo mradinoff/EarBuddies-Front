@@ -71,9 +71,10 @@ class Login extends Component {
       <div>
 
           <div>
-            <AppBar title="Login"
+            {/* <AppBar title="Login"
             iconElementRight= {<HomeButton onClick={this.goToHomePage} />}
-            />
+            /> */}
+            <h2>Log In</h2>
             <TextField
               hintText="Enter your Email"
               floatingLabelText="Email"

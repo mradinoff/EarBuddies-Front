@@ -56,7 +56,8 @@ class SignUp extends Component {
     return (
       <div>
         <div>
-          <AppBar title="Sign Up" />
+          {/* <AppBar title="Sign Up" /> */}
+          <h2>Sign Up</h2>
           <TextField
             hintText="Enter your Email"
             floatingLabelText="Email"
