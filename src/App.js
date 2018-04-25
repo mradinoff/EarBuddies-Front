@@ -6,7 +6,9 @@ import Search from "./components/Search/Search";
 import _ from "lodash";
 import AddPhoto from "./components/Users/AddPhoto";
 import jwtDecoder from "jwt-decode";
+import Hero from './components/Home/Hero'
 import Home from "./components/nav/Home";
+
 
 // const token = localStorage.getItem("jwtToken");
 // const user = jwtDecoder(token);
@@ -148,16 +150,19 @@ class App extends Component {
     }
 
     return (
-      <div style={styles.main}>
-        <Search
-          genres={_.uniq(this.state.genres)}
-          onSubmit={this.onInputSetState}
-        />
-        <Concerts concerts={this.state.events} history={this.props.history} />
+      <div>
+      <Search
+        genres={_.uniq(this.state.genres)}
+        onSubmit={this.onInputSetState}
+      />
+        <div style={styles.main}>
 
-        {this.state.token && (
-          <AddPhoto user={this.state.user} />
-        )}
+          <Concerts concerts={this.state.events} history={this.props.history} />
+
+          {this.state.token && (
+            <AddPhoto user={this.state.user} />
+          )}
+        </div>
       </div>
     );
   }
