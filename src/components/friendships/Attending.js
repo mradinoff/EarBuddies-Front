@@ -7,14 +7,14 @@ const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
 const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
 const FRIENDSHIPS_URL = 'https://earbuddies1.herokuapp.com/friendships.json';
 
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ3MDkzNDUsInN1YiI6MTQsImVtYWlsIjoidGFyeW5AdGFyeW4uY29kZXMiLCJhZG1pbiI6bnVsbH0.XTmoC-1TACNY69DsfpBGEq5pVsy8_am6WN1EMx0gcoc";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ3MTY3NTksInN1YiI6MTEsImVtYWlsIjoicnlhbkB1c2VyLmNvbSIsImFkbWluIjpudWxsfQ.0nyEL0lQtd0gr2JeLtT8K_TR860i5EYHBLNVzDVcfF8";
 const current_user = jwtDecoder(token);
 
 class Attending extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: this.props.users,
+      users: props.users,
       friendships: [],
       current_user: {}
     }
@@ -28,6 +28,7 @@ class Attending extends Component {
   }
 
   fetchUser = () => {
+    console.log(this.state.users);
     console.log(`https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`);
     axios({
       url: `https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`,
@@ -205,7 +206,7 @@ console.log(friendship);
         <div>
             { this.state.users.map( u =>
               <div className="user-card" key={u.id}>
-                <img src="{u.avatar.url}" alt={u.name}/>
+                <img src={u.avatar.thumb.url} alt={u.name}/>
                 <h3>{u.name}</h3>
                 <p>{u.hometown}</p>
                 <p>{u.bio}</p>
