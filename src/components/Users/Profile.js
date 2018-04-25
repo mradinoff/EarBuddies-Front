@@ -8,7 +8,8 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      user_id: ""
     }
   }
 
@@ -17,11 +18,12 @@ class Profile extends Component {
   }
 
   fetchUser = () => { // Fat arrow functions do not break the connection to this
+
     axios({
       url: USER_URL,
       method: 'get',
       headers: {
-        authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ1Mjc2MDMsInN1YiI6NywiZW1haWwiOiJ0YXJ5bkB0YXJ5bi5jb2RlcyIsImFkbWluIjp0cnVlfQ.1RBD0T6qoAe0fSL9hRhvPKdEvDgjPlnPvc9yi8FHTE8`
+        authorization: `Bearer {this.props.token}`
       }
     })
       .then(res => this.setState({user: res.data}))
@@ -31,7 +33,6 @@ class Profile extends Component {
 
 
   render() {
-    console.log(this.props);
 
   if (!this.state.user) {
     return (
