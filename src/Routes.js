@@ -13,6 +13,7 @@ import Venues from "./components/concerts/Venues";
 import Nav from './components/nav/Nav'
 import Home from './components/nav/Home'
 import EditProfile from './components/Users/EditProfile';
+import Venue from './components/concerts/Venue';
 
 
 const muiTheme = getMuiTheme({
