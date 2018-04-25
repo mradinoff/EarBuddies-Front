@@ -27,12 +27,12 @@ class Login extends Component {
       redirect: false
     };
 
-    
+
   }
 
   handleClick = () => {
     let url = "https://earbuddies1.herokuapp.com/user_token";
-    
+
     let postData = {
           auth: {
           email: this.state.email,
@@ -69,10 +69,10 @@ class Login extends Component {
   render() {
     return (
       <div>
-        
+
           <div>
             <AppBar title="Login"
-            iconElementRight= {<HomeButton onClick={this.goToHomePage} />} 
+            iconElementRight= {<HomeButton onClick={this.goToHomePage} />}
             />
             <TextField
               hintText="Enter your Email"
@@ -98,7 +98,7 @@ class Login extends Component {
               onClick={this.handleClick}
             />
           </div>
-        
+
         {this.state.redirect ? <Redirect to='/'/>:null}
       </div>
     );

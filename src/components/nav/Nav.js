@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import logo from '../../tmp-logo.svg'
 import './Home.css';
 
 // const signOut = function () {
@@ -15,7 +16,10 @@ class Nav extends Component {
     return (
       <header>
         <nav className="nav_bar">
-          <Link to="/">EarBuddies
+
+          <Link to="/">
+            <img src={logo} alt=""/>
+
           </Link>
           {window.localStorage.jwtToken ? (
             <Link to="/">
@@ -23,8 +27,10 @@ class Nav extends Component {
             </Link>
           ) : (
             <div>
-              <Link to="/login">Login</Link>
+              <Link to="/login">Explore Events</Link>
+              <Link to="/login">Help</Link>
               <Link to="/signup">Sign Up</Link>
+              <Link to="/login">Login</Link>
             </div>
           )}
         </nav>
