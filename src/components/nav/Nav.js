@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import logo from '../../tmp-logo.svg'
-=======
 import './Home.css';
->>>>>>> 84a76f764025bd698ba16fbf18a33173450e6efe
 
 // const signOut = function () {
 
@@ -22,8 +19,6 @@ class Nav extends Component {
 
           <Link to="/">
             <img src={logo} alt=""/>
-
-          <Link to="/">EarBuddies
 
           </Link>
           {window.localStorage.jwtToken ? (
