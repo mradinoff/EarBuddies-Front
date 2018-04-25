@@ -19,14 +19,6 @@ class Concert extends Component {
     };
     this.findVenue = this.findVenue.bind(this);
   }
-}
-_venueClick = v => {
-  const venue = {
-    pathname: `/venues/${v.id}`,
-    state: v
-  };
-  this.props.history.push(venue);
-};
 
   componentDidMount = () => {
     this.findVenue();
@@ -50,9 +42,8 @@ _venueClick = v => {
       }).then(function(v){
         console.log(v);
         let venue = []
-        venue.push(v.data.name)
+        venue.push(v.data)
         this.setState({venue})}.bind(this))
-
   }
 
   findUsers(){
@@ -108,7 +99,7 @@ _venueClick = v => {
       });
   };
   render() {
-
+    console.log(this.state.venue)
     if (this.state.users.length === 0) {
       return (
         <h2>Loading...</h2>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import logo from '../../tmp-logo.svg'
 import './Home.css';
 
-
 // const signOut = function () {
 
 // }
@@ -20,6 +19,7 @@ class Nav extends Component {
 
           <Link to="/">
             <img src={logo} alt=""/>
+          </Link>
 
           <Link to="/">EarBuddies
 
@@ -35,10 +35,11 @@ class Nav extends Component {
               <Link to="/signup">Sign Up</Link>
               <Link to="/login">Login</Link>
             </div>
+          )}
         </nav>
       </header>
-    )
+    );
   }
-
+}
 
 export default Nav;
