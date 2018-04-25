@@ -31,6 +31,14 @@ class Concert extends Component {
     }
   };
 
+  _venueClick = v => {
+    const venue = {
+      pathname: `/venues/${v.id}`,
+      state: v
+    };
+    this.props.history.push(venue);
+  };
+
   findVenue(state) {
     axios({
       method: "GET",
@@ -115,8 +123,7 @@ class Concert extends Component {
       });
   };
   render() {
-    console.log(this.state.venue);
-    if (this.state.loading) {
+    if (this.state.loading || this.state.venue[0] == undefined) {
       return <h2>Loading...</h2>;
     }
     return (
@@ -126,17 +133,16 @@ class Concert extends Component {
         <p>{this.state.concert.description}</p>
         <p>{this.state.concert.date}</p>
         <a
-          onClick={() => this._venueClick(this.state.venue)}
-          value={this.state.venue}
-          href={`/venues/${this.state.venue.id}`}
+          onClick={() => this._venueClick(this.state.venue[0])}
+          value={this.state.venue[0]}
+          href={`/venues/${this.state.venue[0].id}`}
         >
-          {" "}
-          {this.state.venue.name}
+          {this.state.venue[0].name}
         </a>
         <p>{this.state.concert.genre}</p>
         <button onClick={this.addUserToEventList}>attending</button>
-        <button onClick={this.deleteUserFromEvent}>not attending</button>
-        <Attending users={this.state.users} token={this.props.token}/>  
+        {/* <button onClick={this.deleteUserFromEvent}>not attending</button> */}
+        <Attending users={this.state.users} />
       </div>
     );
   }
