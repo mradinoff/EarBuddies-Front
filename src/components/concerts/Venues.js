@@ -18,17 +18,25 @@ class Venues extends Component {
       console.log(this.state.venues);
     }
     fetchVenues();
-}
+  }
+  _handleClick = v => {
+    const venue = {
+      pathname: `/venues/${v.id}`,
+      state: v
+    };
+    this.props.history.push(venue);
+  };
 
 
-gallery = () => {
-  return(
-    <div>
-      {console.log(this.state.venues)}
-      {this.state.venues.map(({name, address, events}) => <p key={name}>{name} | {address} | {events.map((e) => e.name )} </p>)}
-    </div>
-  );
-}
+  gallery = () => {
+    return this.state.venues.map(venue => {
+      return (
+        <div>
+          {<p key={venue.name}> <a onClick = {() => this._handleClick(venue)} value ={venue} href ="#"> {venue.name}</a> | {venue.address} | {venue.events.map((e) => e.name )} </p>}
+        </div>
+      );
+    })
+  }
 
 
   render() {

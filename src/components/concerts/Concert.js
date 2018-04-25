@@ -18,8 +18,6 @@ class Concert extends Component {
       users: []
     };
     this.findVenue = this.findVenue.bind(this);
-    console.log(this.state.concert[0])
-    console.log(this.props.location.state);
   }
   componentDidMount = () => {
     this.findVenue();
@@ -110,7 +108,7 @@ class Concert extends Component {
     }
     return (
       <div>
-          <img src={this.state.concert.image} alt=""/>
+          <img src={this.state.concert.image} alt={this.state.concert.name}/>
           <h2>{this.state.concert.name}</h2>
           <p>{this.state.concert.description}</p>
           <p>{this.state.concert.date}</p>
