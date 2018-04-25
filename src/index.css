@@ -58,6 +58,7 @@ a:first-child img {
 .crd {
   width: 31%;
   text-align: left;
+  margin-bottom: 2em;
   /* padding: 5px; */
 }
 
