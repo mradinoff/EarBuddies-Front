@@ -16,6 +16,7 @@ class Venue extends Component{
           <p>{this.state.venue.address}</p>
           <a href={this.state.venue.url}>Visit Webiste</a>
 
+
       </div>
     );
   }
