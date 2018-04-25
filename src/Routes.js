@@ -37,7 +37,7 @@ const Routes = () => (
         <Route exact path="/EditProfile" component={EditProfile} />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/venues" component={Venues}/>
-        <Route exact path="/v"
+        <Route exact path="/venues" component={Venue}/>
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
       </React.Fragment>
