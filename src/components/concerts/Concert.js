@@ -100,11 +100,11 @@ class Concert extends Component {
   };
   render() {
     console.log(this.state.venue)
-    // if (this.state.users.length === 0) {
-    //   return (
-    //     <h2>Loading...</h2>
-    //   )
-    // }
+    if (this.state.users.length === 0) {
+      return (
+        <h2>Loading...</h2>
+      )
+    }
     return (
       <div>
           <img src={this.state.concert.image} alt={this.state.concert.name}/>
