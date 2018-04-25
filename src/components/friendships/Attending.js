@@ -7,7 +7,7 @@ const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
 const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
 const FRIENDSHIPS_URL = 'https://earbuddies1.herokuapp.com/friendships.json';
 
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ2MTEyNTEsInN1YiI6MTQsImVtYWlsIjoidGFyeW5AdGFyeW4uY29kZXMiLCJhZG1pbiI6bnVsbH0.owYVjK7yMwdXPnbxblZ7ODyWxrXtwlwBW14KBF7Znpo";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ3MDkzNDUsInN1YiI6MTQsImVtYWlsIjoidGFyeW5AdGFyeW4uY29kZXMiLCJhZG1pbiI6bnVsbH0.XTmoC-1TACNY69DsfpBGEq5pVsy8_am6WN1EMx0gcoc";
 const current_user = jwtDecoder(token);
 
 class Attending extends Component {
@@ -28,6 +28,7 @@ class Attending extends Component {
 
 
   fetchFriendships = () => { // Fat arrow functions do not break the connection to this
+    console.log(token);
     axios({
       url: FRIENDSHIPS_URL,
       method: 'get',
@@ -39,6 +40,7 @@ class Attending extends Component {
   }
 
   renderButton = (id) => {
+    console.log(this.state.friendships);
     if (this.state.friendships.length >= 1) {
 
       for (let i = 0; i < this.state.friendships.length; i++) {
