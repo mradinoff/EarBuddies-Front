@@ -123,7 +123,7 @@ class Concert extends Component {
       });
   };
   render() {
-    if (this.state.loading || this.state.venue[0] == undefined) {
+    if (this.state.loading || this.state.venue[0] === undefined) {
       return <h2>Loading...</h2>;
     }
     return (
