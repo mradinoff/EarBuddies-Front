@@ -10,7 +10,6 @@ import Attending from "./components/friendships/Attending"
 //import SignUp from "./components/Users/SignUp";
 import Login from "./components/Users/Login";
 import Venues from "./components/concerts/Venues";
-import Venue from "./components/concerts/Venue"
 import Nav from './components/nav/Nav'
 import EditProfile from './components/Users/EditProfile'
 
@@ -36,7 +35,7 @@ const Routes = () => (
         <Route exact path="/EditProfile" component={EditProfile} />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/venues" component={Venues}/>
-        <Route exact path="/venues/:id" component={Venue}/>
+        <Route exact path="/v"
         <Route exact path="/events/:id" component={Concert}/>
       </Switch>
       </React.Fragment>

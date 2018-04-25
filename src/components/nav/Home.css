@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+* {
+font-family: 'Roboto', sans-serif;
+}
+
+div#home-container {
+  display: flex;
+    justify-content: center;
+}
+
+div#home-hero {
+  margin: 2em auto;
+  background-image: url('../images/MusicIconsCircle-4-hero.png');
+  background-repeat:no-repeat;
+  background-size: contain;
+  min-width: 602px;
+  min-height: 700px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+
+div#home-hero h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  font-weight: 700;
+}
+div#home-hero h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
