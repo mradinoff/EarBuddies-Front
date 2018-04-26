@@ -55,9 +55,10 @@ a:first-child img {
 
 }
 
-.crd {
+.gallery > .crd {
   width: 31%;
   text-align: left;
+  margin-bottom: .5em;
   /* padding: 5px; */
 }
 
@@ -77,9 +78,11 @@ a:first-child img {
 
 .cardDesc {
   font-size: .9em;
-  flex: 1;
-  flex-basis: auto;
+  height: 6.1em;
+  overflow: scroll;
+  margin-bottom: .3em;
 }
+
 
 .genreHeading {
   margin: 0;
