@@ -60,34 +60,34 @@ class Attending extends Component {
 
           if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === false) {
             console.log("patchClick");
-            return (<button onClick={() => this._handlePatchClick(id)}>Like EarBuddy!</button>)
+            return (<button className="attendingBtn" onClick={() => this._handlePatchClick(id)}>Like EarBuddy!</button>)
 
           } if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
             console.log("Match found - friend id is current user");
-            return (<button onClick={() => this._handleDeleteFriendCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
+            return (<button className="attendingBtn" onClick={() => this._handleDeleteFriendCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
 
           } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
             console.log("Match found - user id is current user");
-            return (<button onClick={() => this._handleDeleteUserCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
+            return (<button className="attendingBtn" onClick={() => this._handleDeleteUserCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
 
           } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
             console.log("Pending found");
-            return (<button onClick={() => this._handleDeleteUserCurrentClick(id)}>Dislike EarBuddy</button>)
+            return (<button className="attendingBtn" onClick={() => this._handleDeleteUserCurrentClick(id)}>Dislike EarBuddy</button>)
 
           } if (current_user.sub === id){
-            return (<button>The best EarBuddy!</button>)
+            return (<button className="attendingBtn">The best EarBuddy!</button>)
             console.log("User")
           }
         }
 
     } if (this.state.friendships.length < 1 && current_user.sub === id){
       console.log("User")
-      return (<button>The best EarBuddy!</button>)
+      return (<button className="attendingBtn">The best EarBuddy!</button>)
 
     }
     else {
       console.log("patchClick");
-      return (<button onClick={() => this._handlePostClick(id)}>Like EarBuddy!</button>)
+      return (<button className="attendingBtn" onClick={() => this._handlePostClick(id)}>Like EarBuddy!</button>)
     }
     }
 
@@ -203,22 +203,27 @@ console.log(friendship);
     return(
       <div>
         <h2>Attending</h2>
-        <div>
-            { this.state.users.map( u =>
-              <div className="user-card" key={u.id}>
-                <img src={u.avatar.thumb.url} alt={u.name}/>
-                <h3>{u.name}</h3>
-                <p>{u.hometown}</p>
-                <p>{u.bio}</p>
-                <p>{u.interests}</p>
-                {this.renderButton(u.id)}
+        <div className="gallery">
 
+            { this.state.users.map( u =>
+              <div className="crd crd-user" key={u.id}>
+                <img className="cardimg" src={u.avatar.thumb.url} alt={u.name}/>
+                <div className="cardBody">
+                  <h5 className="cardHeading">{u.name}</h5>
+                  <p className="genreHeading">From {u.hometown}</p>
+                  <div className="cardDesc">
+                    <p className="">{u.bio}</p>
+                  </div>
+                  <p className=""><strong>Interested in:</strong> {u.interests}</p>
+                  {this.renderButton(u.id)}
+                </div>
               </div>
             )}
+
         </div>
       </div>
     )
   }
-}
+  }
 
 export default Attending;
