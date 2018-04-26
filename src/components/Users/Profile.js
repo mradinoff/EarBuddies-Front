@@ -1,7 +1,8 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
+import jwtDecoder from "jwt-decode";
 
-const USER_URL = 'https://earbuddies1.herokuapp.com/users/27.json';
+
 
 
 class Profile extends Component {
@@ -27,8 +28,9 @@ class Profile extends Component {
 
   fetchUser = () => { // Fat arrow functions do not break the connection to this
 
+    const user = jwtDecoder(this.props.token);
     axios({
-      url: USER_URL,
+      url: `https://earbuddies1.herokuapp.com/users/${user.sub}.json`,
       method: 'get',
       headers: {
         authorization: `Bearer {this.props.token}`
