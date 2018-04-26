@@ -2,6 +2,8 @@ import React, { PureComponent as Component } from "react";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
 import _ from 'lodash';
+import './Profile.css'
+import { Link } from "react-router-dom";
 
 class Friends extends Component {
   constructor(props) {
@@ -44,8 +46,8 @@ class Events extends Component {
         <div>
             { this.props.user.events.map( e =>
                 <div key={e.id}>
-                  <p>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
-
+                  <p>{e.name}<a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+                  <img className="profileEventImg" src={e.image} alt=""/>
                 </div>
             )}
         </div>
@@ -64,6 +66,7 @@ class Profile extends Component {
       all_users: [],
       friends: [],
     }
+
   }
 
   _handleClick = e => {
@@ -151,16 +154,30 @@ class Profile extends Component {
   )
   }
     return (
-      <div key={this.state.user.id}>
-        <h2>{this.state.user.name}</h2>
-        <img src={this.state.user.avatar.url} alt={this.state.user.name}/>
-        <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
-        <p>{this.state.user.bio}</p>
-        <p><strong>Interests:</strong> {this.state.user.interests}</p>
-        <h3>{this.state.matched.length} Friends</h3>
-        <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
-        <h3>{this.state.user.events.length} Events</h3>
-        <Events user={this.state.user}/>
+
+      <div className="profile" key={this.state.user.id}>
+        <div className="profileHero"></div>
+
+      <div className="profileWrapper">
+          <section className="profileContainerLeft">
+            <img className="dp" src={this.state.user.avatar.url} alt={this.state.user.name}/>
+            <div className="leftInner">
+              <h2>{this.state.user.name}</h2>
+              <Link to = "/editprofile"><button>Edit Profile</button></Link>
+
+            </div>
+          </section>
+          <section className="profileRight">
+            <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
+            <p>{this.state.user.bio}</p>
+            <p><strong>Interests:</strong> {this.state.user.interests}</p>
+            <h3>{this.state.matched.length} Friends</h3>
+            <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
+            <h3>{this.state.user.events.length} Events</h3>
+            <Events user={this.state.user}/>
+          </section>
+
+        </div>
       </div>
     )
   }

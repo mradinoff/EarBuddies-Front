@@ -1,0 +1,59 @@
+.profileWrapper {
+  display: flex;
+  text-align: left;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.profileDesc {
+  background-color: sandybrown;
+  width: 20em;
+  height: 100vh;
+}
+
+.friendsList {
+}
+
+.addPhoto {
+  position: fixed;
+  top: 50%;
+  right: 0;
+}
+
+.profileEventImg {
+  width:80%;
+  min-width: 6em;
+}
+
+.profileHero {
+  height: 50vh;
+  background: url(https://images.unsplash.com/photo-1510711789248-087061cda288?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c0fb01085600d87a52c99fd2aba7088&auto=format&fit=crop&w=1351&q=80);
+}
+
+.dp {
+  width: 10em;
+  margin-top: -5em;
+  margin-bottom: 4em;
+}
+
+.profileContainerLeft {
+  width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.leftInner {
+width: 10em;
+}
+
+.leftInner > button {
+  border: none;
+  background-color: rgb(0, 188, 212);
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-top: .5em;
+}
+
+.profileRight {
+  margin-top: 10em;
+}
