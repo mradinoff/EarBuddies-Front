@@ -3,7 +3,7 @@ import axios from "axios";
 import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
-import Anime from 'react-anime';
+
 
 let mapsLink = ""
 
@@ -131,6 +131,18 @@ class Concert extends Component {
         console.log(error.response);
       });
   };
+
+  onJoinChatroom = () => {
+    const location = {
+      pathname: `/events/${this.state.concert.id}/chatroom`,
+      state: this.state.concert
+    };
+
+    this.props.history.push(location);
+  }
+
+
+
   render() {
     if (this.state.loading || this.state.venue[0] === undefined) {
       return <h2>Loading...</h2>;
@@ -170,6 +182,7 @@ class Concert extends Component {
                 </a>
                 <p>{this.state.venue[0].address}</p>
                 <button className="attendingBtn" onClick={this.addUserToEventList}>Attending</button>
+                <button className="attendingBtn" onClick={this.onJoinChatroom}>Join Chat</button>
                 {/* <p>{this.state.concert.genre}</p> */}
               </div>
             </div>
