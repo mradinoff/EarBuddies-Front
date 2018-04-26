@@ -1,14 +1,22 @@
-.footer-bottom {
-  border-top: 1px solid #333;
-  padding: 45px 0 50px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+footer {
+  height:100%;
+  background-color: #00c1d8;
+  margin-top: 5em;
+  padding: 2em;
+  color: #333333;
+}
 
+.links{
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.socials img {
+  margin: 0 1em;
+}
+
+.lightFont {
+  font-weight: lighter;
 }

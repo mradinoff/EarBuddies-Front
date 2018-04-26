@@ -22,17 +22,19 @@
 }
 
 .profileEventImg {
-  width:80%;
+  width:100%;
   min-width: 6em;
+  border-radius: 2%
 }
 
 .profileHero {
   height: 50vh;
-  background: url(https://images.unsplash.com/photo-1510711789248-087061cda288?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c0fb01085600d87a52c99fd2aba7088&auto=format&fit=crop&w=1351&q=80);
+  background: url(https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bbaaf356e5f8bb5623631bf7f5f37b91&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
 }
 
 .dp {
-  width: 10em;
+  width: 12em;
   margin-top: -5em;
   margin-bottom: 4em;
 }
@@ -44,7 +46,8 @@
 }
 
 .leftInner {
-width: 10em;
+width: 12em;
+text-align: center;
 }
 
 .leftInner button {
@@ -62,5 +65,5 @@ width: 10em;
 }
 
 .profileRight {
-  margin-top: 13em;
+  margin-top: 3em;
 }

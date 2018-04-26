@@ -6,6 +6,7 @@ import Search from "./components/Search/Search";
 import _ from "lodash";
 import Hero from './components/Home/Hero'
 import Home from "./components/nav/Home";
+import Footer from "./components/Footer/Footer";
 
 
 class App extends Component {
@@ -143,6 +144,7 @@ class App extends Component {
         <div style={styles.main}>
           <Concerts concerts={this.state.events} history={this.props.history} />
         </div>
+        <Footer />
       </div>
     );
   }

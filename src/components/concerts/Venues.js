@@ -1,6 +1,7 @@
 import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
 import "./Venues.css";
+import Footer from "../Footer/Footer";
 
 const SERVER_URL = 'https://earbuddies1.herokuapp.com/venues.json';
 
@@ -47,6 +48,7 @@ class Venues extends Component {
           <h1>Venues List.</h1>
         </div>
         {this.gallery()}
+        <Footer />
       </div>
 
     );

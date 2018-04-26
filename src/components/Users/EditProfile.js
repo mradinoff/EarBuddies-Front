@@ -130,7 +130,7 @@ class EditProfile extends Component {
               <h1>Edit Profile</h1>
             </div>
 
-            <AppBar title="Edit Profile" />
+            {/* <AppBar title="Edit Profile" /> */}
             <h4>Upload Photo</h4>
               <AddPhoto user={this.state.user} />
               <h4>Update Profile</h4>
@@ -197,9 +197,7 @@ class EditProfile extends Component {
 
         <p>{this.state.success}</p>
 
-        <section className="addPhoto">
-          <AddPhoto user={this.state.user} />
-        </section>
+
 
 
 
