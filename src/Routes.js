@@ -13,6 +13,7 @@ import Nav from './components/nav/Nav'
 import Home from './components/nav/Home'
 import EditProfile from './components/Users/EditProfile';
 import Venue from './components/concerts/Venue';
+import Chatroom from './components/concerts/Chatroom';
 
 
 const muiTheme = getMuiTheme({
@@ -52,6 +53,13 @@ const Routes = () => (
         <Route exact path="/venues" component={Venues}/>
         <Route exact path="/venues/:id" component={Venue}/>
         <Route exact path="/events/:id" component={Concert}/>
+        <Route exact path="/events/:id/chatroom" render={props => (
+          token ? (
+            <Chatroom {...props} token={token}/>
+          ) : (
+            <Redirect to="/login" />
+          )
+        )} />
       </Switch>
       </React.Fragment>
     </Router>
