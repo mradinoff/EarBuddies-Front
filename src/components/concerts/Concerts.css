@@ -8,7 +8,7 @@
 
 .concertHeader {
   height: 13em;
-    background: #56A0D3;
+    background: #00c1d8;
     text-align: left;
     display: flex;
     flex-flow: column-reverse;
@@ -70,7 +70,7 @@
   cursor: pointer;
   border-radius: 4px;
   border: none;
-  background-color: #56A0D3;
+  background-color: #00c1d8;
   color: white;
   margin-top: 1em;
 }

@@ -42,13 +42,22 @@ class EditProfile extends Component {
       headers: {
         authorization: `Bearer ${this.props.token}`
       }
-    }).then(res => this.setState({ user: res.data }));
+    }).then(res => this.setState({
+      user: res.data,
+      name: res.data.name,
+      hometown: res.data.hometown,
+      bio: res.data.bio,
+      interests: res.data.interests,
+      email: res.data.email
+      }));
   };
 
   _handleSubmit = e => {
     e.preventDefault();
-    let url = `https://earbuddies1.herokuapp.com/user/${
-      this.state.user.id
+    const user = jwtDecoder(this.props.token);
+
+    let url = `https://earbuddies1.herokuapp.com/users/${
+      user.sub
     }.json`;
     console.log(url);
 
@@ -109,13 +118,7 @@ class EditProfile extends Component {
       return <h2>Loading...</h2>;
     }
 
-    this.setState({
-      name: this.state.user.name,
-      hometown: this.state.user.hometown,
-      bio: this.state.user.bio,
-      interests: this.state.user.interests,
-      email: this.state.user.email
-    });
+
 
     return (
       <div>

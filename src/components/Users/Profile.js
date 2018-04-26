@@ -56,9 +56,8 @@ class Profile extends Component {
       <h3>Events</h3>
       <div>
           { this.state.user.events.map( e =>
-              <div>
-                <p key={e.id}>{e.name} {e.date} : <a href={e.ticket_url}>Tickets</a></p>
-
+              <div key={e.id}>
+                <p>{e.name} {e.date} : <a href={e.ticket_url}>Tickets</a></p>
               </div>
           )}
       </div>
