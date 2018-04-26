@@ -157,7 +157,7 @@ console.log(friendship);
     })
     console.log(user);
 
-    const friendship = _.find(this.state.current_user.friendships, (friendship) => {
+    const friendship = _.find(this.state.friendships, (friendship) => {
       return friendship.friend_id === id
     })
     console.log(id);
@@ -183,7 +183,7 @@ console.log(friendship);
     })
     console.log(user);
 
-    const friendship = _.find(this.state.user.friendships, (friendship) => {
+    const friendship = _.find(this.state.friendships, (friendship) => {
       return friendship.friend_id === this.state.current_user_id
     })
     console.log(friendship);
