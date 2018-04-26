@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Cable from "actioncable";
 import jwtDecoder from "jwt-decode";
+import axios from 'axios';
 
 class Chatroom extends Component {
   constructor(props) {
@@ -27,12 +28,30 @@ class Chatroom extends Component {
       loading: true
     });
 
+    await this.fetchHistoryMessages();
+
     await this.createSocket();
 
     this.setState({
       loading: false
     });
   };
+
+  fetchHistoryMessages = () => {
+    axios(
+      {
+        url: 'https://earbuddies1.herokuapp.com/messages.json',
+        params: {
+          event_id: this.state.concert.id
+        }
+      }
+    )
+      .then(res => {
+        this.setState({
+          chatLogs: res.data
+        })
+      })
+  }
 
   createSocket = () => {
     const user = this.state.user;
