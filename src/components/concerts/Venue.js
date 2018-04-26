@@ -46,10 +46,14 @@ class Venue extends Component{
   render() {
     return (
       <div>
+        <div className="venueHero">
+
+        </div>
           <h2>{this.state.venue.name}</h2>
           <p>{this.state.venue.address}</p>
           <a href={this.state.venue.url}>Visit Website</a>
           <img src= {mapsLink} alt={this.state.venue.name}/>
+          <h1>Events</h1>
           {this.renderConcerts()}
 
       </div>

@@ -51,14 +51,7 @@ class Concerts extends Component {
   render() {
     return (
       <div className="gallery">
-        <Anime easing="easeOutElastic"
-            loop={false}
-            duration={2000}
-            direction="alternate"
-            delay={(el, index) => index * 500}
-            translateY='1rem'>
         {this.renderConcerts()}
-        </Anime>
       </div>
     );
   }
