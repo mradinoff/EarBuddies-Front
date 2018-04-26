@@ -86,11 +86,14 @@ class Chatroom extends Component {
 
   renderChatLog() {
     return this.state.chatLogs.map((el, i) => {
-      console.log(i);
+      console.log(el);
       return (
         <li key={`chat_${i}`}>
           <span className="chat-message">{el.content}</span>
           <span className="chat-created-at">{el.created_at}</span>
+          <span className="chat-userName">{el.user_name}</span>
+
+
         </li>
       );
     });
