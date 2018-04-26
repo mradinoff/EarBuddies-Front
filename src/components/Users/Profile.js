@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
 
-const USER_URL = 'https://earbuddies1.herokuapp.com/users/14.json';
+const USER_URL = 'https://earbuddies1.herokuapp.com/users/21.json';
 
 
 class Profile extends Component {
@@ -12,6 +12,14 @@ class Profile extends Component {
       user_id: ""
     }
   }
+
+  _handleClick = e => {
+    const event = {
+      pathname: `/events/${e.id}`,
+      state: e
+    };
+    this.props.history.push(event);
+  };
 
   componentDidMount = () => {
     this.fetchUser();
@@ -57,7 +65,7 @@ class Profile extends Component {
       <div>
           { this.state.user.events.map( e =>
               <div>
-                <p key={e.id}>{e.name} {e.date} : <a href={e.ticket_url}>Tickets</a></p>
+                <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
 
               </div>
           )}
