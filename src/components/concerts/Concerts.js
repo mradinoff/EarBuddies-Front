@@ -1,4 +1,6 @@
 import React, { PureComponent as Component } from "react";
+import Anime from 'react-anime';
+
 
 class Concerts extends Component {
   constructor(props) {
@@ -49,7 +51,14 @@ class Concerts extends Component {
   render() {
     return (
       <div className="gallery">
+        <Anime easing="easeOutElastic"
+            loop={false}
+            duration={2000}
+            direction="alternate"
+            delay={(el, index) => index * 500}
+            translateY='1rem'>
         {this.renderConcerts()}
+        </Anime>
       </div>
     );
   }

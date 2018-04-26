@@ -12,6 +12,10 @@ class Nav extends Component {
     localStorage.removeItem("jwtToken");
   }
 
+  _venuesClick = v =>{
+    pathname: '/venues'
+  }
+
   render() {
     return (
       <header>
@@ -20,15 +24,17 @@ class Nav extends Component {
           <Link to="/">
             <img src={logo} alt=""/>
           </Link>
-
+          <Link to = '/venues' class="navLink">Venues</Link>
+          <Link to = "/login" class ="navLink">Explore Events</Link>
+          <Link to = "/login" class ="navLinkHelp">Help</Link>
+          {/* need to make this not display when on venues page */}
           {window.localStorage.jwtToken ? (
             <Link to="/">
-              <button onClick={this._signOut}>Sign out</button>
+              <button class = "signOutNav" onClick={this._signOut}>Sign out</button>
             </Link>
+
           ) : (
             <div>
-              <Link to="/login">Explore Events</Link>
-              <Link to="/login">Help</Link>
               <Link to="/signup">Sign Up</Link>
               <Link to="/login">Login</Link>
             </div>

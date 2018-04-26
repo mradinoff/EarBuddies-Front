@@ -1,5 +1,6 @@
 import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
+import "./Venues.css";
 
 const SERVER_URL = 'https://earbuddies1.herokuapp.com/venues.json';
 
@@ -32,7 +33,7 @@ class Venues extends Component {
     return this.state.venues.map(venue => {
       return (
         <div>
-          {<p key={venue.name}> <a onClick = {() => this._handleClick(venue)} value ={venue} href={`/venues/${venue.id}`}> {venue.name}</a> | {venue.address} | {venue.events.map((e) => e.name )} </p>}
+          {<p key={venue.name}> <a onClick = {() => this._handleClick(venue)} value ={venue} href={`/venues/${venue.id}`} className="venueListH1"> {venue.name}</a></p>}
         </div>
       );
     })
@@ -42,6 +43,9 @@ class Venues extends Component {
   render() {
     return (
       <div>
+        <div className="venuesHeader">
+          <h1>Venues List.</h1>
+        </div>
         {this.gallery()}
       </div>
 
