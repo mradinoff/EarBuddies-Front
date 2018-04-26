@@ -3,6 +3,7 @@ import axios from "axios";
 import jwtDecoder from "jwt-decode";
 import _ from 'lodash';
 import './Profile.css'
+import { Link } from "react-router-dom";
 
 class Friends extends Component {
   constructor(props) {
@@ -45,8 +46,8 @@ class Events extends Component {
         <div>
             { this.props.user.events.map( e =>
                 <div key={e.id}>
-                  <p>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
-
+                  <p>{e.name}<a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+                  <img className="profileEventImg" src={e.image} alt=""/>
                 </div>
             )}
         </div>
@@ -162,7 +163,8 @@ class Profile extends Component {
             <img className="dp" src={this.state.user.avatar.url} alt={this.state.user.name}/>
             <div className="leftInner">
               <h2>{this.state.user.name}</h2>
-              <button>Edit Profile</button>
+              <Link to = "/editprofile"><button>Edit Profile</button></Link>
+
             </div>
           </section>
           <section className="profileRight">

@@ -10,6 +10,9 @@
   justify-content: center;
 }
 
+.venuesHeader > h1 {
+  color: white;
+}
 
 .venueListH1 {
   font-size: 4em;
