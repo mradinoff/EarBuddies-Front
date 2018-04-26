@@ -226,7 +226,7 @@ console.log(friendship);
 
             { this.state.users.map( u =>
               <div className="crd crd-user" key={u.id}>
-                <img className="cardimg" src={u.avatar.url} alt={u.name}/>
+                <img className="dp" src={u.avatar.url} alt={u.name}/>
                 <div className="cardBody">
                   <h5 className="cardHeading">{u.name}</h5>
                   <p className="genreHeading">From {u.hometown}</p>

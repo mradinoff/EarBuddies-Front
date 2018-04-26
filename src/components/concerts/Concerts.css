@@ -94,3 +94,8 @@
   font-size: 5em;
   margin-bottom: 0;
 }
+
+.dp {
+  width: 8em;
+  border-radius: 5px;
+}

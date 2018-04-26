@@ -47,7 +47,9 @@ class SignUp extends Component {
         });
       })
       .catch(err => {
-        console.log("AXIOS ERROR: ", err);
+        if(err.message.includes("422")) {
+          alert("Password not matched!")
+        };
       });
   };
 
@@ -85,6 +87,7 @@ class SignUp extends Component {
             label="Submit"
             primary={true}
             style={style}
+            disabled={this.state.email !== "" && this.state.password !== ""&& this.state.password_confirmation !== "" ? false : true}
             onClick={this.handleClick}
           />
         </div>

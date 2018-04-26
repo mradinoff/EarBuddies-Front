@@ -57,7 +57,9 @@ class Login extends Component {
         }
       })
       .catch((err) => {
-        console.log("AXIOS ERROR: ", err);
+        if(err) {
+          alert("Check your email or password!")
+        };
       })
 
   }
@@ -96,6 +98,7 @@ class Login extends Component {
               label="Submit"
               primary={true}
               style={style}
+              disabled={this.state.email === "" || this.state.password === "" ? true : false}
               onClick={this.handleClick}
             />
           </div>

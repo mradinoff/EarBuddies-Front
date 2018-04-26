@@ -125,10 +125,16 @@ class EditProfile extends Component {
         <div>
 
           <form onSubmit={this._handleSubmit}>
+
+            <div className="venuesHeader">
+              <h1>Edit Profile</h1>
+            </div>
+
             <AppBar title="Edit Profile" />
             <h4>Upload Photo</h4>
               <AddPhoto user={this.state.user} />
               <h4>Update Profile</h4>
+
             <TextField
               id="name-field"
               hintText="Name"
@@ -190,6 +196,12 @@ class EditProfile extends Component {
         </div>
 
         <p>{this.state.success}</p>
+
+        <section className="addPhoto">
+          <AddPhoto user={this.state.user} />
+        </section>
+
+
 
       </div>
     );
