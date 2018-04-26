@@ -1,0 +1,18 @@
+.chatBox {
+  overflow: scroll;
+  border: 2px solid rgb(0, 188, 212);
+  height: 20em;
+  width: 80vw;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.chatBox li {
+  list-style-type:none;
+  text-align: left;
+}
+
+.chat-input {
+  width: 74.5vw;
+  margin-top: 1em;
+}
