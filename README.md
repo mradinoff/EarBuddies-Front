@@ -5,7 +5,7 @@ See it in action here: https://earbuddies-react.herokuapp.com/
 
 It is a social media platform allowing users to find events, see who's attending and "match" with a friend Tinder style, as well as live chat with the other attending users of the event.
 
-![alt text](screenshots/# "Screenshot")
+![alt text](screenshots/Screen Shot 2018-04-27 at 9.14.18 am.png "Screenshot of home page")
 
 ## How to use
 - Follow the sign up link to create an account, then update your profile.
@@ -30,12 +30,12 @@ It is a social media platform allowing users to find events, see who's attending
 
 
 ## Objectives
-- Models. Your app should have at least 3 models. Make sure they are associated correctly!
-- Views. Use partials to DRY (Don’t Repeat Yourself) up your views.
-- Handles invalid data. Forms in your application should validate data and handle incorrect inputs. Validate sign up information, verify valid email addresses and secure passwords.
-- Use Gems Use a GEM that talks to an API to add functionality to your app.
-- User Login. Make sure you have basic authentication and authorization set up (if you need it).
-- Heroku. Deploy your code to Heroku.
+- Models. App should have at least 3 models. Make sure they are associated correctly!
+- Views. Use partials to DRY (Don’t Repeat Yourself) up the views.
+- Handles invalid data. Forms in the application should validate data and handle incorrect inputs. Validate sign up information, verify valid email addresses and secure passwords.
+- Use Gems Use a GEM that talks to an API to add functionality to the app.
+- User Login. Make sure there is basic authentication and authorization set up.
+- Heroku. Deploy code to Heroku.
 
 ## Built With
 - HTML
@@ -46,7 +46,7 @@ It is a social media platform allowing users to find events, see who's attending
 
 ## Scope
 EarBuddies - Find buddies to go to a gig with!
-Features will include
+Features will include;
 - Sign up
 - Sign in via email address
 - Set up profile with photo, name, bio etc.
@@ -64,6 +64,26 @@ Features will include
 - Friendship belongs to user, and friend (user).
 
 ## Approach
+
+Our approach for this project was firstly to find a topic all group members had a common interest in, and discussed our life hopes and dreams, before deciding on our idea for the app.
+
+We initially focused on the back end and planning out our main features and the models they would require. We worked together to get the rails back end up and running, although many extra migrations were needed later to refactor once we realised some of our theories didn't quite work in practise (eg. "friendships" that needed to be "matched" Tinder style).
+
+We ensured our ajax requests were working via Postman, before implementing the front end so we knew we could get the data that we needed.
+
+With Ryan being an expert in React, we braved tackling React for our front end. This was a huge learning experience for the rest of us, and a lot of our week was spent figuring our how to pass the right data to the right components.
+
+We realised halfway through this week that we had been a little too ambitious with our original idea, where we were attempting to build basically a meet up app, a tinder for friends app, as well as a chat application. Whoops! We had to refocus our efforts on the most important functionality.
+
+Due to this, we had to put our one on one messaging we'd hoped for between users on hold. We ran out of time to get this up and running, but are hoping to add this in later with the use of the PostBox gem.
+
+One of our biggest (unexpected) challenges was the friendships model, and how to "match" friends. There was a lot of logic involved, and the code got a little messy with many if statements that hopefully we can refactor in the future with more experience.
+
+We worked really well as a group this week, and although we weren't overly organised (our Trello board was forgotten about after a couple of days), we communicated well and managed to split up tasks, work together when needed, and keep focused on the end goal.
+
+Our group conclusion is that React is hard (except for Ryan who had the time of his life this week).
+
+We plan to continue working on this with our to do list below.
 
 ## To do:
 - [ ] One on one direct messaging between matched friends
