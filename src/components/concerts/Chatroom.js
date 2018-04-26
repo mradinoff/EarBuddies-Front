@@ -58,6 +58,7 @@ class Chatroom extends Component {
   createSocket = () => {
     const user = this.state.user;
     const concert = this.state.concert;
+    const user_name = this.props.location.user_name;
 
     let cable = Cable.createConsumer("wss://earbuddies1.herokuapp.com/cable");
     this.chats = cable.subscriptions.create(
@@ -68,7 +69,6 @@ class Chatroom extends Component {
       {
         connected: () => {},
         received: data => {
-          console.log(data);
           let chatLogs = this.state.chatLogs;
           chatLogs.push(data);
           this.setState({ chatLogs: chatLogs });
@@ -78,7 +78,7 @@ class Chatroom extends Component {
             content: message,
             user_id: user.sub,
             event_id: concert.id,
-            user_name: user.email,
+            user_name: user_name,
             event_name: concert.name
           });
         }
@@ -87,8 +87,8 @@ class Chatroom extends Component {
   };
 
   renderChatLog() {
+    console.log(this.state)
     return this.state.chatLogs.map((el, i) => {
-      console.log(el);
       return (
         <li key={`chat_${i}`}>
           <span className="chat-message">{el.user_name}</span>

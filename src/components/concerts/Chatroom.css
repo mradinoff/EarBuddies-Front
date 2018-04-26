@@ -61,10 +61,11 @@ ul.chat-logs li {
   padding: 5px 10px;
   display: flex;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 ul.chat-logs li span.chat-created-at {
-  font-size: 14px;
+  font-size: 13px;
   color: #999;
 }
 
