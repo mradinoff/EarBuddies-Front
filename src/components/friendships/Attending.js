@@ -204,9 +204,17 @@ console.log(friendship);
 
 
   render() {
+    if(this.state.users.length === 0){
+      return(
+        <div>
+          <h2>No-one Attending</h2>
+          <h3>We have no Attendees, Want to be a Trendsetter?</h3>
+        </div>
+      )
+    }
     return(
       <div>
-        <h2>Attending</h2>
+        <h2>{this.state.users.length} Attending</h2>
         <div className="gallery">
 
             { this.state.users.map( u =>
