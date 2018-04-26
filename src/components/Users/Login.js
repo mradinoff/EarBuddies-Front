@@ -74,7 +74,7 @@ class Login extends Component {
             {/* <AppBar title="Login"
             iconElementRight= {<HomeButton onClick={this.goToHomePage} />}
             /> */}
-            <h2>Log In</h2>
+            <h2 style={{marginTop: '5em' }}>Log In</h2>
             <TextField
               hintText="Enter your Email"
               floatingLabelText="Email"

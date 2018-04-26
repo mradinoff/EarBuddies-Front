@@ -56,7 +56,7 @@ class SignUp extends Component {
       <div>
         <div>
           {/* <AppBar title="Sign Up" /> */}
-          <h2>Sign Up</h2>
+          <h2 style={{marginTop: '5em' }}>Sign Up</h2>
           <TextField
             hintText="Enter your Email"
             floatingLabelText="Email"
