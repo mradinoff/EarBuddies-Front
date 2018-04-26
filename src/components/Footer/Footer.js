@@ -3,9 +3,6 @@ import './Footer.css';
 
 
 class Footer extends Component {
-  constructor() {
-    super();
-  };
 
 
   footer = () => {

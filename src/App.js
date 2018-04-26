@@ -7,6 +7,7 @@ import _ from "lodash";
 import Hero from './components/Home/Hero'
 import Home from "./components/nav/Home";
 import Footer from "./components/Footer/Footer";
+import CircularProgress from "material-ui/CircularProgress";
 
 
 class App extends Component {
@@ -132,7 +133,7 @@ class App extends Component {
 
   render() {
     if (this.state.loading) {
-      return <h1>Loading...</h1>;
+      return <CircularProgress size={60} thickness={7} />;
     }
 
     return (

@@ -3,8 +3,8 @@ import axios from "axios";
 import jwtDecoder from "jwt-decode";
 import _ from 'lodash';
 
-const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
-const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
+// const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
+// const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
 const FRIENDSHIPS_URL = 'https://earbuddies1.herokuapp.com/friendships.json';
 
 
