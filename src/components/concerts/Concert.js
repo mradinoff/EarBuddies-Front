@@ -198,7 +198,7 @@ class Concert extends Component {
       </section>
       {window.localStorage.jwtToken ? (
         <div className="attendees">
-          <Attending users={this.state.users} />
+          <Attending users={this.state.users} token={this.props.token}/>
         </div>
 
       ) : (

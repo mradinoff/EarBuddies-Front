@@ -7,8 +7,7 @@ const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
 const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
 const FRIENDSHIPS_URL = 'https://earbuddies1.herokuapp.com/friendships.json';
 
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ3OTQxMTMsInN1YiI6MjcsImVtYWlsIjoidGFyeW5AdGFyeW4uY29kZXMiLCJhZG1pbiI6bnVsbH0.o3cmhVp2s3tPRz6Q1Km2Y2Vx8wm833kSPCv8NO0hhh0";
-const current_user = jwtDecoder(token);
+
 
 class Attending extends Component {
   constructor(props) {
@@ -16,22 +15,27 @@ class Attending extends Component {
     this.state = {
       users: props.users,
       friendships: [],
-      current_user: {}
+      current_user: {},
+      current_user_id: ""
     }
     this._handlePatchClick = this._handlePatchClick.bind(this);
     this._handlePostClick = this._handlePostClick.bind(this);
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const current_user = await jwtDecoder(this.props.token);
+    await this.setState({current_user_id: current_user.sub})
+
     this.fetchFriendships();
     this.fetchUser();
+
   }
 
   fetchUser = () => {
     console.log(this.state.users);
-    console.log(`https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`);
+    console.log(`https://earbuddies1.herokuapp.com/users/${this.state.current_user_id}.json`);
     axios({
-      url: `https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`,
+      url: `https://earbuddies1.herokuapp.com/users/${this.state.current_user_id}.json`,
       method: 'get',
       headers: {
         authorization: `Bearer ${this.props.token}`
@@ -42,7 +46,6 @@ class Attending extends Component {
 
 
   fetchFriendships = () => { // Fat arrow functions do not break the connection to this
-    console.log(token);
     axios({
       url: FRIENDSHIPS_URL,
       method: 'get',
@@ -58,29 +61,29 @@ class Attending extends Component {
 
       for (let i = 0; i < this.state.friendships.length; i++) {
 
-          if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === false) {
+          if (this.state.friendships[i].friend_id === this.state.current_user_id && this.state.friendships[i].user_id === id && this.state.friendships[i].active === false) {
             console.log("patchClick");
             return (<button className="attendingBtn" onClick={() => this._handlePatchClick(id)}>Like EarBuddy!</button>)
 
-          } if (this.state.friendships[i].friend_id === current_user.sub && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
+          } if (this.state.friendships[i].friend_id === this.state.current_user_id && this.state.friendships[i].user_id === id && this.state.friendships[i].active === true) {
             console.log("Match found - friend id is current user");
             return (<button className="attendingBtn" onClick={() => this._handleDeleteFriendCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
 
-          } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === true) {
+          } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === this.state.current_user_id && this.state.friendships[i].active === true) {
             console.log("Match found - user id is current user");
             return (<button className="attendingBtn" onClick={() => this._handleDeleteUserCurrentClick(id)}>EarBuddies! Disconnect Buddy?</button>)
 
-          } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === current_user.sub && this.state.friendships[i].active === false) {
+          } if (this.state.friendships[i].friend_id === id && this.state.friendships[i].user_id === this.state.current_user_id && this.state.friendships[i].active === false) {
             console.log("Pending found");
             return (<button className="attendingBtn" onClick={() => this._handleDeleteUserCurrentClick(id)}>Dislike EarBuddy</button>)
 
-          } if (current_user.sub === id){
+          } if (this.state.current_user_id === id){
             return (<button className="attendingBtn">The best EarBuddy!</button>)
             console.log("User")
           }
         }
 
-    } if (this.state.friendships.length < 1 && current_user.sub === id){
+    } if (this.state.friendships.length < 1 && this.state.current_user_id === id){
       console.log("User")
       return (<button className="attendingBtn">The best EarBuddy!</button>)
 
@@ -99,8 +102,9 @@ class Attending extends Component {
       return user.id === id
     })
 console.log(user);
-    const friendship = _.find(this.state.current_user.friendships, (friendship) => {
-      return friendship.friend_id === current_user.sub
+console.log(this.state.current_user);
+    const friendship = _.find(this.state.friendships, (friendship) => {
+      return friendship.friend_id === this.state.current_user_id
     })
 console.log(friendship);
   let CURRENT_URL = `https://earbuddies1.herokuapp.com/friendships/${friendship.id}.json`;
@@ -116,7 +120,7 @@ console.log(friendship);
       data: {
       friendship: {
         user_id: id,
-        friend_id: current_user.sub,
+        friend_id: this.state.current_user_id,
         active: true
         }
       }
@@ -136,7 +140,7 @@ console.log(friendship);
       },
       data: {
         friendship: {
-          user_id: current_user.sub,
+          user_id: this.state.current_user_id,
           friend_id: id,
           active: false
         }
@@ -149,11 +153,11 @@ console.log(friendship);
     console.log("Inactive friendship found - Cancel Request");
 
     const user = _.find(this.state.users, (user) => {
-      return user.id === current_user.sub
+      return user.id === this.state.current_user_id
     })
     console.log(user);
 
-    const friendship = _.find(this.state.current_user.friendships, (friendship) => {
+    const friendship = _.find(this.state.friendships, (friendship) => {
       return friendship.friend_id === id
     })
     console.log(id);
@@ -179,8 +183,8 @@ console.log(friendship);
     })
     console.log(user);
 
-    const friendship = _.find(this.state.user.friendships, (friendship) => {
-      return friendship.friend_id === current_user.sub
+    const friendship = _.find(this.state.friendships, (friendship) => {
+      return friendship.friend_id === this.state.current_user_id
     })
     console.log(friendship);
 
