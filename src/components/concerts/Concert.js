@@ -3,7 +3,7 @@ import axios from "axios";
 import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
-import Anime from 'react-anime';
+
 
 let mapsLink = ""
 

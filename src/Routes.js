@@ -30,8 +30,8 @@ const Routes = () => (
       <React.Fragment>
       <Nav />
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Search" component={App} />
         <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" render={props => (
           token ? (

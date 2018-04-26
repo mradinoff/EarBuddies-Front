@@ -33,7 +33,7 @@ class Venues extends Component {
     return this.state.venues.map(venue => {
       return (
         <div>
-          {<p key={venue.name}> <a onClick = {() => this._handleClick(venue)} value ={venue} href={`/venues/${venue.id}`} className="venueListH1"> {venue.name}</a></p>}
+          {<p key={venue.name}> <a onClick = {() => this._handleClick(venue)} value ={venue} href={`/venues/${venue.id}`} className="venueListH1"><p>{venue.name}</p></a></p>}
         </div>
       );
     })
