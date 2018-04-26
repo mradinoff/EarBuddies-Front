@@ -154,7 +154,8 @@ class Concert extends Component {
   onJoinChatroom = () => {
     const location = {
       pathname: `/events/${this.state.concert.id}/chatroom`,
-      state: this.state.concert
+      state: this.state.concert,
+      user: this.state.user
     };
 
     this.props.history.push(location);

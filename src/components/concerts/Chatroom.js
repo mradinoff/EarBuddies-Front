@@ -86,6 +86,7 @@ class Chatroom extends Component {
   };
 
   renderChatLog() {
+    console.log(this.state)
     return this.state.chatLogs.map((el, i) => {
       console.log(el);
       return (
