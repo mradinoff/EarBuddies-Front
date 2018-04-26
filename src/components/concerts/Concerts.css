@@ -8,7 +8,7 @@
 
 .concertHeader {
   height: 13em;
-    background: #56A0D3;
+    background: rgb(0, 188, 212);
     text-align: left;
     display: flex;
     flex-flow: column-reverse;
@@ -38,7 +38,7 @@
 
 .dateLocation {
   margin: 0;
-  margin-left: auto;
+  margin-left: 3em;
   text-align: left;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .eventDetails p {
-  max-width: 30rem;
+  padding-right: 1.8em;
 }
 
 .location {
@@ -70,7 +70,7 @@
   cursor: pointer;
   border-radius: 4px;
   border: none;
-  background-color: #56A0D3;
+  background-color: rgb(0, 188, 212);
   color: white;
   margin-top: 1em;
 }
