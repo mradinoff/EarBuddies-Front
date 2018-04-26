@@ -153,16 +153,29 @@ class Profile extends Component {
   )
   }
     return (
-      <div key={this.state.user.id}>
-        <h2>{this.state.user.name}</h2>
-        <img src={this.state.user.avatar.url} alt={this.state.user.name}/>
-        <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
-        <p>{this.state.user.bio}</p>
-        <p><strong>Interests:</strong> {this.state.user.interests}</p>
-        <h3>{this.state.matched.length} Friends</h3>
-        <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
-        <h3>{this.state.user.events.length} Events</h3>
-        <Events user={this.state.user}/>
+
+      <div className="profile" key={this.state.user.id}>
+        <div className="profileHero"></div>
+
+      <div className="profileWrapper">
+          <section className="profileContainerLeft">
+            <img className="dp" src={this.state.user.avatar.url} alt={this.state.user.name}/>
+            <div className="leftInner">
+              <h2>{this.state.user.name}</h2>
+              <button>Edit Profile</button>
+            </div>
+          </section>
+          <section className="profileRight">
+            <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
+            <p>{this.state.user.bio}</p>
+            <p><strong>Interests:</strong> {this.state.user.interests}</p>
+            <h3>{this.state.matched.length} Friends</h3>
+            <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
+            <h3>{this.state.user.events.length} Events</h3>
+            <Events user={this.state.user}/>
+          </section>
+
+        </div>
       </div>
     )
   }
