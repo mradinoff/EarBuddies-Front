@@ -108,7 +108,6 @@ class Profile extends Component {
     const user = _.find(this.state.friendships, (user) => {
       return user.id === this.state.user_id
     })
-    console.log(user);
   }
 
 
@@ -141,13 +140,10 @@ class Profile extends Component {
               </div>
           )}
       </div>
-
-=======
       <h3>{this.state.user.matched.length} Friends</h3>
       <Friends user= {this.state.user}/>
       <h3>{this.state.user.events.length} Events</h3>
       <Events user= {this.state.user}/>
->>>>>>> 7c8a6908e29afb789c9d2af6d46f78ecd7002092
       </div>
     )
   }
