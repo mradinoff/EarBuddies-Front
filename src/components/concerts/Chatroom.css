@@ -22,27 +22,13 @@
 }
 /* close commented backslash hack */
 
-html {
-  background: #526977;
-  font-family: "Helvetica";
-  color: #333;
-  font-size: 20px;
-}
 
 div.stage {
   background: #fff;
   width: 90%;
-
   margin: 20px auto;
   padding: 20px;
   box-shadow: 0 0 10px #333;
-}
-
-h1 {
-  margin-top: 0;
-  color: #333;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
 }
 
 ul.chat-logs {

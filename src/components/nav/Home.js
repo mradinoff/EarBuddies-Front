@@ -9,8 +9,8 @@ class Home extends Component {
         <div id="home-container">
         <div id="home-hero">
         <div id="home-banner"></div>
-          <h1>EarBuddies</h1>
-          <h2>Find an event. Match with a buddy to go with.</h2>
+        <h1>EarBuddies</h1>
+        <h2>Find an event. Match with a buddy to go with.</h2>
         </div>
 
         </div>

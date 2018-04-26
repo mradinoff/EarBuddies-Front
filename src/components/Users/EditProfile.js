@@ -198,10 +198,6 @@ class EditProfile extends Component {
 
         <p>{this.state.success}</p>
 
-        <section className="addPhoto">
-          <AddPhoto user={this.state.user} />
-        </section>
-
 
 
       </div>
