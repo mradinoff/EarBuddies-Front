@@ -1,5 +1,4 @@
 import React, {PureComponent as Component} from 'react';
-import axios from 'axios';
 let mapsLink = ""
 
 class Venue extends Component{

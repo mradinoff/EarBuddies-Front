@@ -94,8 +94,6 @@ class Chatroom extends Component {
           <span className="chat-message">{el.user_name}</span>
           <span className="chat-message">{el.content}</span>
           <span className="chat-created-at">{el.created_at}</span>
-
-
         </li>
       );
     });
@@ -105,8 +103,6 @@ class Chatroom extends Component {
     if (this.state.loading) {
       return <h1>Initiating Chatroom...</h1>;
     }
-    console.log(this.state)
-    console.log(this.props)
 
     return (
       <div className="App">
@@ -122,6 +118,7 @@ class Chatroom extends Component {
             type="text"
             placeholder="Enter your message..."
             className="chat-input"
+            autoFocus
           />
           <button onClick={e => this.handleSendEvent(e)} className="send">
             Send

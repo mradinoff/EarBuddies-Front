@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import Dropzone from "react-dropzone";
 import CircularProgress from "material-ui/CircularProgress";
-import CSS from "./Users.css"
+import "./Users.css"
 import axios from "axios";
 
 class AddPhoto extends Component {

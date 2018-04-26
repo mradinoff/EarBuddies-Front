@@ -6,9 +6,7 @@ import "./Profile.css";
 import { Link } from "react-router-dom";
 
 class Friends extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     console.log(_.flatten(this.props.friends));
     let flatten = _.flatten(this.props.friends);
@@ -25,9 +23,7 @@ class Friends extends Component {
 }
 
 class Events extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     if (this.props.user.events.length === 0) {
       return (

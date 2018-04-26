@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import axios from "axios";
@@ -57,7 +56,6 @@ class SignUp extends Component {
     return (
       <div>
         <div>
-          {/* <AppBar title="Sign Up" /> */}
           <h2 style={{marginTop: '3em' }}>Sign Up</h2>
           <TextField
             hintText="Enter your Email"
