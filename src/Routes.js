@@ -52,7 +52,9 @@ const Routes = () => (
         <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/venues" component={Venues}/>
         <Route exact path="/venues/:id" component={Venue}/>
-        <Route exact path="/events/:id" component={Concert}/>
+        <Route exact path="/events/:id" render={props => (
+          <Concert {...props} token={token} />
+        )}/>
         <Route exact path="/events/:id/chatroom" render={props => (
           token ? (
             <Chatroom {...props} token={token}/>
