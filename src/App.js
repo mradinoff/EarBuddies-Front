@@ -135,13 +135,14 @@ class App extends Component {
     }
 
     return (
-      <div style={styles.main}>
+      <div>
         <Search
           genres={_.uniq(this.state.genres)}
           onSubmit={this.onInputSetState}
         />
-        <Concerts concerts={this.state.events} history={this.props.history} />
-
+        <div style={styles.main}>
+          <Concerts concerts={this.state.events} history={this.props.history} />
+        </div>
       </div>
     );
   }

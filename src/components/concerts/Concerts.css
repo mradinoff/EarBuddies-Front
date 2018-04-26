@@ -38,7 +38,7 @@
 
 .dateLocation {
   margin: 0;
-  margin-left: auto;
+  margin-left: 3em;
   text-align: left;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .eventDetails p {
-  max-width: 30rem;
+  padding-right: 1.8em;
 }
 
 .location {

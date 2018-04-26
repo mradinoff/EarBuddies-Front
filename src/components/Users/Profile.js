@@ -13,6 +13,14 @@ class Profile extends Component {
     }
   }
 
+  _handleClick = e => {
+    const event = {
+      pathname: `/events/${e.id}`,
+      state: e
+    };
+    this.props.history.push(event);
+  };
+
   componentDidMount = () => {
     this.fetchUser();
   }
@@ -56,8 +64,9 @@ class Profile extends Component {
       <h3>Events</h3>
       <div>
           { this.state.user.events.map( e =>
-              <div key={e.id}>
-                <p>{e.name} {e.date} : <a href={e.ticket_url}>Tickets</a></p>
+              <div>
+                <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+
               </div>
           )}
       </div>
