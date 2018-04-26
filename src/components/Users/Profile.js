@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
-
+import _ from 'lodash';
 
 
 
@@ -10,7 +10,8 @@ class Profile extends Component {
     super(props);
     this.state = {
       user: null,
-      user_id: ""
+      user_id: "",
+      friendships: []
     }
   }
 
@@ -22,8 +23,10 @@ class Profile extends Component {
     this.props.history.push(event);
   };
 
-  componentDidMount = () => {
-    this.fetchUser();
+  componentDidMount = async () => {
+    await this.fetchUser();
+    await this.fetchFriendships();
+    //await this.findMatches();
   }
 
   fetchUser = () => { // Fat arrow functions do not break the connection to this
@@ -39,7 +42,27 @@ class Profile extends Component {
       .then(res => this.setState({user: res.data}))
   }
 
+  fetchFriendships = () => { // Fat arrow functions do not break the connection to this
+    const user = jwtDecoder(this.props.token);
+    axios({
+      url: `http://earbuddies1.herokuapp.com/friendships.json`,
+      method: 'get',
+      headers: {
+        authorization: `Bearer ${this.props.token}`
+      }
+    })
+      .then(res => this.setState({friendships: res.data}))
+      .then(() => this.findMatches())
+  }
 
+  findMatches = () => {
+    console.log("finding matches");
+    console.log(this.state.friendships);
+    const user = _.find(this.state.friendships, (user) => {
+      return user.id === this.state.user_id
+    })
+    console.log(user);
+  }
 
 
   render() {
@@ -50,6 +73,7 @@ class Profile extends Component {
   )
   }
   console.log(this.state.user);
+  console.log(this.state.friendships);
     return (
       <div>
       <h2>{this.state.user.name}</h2>
@@ -66,8 +90,8 @@ class Profile extends Component {
       <h3>Events</h3>
       <div>
           { this.state.user.events.map( e =>
-              <div>
-                <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+              <div key={e.id}>
+                <p >{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
 
               </div>
           )}
