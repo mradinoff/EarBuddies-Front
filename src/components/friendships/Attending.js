@@ -78,14 +78,14 @@ class Attending extends Component {
             return (<button className="attendingBtn" onClick={() => this._handleDeleteUserCurrentClick(id)}>Dislike EarBuddy</button>)
 
           } if (this.state.current_user_id === id){
-            return (<button className="attendingBtn">The best EarBuddy!</button>)
+            return (<p></p>)
             console.log("User")
           }
         }
 
     } if (this.state.friendships.length < 1 && this.state.current_user_id === id){
       console.log("User")
-      return (<button className="attendingBtn">The best EarBuddy!</button>)
+      return (<p></p>)
 
     }
     else {
@@ -124,7 +124,9 @@ console.log(friendship);
         active: true
         }
       }
-    }).then(res => console.log(res))
+    }).then(() => {
+      this.fetchFriendships()
+    })
   }
 
   _handlePostClick(id){
@@ -145,8 +147,9 @@ console.log(friendship);
           active: false
         }
       }
-    }).then(res => console.log(res))
-
+    }).then(() => {
+      this.fetchFriendships()
+    })
   }
 
   _handleDeleteUserCurrentClick(id){
@@ -172,7 +175,9 @@ console.log(friendship);
       headers: {
         authorization: `Bearer ${this.props.token}`
       }
-    }).then(res => console.log(res))
+    }).then(() => {
+      this.fetchFriendships()
+    })
   }
 
   _handleDeleteFriendCurrentClick(id){
@@ -197,7 +202,9 @@ console.log(friendship);
       headers: {
         authorization: `Bearer ${this.props.token}`
       }
-    }).then(res => console.log(res))
+    }).then(() => {
+      this.fetchFriendships()
+    })
   }
 
 
