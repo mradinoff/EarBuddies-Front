@@ -34,7 +34,7 @@ class Attending extends Component {
       url: `https://earbuddies1.herokuapp.com/users/${current_user.sub}.json`,
       method: 'get',
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${this.props.token}`
       }
     })
       .then(res => this.setState({current_user: res.data}))
@@ -47,7 +47,7 @@ class Attending extends Component {
       url: FRIENDSHIPS_URL,
       method: 'get',
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${this.props.token}`
       }
     })
       .then(res => this.setState({friendships: res.data}))
@@ -111,7 +111,7 @@ console.log(friendship);
       url: CURRENT_URL,
       method: 'patch',
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${this.props.token}`
       },
       data: {
       friendship: {
@@ -132,7 +132,7 @@ console.log(friendship);
       url: FRIENDSHIPS_URL,
       method: 'post',
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${this.props.token}`
       },
       data: {
         friendship: {
@@ -166,7 +166,7 @@ console.log(friendship);
       url: CURRENT_URL,
       method: 'delete',
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${this.props.token}`
       }
     }).then(res => console.log(res))
   }
@@ -191,7 +191,7 @@ console.log(friendship);
       url: CURRENT_URL,
       method: 'delete',
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${this.props.token}`
       }
     }).then(res => console.log(res))
   }
@@ -207,7 +207,7 @@ console.log(friendship);
 
             { this.state.users.map( u =>
               <div className="crd crd-user" key={u.id}>
-                <img className="cardimg" src={u.avatar.thumb.url} alt={u.name}/>
+                <img className="cardimg" src={u.avatar.url} alt={u.name}/>
                 <div className="cardBody">
                   <h5 className="cardHeading">{u.name}</h5>
                   <p className="genreHeading">From {u.hometown}</p>
