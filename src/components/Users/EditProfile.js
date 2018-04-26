@@ -123,8 +123,12 @@ class EditProfile extends Component {
     return (
       <div>
         <div>
+
           <form onSubmit={this._handleSubmit}>
             <AppBar title="Edit Profile" />
+            <h4>Upload Photo</h4>
+              <AddPhoto user={this.state.user} />
+              <h4>Update Profile</h4>
             <TextField
               id="name-field"
               hintText="Name"
@@ -156,7 +160,8 @@ class EditProfile extends Component {
               defaultValue={this.state.user.interests}
               onChange={this._handleChange}
             />
-            <br />
+            <br /><br /><br />
+            <h4>Change Password</h4>
             <TextField
               id="password-field"
               type="password"
@@ -185,7 +190,7 @@ class EditProfile extends Component {
         </div>
 
         <p>{this.state.success}</p>
-        <AddPhoto user={this.state.user} />
+
       </div>
     );
   }
