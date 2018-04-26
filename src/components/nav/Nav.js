@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from '../../tmp-logo.svg'
+import logo from '../../earbuddies-logo.svg'
 import './Home.css';
 
 // const signOut = function () {
@@ -24,14 +24,20 @@ class Nav extends Component {
           <Link to="/">
             <img src={logo} alt=""/>
           </Link>
+          <Link to = "/search" class ="navLink">Explore Events</Link>
           <Link to = '/venues' class="navLink">Venues</Link>
-          <Link to = "/login" class ="navLink">Explore Events</Link>
-          <Link to = "/login" class ="navLinkHelp">Help</Link>
+          <Link to ="#"></Link>
+
           {/* need to make this not display when on venues page */}
+
           {window.localStorage.jwtToken ? (
+            <div>
+            <Link to = "/editprofile" class ="navLinkHelp">Settings</Link>
+            <Link to ="#"></Link>
             <Link to="/">
               <button class = "signOutNav" onClick={this._signOut}>Sign out</button>
             </Link>
+            </div>
 
           ) : (
             <div>

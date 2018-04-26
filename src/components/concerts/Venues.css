@@ -12,17 +12,28 @@
 
 
 .venueListH1 {
-  font-size: 5em;
+  font-size: 4em;
   text-decoration: none;
-  font-size: bold;
-  -webkit-text-stroke: 2px #007bff;
+  font-weight: 600;
+  -webkit-text-stroke: 1px #007bff;
   color: transparent;
+  text-shadow: 2px -2px rgba(#3d3d3d, 0.48);
 }
 
 .venueListH1:hover {
-  font-size: 5em;
+  font-size: 3em;
   text-decoration: none;
-  font-size: bold;
+  font-weight: 700;
   -webkit-text-stroke: 1px #007bff;
   color: #007bff;
+  letter-spacing: 2px;
+}
+
+
+.venueHero {
+  height: 40vh;
+  background-size: cover;
+  background-position: 25%;
+  background-repeat: no-repeat;
+  background: url(          https://images.unsplash.com/photo-1484597353563-eda230e1a15c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=27f2625126a7f9f8945ac39e6979cb5a&auto=format&fit=crop&w=1234&q=80);
 }
