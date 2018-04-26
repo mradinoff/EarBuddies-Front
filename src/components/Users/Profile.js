@@ -3,7 +3,54 @@ import axios from "axios";
 import jwtDecoder from "jwt-decode";
 import _ from 'lodash';
 
+class Friends extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    if (this.props.user.matched.length === 0){
+      return(
+        <div>
+          <p>You have 0 Earbuddies, Go to an Event Page and start Matching!</p>
+        </div>
+      )
+    }
+    else{
+      return(
+        <div>
+            { this.props.user.matched.map( f =>
+                <p key={f.id}>{f.name}</p>
+            )}
+        </div>
+      )
+    }
+  }
+}
+class Events extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    if(this.props.user.events.length === 0){
+    return(
+      <div>
+        <p>You have 0 Events lined up, Go to the Search Page and Find an Event!</p>
+      </div>)
+  }
+    else{
+      return(
+        <div>
+            { this.props.user.events.map( e =>
+                <div>
+                  <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
 
+                </div>
+            )}
+        </div>
+      )
+    }
+  }
+}
 
 class Profile extends Component {
   constructor(props) {
@@ -72,8 +119,6 @@ class Profile extends Component {
     <h2>Loading...</h2>
   )
   }
-  console.log(this.state.user);
-  console.log(this.state.friendships);
     return (
       <div>
       <h2>{this.state.user.name}</h2>
@@ -97,6 +142,12 @@ class Profile extends Component {
           )}
       </div>
 
+=======
+      <h3>{this.state.user.matched.length} Friends</h3>
+      <Friends user= {this.state.user}/>
+      <h3>{this.state.user.events.length} Events</h3>
+      <Events user= {this.state.user}/>
+>>>>>>> 7c8a6908e29afb789c9d2af6d46f78ecd7002092
       </div>
     )
   }
