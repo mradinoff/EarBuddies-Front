@@ -5,6 +5,7 @@ import TextField from "material-ui/TextField";
 import AddPhoto from "./AddPhoto";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
+import CircularProgress from "material-ui/CircularProgress";
 
 const style = {
   margin: 15
@@ -115,7 +116,7 @@ class EditProfile extends Component {
 
   render() {
     if (!this.state.user) {
-      return <h2>Loading...</h2>;
+      return <CircularProgress size={60} thickness={7} />;
     }
 
 
@@ -125,10 +126,16 @@ class EditProfile extends Component {
         <div>
 
           <form onSubmit={this._handleSubmit}>
+
+            <div className="venuesHeader">
+              <h1>Edit Profile</h1>
+            </div>
+
             <AppBar title="Edit Profile" />
             <br /><h4>Upload Photo</h4>
               <AddPhoto user={this.state.user} /><br />
               <h4>Update Profile</h4>
+
             <TextField
               id="name-field"
               hintText="Name"
@@ -190,6 +197,12 @@ class EditProfile extends Component {
         </div>
 
         <p>{this.state.success}</p>
+
+        <section className="addPhoto">
+          <AddPhoto user={this.state.user} />
+        </section>
+
+
 
       </div>
     );

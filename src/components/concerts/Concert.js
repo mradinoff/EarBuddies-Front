@@ -3,21 +3,20 @@ import axios from "axios";
 import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
+import CircularProgress from "material-ui/CircularProgress";
 
 
 let mapsLink = ""
+let user_name = ""
 
-// const token = localStorage.getItem('jwtToken');
-// const current_user = jwtDecoder(token);
 class AttendingButton extends Component {
-  constructor(props){
-    super(props);
-  }
+
   render(){
     let check = 0
     for(let i = 0; i < this.props.attending.length; i++){
       if(this.props.user.sub === this.props.attending[i].id){
-        check++
+        check++;
+        user_name += this.props.attending[i].name;
       }
     }
     if (check > 0){
@@ -151,10 +150,12 @@ class Concert extends Component {
       });
   };
 
-  onJoinChatroom = () => {
+  onJoinChatroom = (users) => {
+    console.log(users)
     const location = {
       pathname: `/events/${this.state.concert.id}/chatroom`,
-      state: this.state.concert
+      state: this.state.concert,
+      user_name: users
     };
 
     this.props.history.push(location);
@@ -164,7 +165,7 @@ class Concert extends Component {
 
   render() {
     if (this.state.loading || this.state.venue[0] === undefined) {
-      return <h2>Loading...</h2>;
+      return <CircularProgress size={60} thickness={7} />;
     }
     return (
       <div>
@@ -201,7 +202,7 @@ class Concert extends Component {
                 </a>
                 <p>{this.state.venue[0].address}</p>
                 <AttendingButton user={this.state.current_user} attending={this.state.users}/>
-                <button className="attendingBtn" onClick={this.onJoinChatroom}>Join Chat</button>
+                <button className="attendingBtn" onClick = {() => this.onJoinChatroom(user_name)} value ={this.state.users}>Join Chat</button>
                 {/* <p>{this.state.concert.genre}</p> */}
               </div>
             </div>

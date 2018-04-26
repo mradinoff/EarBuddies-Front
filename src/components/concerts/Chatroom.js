@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Cable from "actioncable";
 import jwtDecoder from "jwt-decode";
+import "./Chatroom.css";
 import axios from 'axios';
+import './Chatroom.css';
 
 class Chatroom extends Component {
   constructor(props) {
@@ -56,6 +58,7 @@ class Chatroom extends Component {
   createSocket = () => {
     const user = this.state.user;
     const concert = this.state.concert;
+    const user_name = this.props.location.user_name;
 
     let cable = Cable.createConsumer("wss://earbuddies1.herokuapp.com/cable");
     this.chats = cable.subscriptions.create(
@@ -66,7 +69,6 @@ class Chatroom extends Component {
       {
         connected: () => {},
         received: data => {
-          console.log(data);
           let chatLogs = this.state.chatLogs;
           chatLogs.push(data);
           this.setState({ chatLogs: chatLogs });
@@ -76,7 +78,7 @@ class Chatroom extends Component {
             content: message,
             user_id: user.sub,
             event_id: concert.id,
-            user_name: user.email,
+            user_name: user_name,
             event_name: concert.name
           });
         }
@@ -85,14 +87,13 @@ class Chatroom extends Component {
   };
 
   renderChatLog() {
+    console.log(this.state)
     return this.state.chatLogs.map((el, i) => {
-      console.log(el);
       return (
         <li key={`chat_${i}`}>
+          <span className="chat-message">{el.user_name}</span>
           <span className="chat-message">{el.content}</span>
           <span className="chat-created-at">{el.created_at}</span>
-
-
         </li>
       );
     });
@@ -102,14 +103,14 @@ class Chatroom extends Component {
     if (this.state.loading) {
       return <h1>Initiating Chatroom...</h1>;
     }
-    console.log(this.state)
-    console.log(this.props)
 
     return (
       <div className="App">
         <div className="stage">
           <h1>Chat</h1>
-          <ul className="chat-logs">{this.renderChatLog()}</ul>
+          <div className="chatBox">
+            <ul className="chat-logs">{this.renderChatLog()}</ul>
+          </div>
           <input
             onKeyPress={e => this.handleChatInputKeyPress(e)}
             value={this.state.currentChatMessage}
@@ -117,6 +118,7 @@ class Chatroom extends Component {
             type="text"
             placeholder="Enter your message..."
             className="chat-input"
+            autoFocus
           />
           <button onClick={e => this.handleSendEvent(e)} className="send">
             Send

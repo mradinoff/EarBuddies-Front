@@ -1,21 +1,10 @@
 import React, { Component } from "react";
-import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import FlatButton from 'material-ui/FlatButton';
 import { Redirect } from 'react-router';
-//import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-class HomeButton extends Component {
-  static muiName = 'FlatButton';
 
-  render() {
-    return (
-      <FlatButton {...this.props} label="Home" />
-    );
-  }
-}
 
 
 class Login extends Component {
@@ -57,7 +46,9 @@ class Login extends Component {
         }
       })
       .catch((err) => {
-        console.log("AXIOS ERROR: ", err);
+        if(err) {
+          alert("Check your email or password!")
+        };
       })
 
   }
@@ -71,9 +62,7 @@ class Login extends Component {
       <div>
 
           <div>
-            {/* <AppBar title="Login"
-            iconElementRight= {<HomeButton onClick={this.goToHomePage} />}
-            /> */}
+            
             <h2 style={{marginTop: '3em' }}>Log In</h2>
             <TextField
               hintText="Enter your Email"
@@ -96,6 +85,7 @@ class Login extends Component {
               label="Submit"
               primary={true}
               style={style}
+              disabled={this.state.email === "" || this.state.password === "" ? true : false}
               onClick={this.handleClick}
             />
           </div>

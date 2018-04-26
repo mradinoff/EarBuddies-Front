@@ -1,6 +1,4 @@
 import React, { PureComponent as Component } from "react";
-import Search from "../Search/Search";
-import _ from "lodash";
 
 class Hero extends Component {
   constructor(props) {

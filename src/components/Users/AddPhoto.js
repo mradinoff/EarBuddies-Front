@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import Dropzone from "react-dropzone";
 import CircularProgress from "material-ui/CircularProgress";
-import CSS from "./Users.css"
+import "./Users.css"
 import axios from "axios";
 
 class AddPhoto extends Component {
@@ -14,7 +14,7 @@ class AddPhoto extends Component {
   };
 
   onDrop = files => {
-    // prepare form data, use data key!
+    // prepare form data, use data key! 
     let data = new FormData();
     console.log(files);
     this.setState({ onDrop: true });

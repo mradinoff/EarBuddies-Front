@@ -12,10 +12,6 @@ class Nav extends Component {
     localStorage.removeItem("jwtToken");
   }
 
-  _venuesClick = v =>{
-    pathname: '/venues'
-  }
-
   render() {
     return (
       <header>

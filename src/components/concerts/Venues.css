@@ -10,6 +10,9 @@
   justify-content: center;
 }
 
+.venuesHeader > h1 {
+  color: white;
+}
 
 .venueListH1 {
   font-size: 4em;
@@ -42,6 +45,8 @@
 .venueEvents {
   width: 960px;
   margin: 0 auto;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 .venueEvents .crd {
@@ -55,4 +60,6 @@
 .venueDetails {
   display: flex;
   flex-direction: column;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
