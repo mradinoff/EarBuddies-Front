@@ -46,7 +46,10 @@ class Events extends Component {
         <div>
             { this.props.user.events.map( e =>
                 <div key={e.id}>
-                  <p>{e.name}<a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+                  <h5>{e.name}</h5>
+                    <p>
+                      <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a>
+                    </p>
                   <img className="profileEventImg" src={e.image} alt=""/>
                 </div>
             )}
@@ -168,12 +171,15 @@ class Profile extends Component {
             </div>
           </section>
           <section className="profileRight">
-            <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
+            <p><strong>Hometown:</strong></p>
+            <p>{this.state.user.hometown}</p>
+            <p><strong>Bio:</strong> </p>
             <p>{this.state.user.bio}</p>
-            <p><strong>Interests:</strong> {this.state.user.interests}</p>
+            <p><strong>Interests:</strong> </p>
+            <p>{this.state.user.interests}</p>
             <h3>{this.state.matched.length} Friends</h3>
             <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
-            <h3>{this.state.user.events.length} Events</h3>
+            <h3 style={{marginBottom: '1em'}}>{this.state.user.events.length} Events</h3>
             <Events user={this.state.user}/>
           </section>
 
