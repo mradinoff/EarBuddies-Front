@@ -49,12 +49,17 @@ class Venue extends Component{
         <div className="venueHero">
 
         </div>
-          <h2>{this.state.venue.name}</h2>
-          <p>{this.state.venue.address}</p>
-          <a href={this.state.venue.url}>Visit Website</a>
-          <img src= {mapsLink} alt={this.state.venue.name}/>
-          <h1>Events</h1>
-          {this.renderConcerts()}
+          <div className="venueDetails">
+            <h2>{this.state.venue.name}</h2>
+            <p>{this.state.venue.address}</p>
+            <a href={this.state.venue.url}>Visit Website</a>
+          </div>
+            <img src= {mapsLink} alt={this.state.venue.name}/>
+          <div className="venueEvents">
+            <h1>Events</h1>
+            {this.renderConcerts()}
+          </div>
+
 
       </div>
 

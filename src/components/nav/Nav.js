@@ -24,19 +24,19 @@ class Nav extends Component {
           <Link to="/">
             <img src={logo} alt=""/>
           </Link>
-          <Link to = "/search" class ="navLink">Explore Events</Link>
-          <Link to = '/venues' class="navLink">Venues</Link>
+          <Link to = "/search" className ="navLink">Explore Events</Link>
+          <Link to = '/venues' className="navLink">Venues</Link>
           <Link to ="#"></Link>
 
           {/* need to make this not display when on venues page */}
 
           {window.localStorage.jwtToken ? (
             <div>
-            <Link to = "/profile" class ="navLinkHelp">Profile</Link>
-            <Link to = "/editprofile" class ="navLinkHelp">Settings</Link>
+            <Link to = "/profile" className="navLinkHelp">Profile</Link>
+            <Link to = "/editprofile" className="navLinkHelp">Settings</Link>
             <Link to ="#"></Link>
             <Link to="/">
-              <button class = "signOutNav" onClick={this._signOut}>Sign out</button>
+              <button className= "signOutNav" onClick={this._signOut}>Sign out</button>
             </Link>
             </div>
 
