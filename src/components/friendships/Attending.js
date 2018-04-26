@@ -102,7 +102,8 @@ class Attending extends Component {
       return user.id === id
     })
 console.log(user);
-    const friendship = _.find(this.state.current_user.friendships, (friendship) => {
+console.log(this.state.current_user);
+    const friendship = _.find(this.state.friendships, (friendship) => {
       return friendship.friend_id === this.state.current_user_id
     })
 console.log(friendship);
