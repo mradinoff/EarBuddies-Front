@@ -53,7 +53,7 @@ class Profile extends Component {
     return (
       <div>
       <h2>{this.state.user.name}</h2>
-      <img src={this.state.user.avatar.thumb.url} alt={this.state.user.name}/>
+      <img src={this.state.user.avatar.url} alt={this.state.user.name}/>
       <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
       <p>{this.state.user.bio}</p>
       <p><strong>Interests:</strong> {this.state.user.interests}</p>
