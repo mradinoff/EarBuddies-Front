@@ -9,7 +9,7 @@ class Venue extends Component{
       venue: this.props.location.state,
       events: this.props.location.state.events
     };
-    mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.venue.latitude},+${this.state.venue.longitude}&zoom=14&scale=1&size=600x300&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C${this.state.venue.latitude},+${this.state.venue.longitude}`
+    mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.venue.latitude},+${this.state.venue.longitude}&zoom=14&scale=1&size=600x300&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C${this.state.venue.latitude},+${this.state.venue.longitude}`
 
   }
 
