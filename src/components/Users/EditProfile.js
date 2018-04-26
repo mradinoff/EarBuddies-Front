@@ -126,8 +126,8 @@ class EditProfile extends Component {
 
           <form onSubmit={this._handleSubmit}>
             <AppBar title="Edit Profile" />
-            <h4>Upload Photo</h4>
-              <AddPhoto user={this.state.user} />
+            <br /><h4>Upload Photo</h4>
+              <AddPhoto user={this.state.user} /><br />
               <h4>Update Profile</h4>
             <TextField
               id="name-field"
