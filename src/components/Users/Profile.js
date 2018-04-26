@@ -4,9 +4,9 @@ import jwtDecoder from "jwt-decode";
 import _ from "lodash";
 import "./Profile.css";
 import { Link } from "react-router-dom";
+import CircularProgress from "material-ui/CircularProgress";
 
 class Friends extends Component {
-
   render() {
     console.log(_.flatten(this.props.friends));
     let flatten = _.flatten(this.props.friends);
@@ -23,7 +23,6 @@ class Friends extends Component {
 }
 
 class Events extends Component {
-
   render() {
     if (this.props.user.events.length === 0) {
       return (
@@ -112,7 +111,7 @@ class Profile extends Component {
 
   fetchFriendships = () => {
     // Fat arrow functions do not break the connection to this
-    const user = jwtDecoder(this.props.token);
+
     axios({
       url: `https://earbuddies1.herokuapp.com/friendships.json`,
       method: "get",
@@ -147,7 +146,7 @@ class Profile extends Component {
 
   render() {
     if (!this.state.user) {
-      return <h2>Loading...</h2>;
+      return <CircularProgress size={60} thickness={7} />;
     }
     return (
       <div className="profile" key={this.state.user.id}>

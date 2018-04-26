@@ -1,5 +1,4 @@
 import React, { PureComponent as Component } from "react";
-import Anime from 'react-anime';
 
 
 class Concerts extends Component {

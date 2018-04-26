@@ -1,20 +1,10 @@
 import React, { Component } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import FlatButton from 'material-ui/FlatButton';
 import { Redirect } from 'react-router';
-//import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-class HomeButton extends Component {
-  static muiName = 'FlatButton';
 
-  render() {
-    return (
-      <FlatButton {...this.props} label="Home" />
-    );
-  }
-}
 
 
 class Login extends Component {
@@ -72,9 +62,7 @@ class Login extends Component {
       <div>
 
           <div>
-            {/* <AppBar title="Login"
-            iconElementRight= {<HomeButton onClick={this.goToHomePage} />}
-            /> */}
+            
             <h2 style={{marginTop: '3em' }}>Log In</h2>
             <TextField
               hintText="Enter your Email"

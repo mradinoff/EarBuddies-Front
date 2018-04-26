@@ -14,7 +14,7 @@ class AddPhoto extends Component {
   };
 
   onDrop = files => {
-    // prepare form data, use data key!
+    // prepare form data, use data key! 
     let data = new FormData();
     console.log(files);
     this.setState({ onDrop: true });

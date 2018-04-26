@@ -5,6 +5,7 @@ import TextField from "material-ui/TextField";
 import AddPhoto from "./AddPhoto";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
+import CircularProgress from "material-ui/CircularProgress";
 
 const style = {
   margin: 15
@@ -115,7 +116,7 @@ class EditProfile extends Component {
 
   render() {
     if (!this.state.user) {
-      return <h2>Loading...</h2>;
+      return <CircularProgress size={60} thickness={7} />;
     }
 
 

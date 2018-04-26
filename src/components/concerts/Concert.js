@@ -3,16 +3,14 @@ import axios from "axios";
 import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
+import CircularProgress from "material-ui/CircularProgress";
 
 
 let mapsLink = ""
 let user_name = ""
-// const token = localStorage.getItem('jwtToken');
-// const current_user = jwtDecoder(token);
+
 class AttendingButton extends Component {
-  constructor(props){
-    super(props);
-  }
+
   render(){
     let check = 0
     for(let i = 0; i < this.props.attending.length; i++){
@@ -167,7 +165,7 @@ class Concert extends Component {
 
   render() {
     if (this.state.loading || this.state.venue[0] === undefined) {
-      return <h2>Loading...</h2>;
+      return <CircularProgress size={60} thickness={7} />;
     }
     return (
       <div>

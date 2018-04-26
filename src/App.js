@@ -4,8 +4,7 @@ import "./index.css";
 import axios from "axios";
 import Search from "./components/Search/Search";
 import _ from "lodash";
-import Hero from './components/Home/Hero'
-import Home from "./components/nav/Home";
+import CircularProgress from "material-ui/CircularProgress";
 
 
 class App extends Component {
@@ -131,7 +130,7 @@ class App extends Component {
 
   render() {
     if (this.state.loading) {
-      return <h1>Loading...</h1>;
+      return <CircularProgress size={60} thickness={7} />;
     }
 
     return (
