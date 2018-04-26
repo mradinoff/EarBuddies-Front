@@ -3,7 +3,54 @@ import axios from "axios";
 import jwtDecoder from "jwt-decode";
 
 
+class Friends extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    if (this.props.user.matched.length === 0){
+      return(
+        <div>
+          <p>You have 0 Earbuddies, Go to an Event Page and start Matching!</p>
+        </div>
+      )
+    }
+    else{
+      return(
+        <div>
+            { this.props.user.matched.map( f =>
+                <p key={f.id}>{f.name}</p>
+            )}
+        </div>
+      )
+    }
+  }
+}
+class Events extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    if(this.props.user.events.length === 0){
+    return(
+      <div>
+        <p>You have 0 Events lined up, Go to the Search Page and Find an Event!</p>
+      </div>)
+  }
+    else{
+      return(
+        <div>
+            { this.props.user.events.map( e =>
+                <div>
+                  <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
 
+                </div>
+            )}
+        </div>
+      )
+    }
+  }
+}
 
 class Profile extends Component {
   constructor(props) {
@@ -49,7 +96,6 @@ class Profile extends Component {
     <h2>Loading...</h2>
   )
   }
-  console.log(this.state.user);
     return (
       <div>
       <h2>{this.state.user.name}</h2>
@@ -57,22 +103,10 @@ class Profile extends Component {
       <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
       <p>{this.state.user.bio}</p>
       <p><strong>Interests:</strong> {this.state.user.interests}</p>
-      <h3>Friends</h3>
-      <div>
-          { this.state.user.matched.map( f =>
-              <p key={f.id}>{f.name}</p>
-          )}
-      </div>
-      <h3>Events</h3>
-      <div>
-          { this.state.user.events.map( e =>
-              <div>
-                <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
-
-              </div>
-          )}
-      </div>
-
+      <h3>{this.state.user.matched.length} Friends</h3>
+      <Friends user= {this.state.user}/>
+      <h3>{this.state.user.events.length} Events</h3>
+      <Events user= {this.state.user}/>
       </div>
     )
   }
