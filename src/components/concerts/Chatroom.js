@@ -102,6 +102,8 @@ class Chatroom extends Component {
     if (this.state.loading) {
       return <h1>Initiating Chatroom...</h1>;
     }
+    console.log(this.state)
+    console.log(this.props)
 
     return (
       <div className="App">
