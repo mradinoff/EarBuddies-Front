@@ -1,6 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
+import './Profile.css'
 
 
 
@@ -12,6 +13,7 @@ class Profile extends Component {
       user: null,
       user_id: ""
     }
+
   }
 
   _handleClick = e => {
@@ -52,27 +54,38 @@ class Profile extends Component {
   console.log(this.state.user);
     return (
       <div>
-      <h2>{this.state.user.name}</h2>
-      <img src={this.state.user.avatar.thumb.url} alt={this.state.user.name}/>
-      <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
-      <p>{this.state.user.bio}</p>
-      <p><strong>Interests:</strong> {this.state.user.interests}</p>
-      <h3>Friends</h3>
-      <div>
-          { this.state.user.matched.map( f =>
-              <p key={f.id}>{f.name}</p>
-          )}
-      </div>
-      <h3>Events</h3>
-      <div>
-          { this.state.user.events.map( e =>
-              <div>
-                <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+      <div className="profileContainer">
 
-              </div>
-          )}
-      </div>
+        <section className="profileDesc">
+          <img src={this.state.user.avatar.thumb.url} alt={this.state.user.name}/>
+          <h2>{this.state.user.name}</h2>
+          <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
+          <p>{this.state.user.bio}</p>
+          <p><strong>Interests:</strong> {this.state.user.interests}</p>
+        </section>
 
+      <section className="friendsList">
+          <h3>Friends</h3>
+          <div>
+              { this.state.user.matched.map( f =>
+                  <p key={f.id}>{f.name}</p>
+              )}
+          </div>
+        </section>
+        <section className="profileEvents">
+        <h3>Events</h3>
+          <div>
+              { this.state.user.events.map( e =>
+                  <div>
+                    <p key={e.id}>{e.name}: <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+
+                      <p key={e.id}><img className="profileEventImg" src={e.image} alt=""/></p>
+
+                  </div>
+              )}
+          </div>
+        </section>
+      </div>
       </div>
     )
   }

@@ -124,7 +124,9 @@ class EditProfile extends Component {
       <div>
         <div>
           <form onSubmit={this._handleSubmit}>
-            <AppBar title="Edit Profile" />
+            <div className="venuesHeader">
+              <h1>Edit Profile</h1>
+            </div>
             <TextField
               id="name-field"
               hintText="Name"
@@ -185,7 +187,9 @@ class EditProfile extends Component {
         </div>
 
         <p>{this.state.success}</p>
-        <AddPhoto user={this.state.user} />
+        <section className="addPhoto">
+          <AddPhoto user={this.state.user} />
+        </section>
       </div>
     );
   }

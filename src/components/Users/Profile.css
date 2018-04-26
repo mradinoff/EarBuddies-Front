@@ -1,0 +1,24 @@
+.profileContainer {
+  display: flex;
+  text-align: left;
+}
+
+.profileDesc {
+  background-color: sandybrown;
+  width: 20em;
+  height: 100vh;
+}
+
+.friendsList {
+}
+
+.addPhoto {
+  position: fixed;
+  top: 50%;
+  right: 0;
+}
+
+.profileEventImg {
+  width:50%;
+  min-width: 6em;
+}
