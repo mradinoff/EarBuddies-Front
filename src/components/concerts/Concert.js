@@ -9,6 +9,26 @@ let mapsLink = ""
 
 // const token = localStorage.getItem('jwtToken');
 // const current_user = jwtDecoder(token);
+class AttendingButton extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    let check = 0
+    for(let i = 0; i < this.props.attending.length; i++){
+      if(this.props.user.sub === this.props.attending[i].id){
+        check++
+      }
+    }
+    if (check > 0){
+      return ("")
+    }
+    else{
+      return(<button className="attendingBtn" onClick={this.addUserToEventList}>Attending</button>)
+    }
+  }
+}
+
 
 class Concert extends Component {
   constructor(props) {
@@ -88,7 +108,6 @@ class Concert extends Component {
       )
       .then(() => {
         this.setState({ loading: false })
-        console.log(this.state.users)
       });
   };
 
@@ -181,7 +200,7 @@ class Concert extends Component {
                   {this.state.venue[0].name}
                 </a>
                 <p>{this.state.venue[0].address}</p>
-                <button className="attendingBtn" onClick={this.addUserToEventList}>Attending</button>
+                <AttendingButton user={this.state.current_user} attending={this.state.users}/>
                 <button className="attendingBtn" onClick={this.onJoinChatroom}>Join Chat</button>
                 {/* <p>{this.state.concert.genre}</p> */}
               </div>
@@ -198,7 +217,7 @@ class Concert extends Component {
       </section>
       {window.localStorage.jwtToken ? (
         <div className="attendees">
-          <Attending users={this.state.users} />
+          <Attending users={this.state.users} token={this.props.token}/>
         </div>
 
       ) : (

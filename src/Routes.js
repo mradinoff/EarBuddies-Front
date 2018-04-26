@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import App from "./App";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import Swipe from "./components/friendships/Swipe"
 import Concert from "./components/concerts/Concert"
 import Profile from "./components/Users/Profile"
 import SignUp from "./components/Users/Sign-Up";
@@ -33,7 +32,6 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/Search" component={App} />
-        <Route exact path="/Swipe" component={Swipe} />
         <Route exact path="/Profile" render={props => (
           token ? (
             <Profile {...props} token={token}/>
@@ -52,7 +50,9 @@ const Routes = () => (
         <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/venues" component={Venues}/>
         <Route exact path="/venues/:id" component={Venue}/>
-        <Route exact path="/events/:id" component={Concert}/>
+        <Route exact path="/events/:id" render={props => (
+          <Concert {...props} token={token} />
+        )}/>
         <Route exact path="/events/:id/chatroom" render={props => (
           token ? (
             <Chatroom {...props} token={token}/>
