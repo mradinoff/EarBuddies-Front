@@ -51,6 +51,9 @@ div#home-banner {
   background-color: #00c1d8;
   z-index: -1000;
 }
-.venuesLink{
+.navLinkHelp{
   margin-right: 36px;
+}
+.signOutNav{
+  margin-left: -39px;
 }
