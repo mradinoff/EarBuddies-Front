@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Cable from "actioncable";
 import jwtDecoder from "jwt-decode";
-import "./Chatroom.css";
 import axios from 'axios';
 
 class Chatroom extends Component {
@@ -108,9 +107,7 @@ class Chatroom extends Component {
       <div className="App">
         <div className="stage">
           <h1>Chat</h1>
-          <div className="chatBox">
-            <ul className="chat-logs">{this.renderChatLog()}</ul>
-          </div>
+          <ul className="chat-logs">{this.renderChatLog()}</ul>
           <input
             onKeyPress={e => this.handleChatInputKeyPress(e)}
             value={this.state.currentChatMessage}
