@@ -182,6 +182,7 @@ class Concert extends Component {
                 </a>
                 <p>{this.state.venue[0].address}</p>
                 <button className="attendingBtn" onClick={this.addUserToEventList}>Attending</button>
+                <button className="attendingBtn" onClick={this.onJoinChatroom}>Join Chat</button>
                 {/* <p>{this.state.concert.genre}</p> */}
               </div>
             </div>
