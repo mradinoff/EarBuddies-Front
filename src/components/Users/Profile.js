@@ -8,24 +8,26 @@ class Friends extends Component {
     super(props);
   }
   render(){
-    if (this.props.user.matched.length === 0){
+
+    console.log(_.flatten(this.props.friends));
+    let flatten = _.flatten(this.props.friends);
+    if (this.props.friends.length === 0){
       return(
         <div>
           <p>You have 0 Earbuddies, Go to an Event Page and start Matching!</p>
         </div>
       )
     }
-    else{
+    else {
       return(
         <div>
-            { this.props.user.matched.map( f =>
-                <p key={f.id}>{f.name}</p>
-            )}
+            {flatten.map( f => <p key={f.id}>{f.name}</p> )}
         </div>
       )
     }
   }
 }
+
 class Events extends Component {
   constructor(props) {
     super(props);
@@ -41,8 +43,8 @@ class Events extends Component {
       return(
         <div>
             { this.props.user.events.map( e =>
-                <div>
-                  <p key={e.id}>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
+                <div key={e.id}>
+                  <p>{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
 
                 </div>
             )}
@@ -57,8 +59,10 @@ class Profile extends Component {
     super(props);
     this.state = {
       user: null,
-      user_id: "",
-      friendships: []
+      friendships: [],
+      matched: [],
+      all_users: [],
+      friends: [],
     }
   }
 
@@ -72,13 +76,14 @@ class Profile extends Component {
 
   componentDidMount = async () => {
     await this.fetchUser();
-    await this.fetchFriendships();
+    await this.fetchUsers();
     //await this.findMatches();
   }
 
   fetchUser = () => { // Fat arrow functions do not break the connection to this
 
     const user = jwtDecoder(this.props.token);
+
     axios({
       url: `https://earbuddies1.herokuapp.com/users/${user.sub}.json`,
       method: 'get',
@@ -87,6 +92,18 @@ class Profile extends Component {
       }
     })
       .then(res => this.setState({user: res.data}))
+      .then(() => this.fetchFriendships())
+  }
+
+  fetchUsers = () => { // Fat arrow functions do not break the connection to this
+    axios({
+      url: `https://earbuddies1.herokuapp.com/users.json`,
+      method: 'get',
+      headers: {
+        authorization: `Bearer ${this.props.token}`
+      }
+    })
+      .then(res => this.setState({all_users: res.data}))
   }
 
   fetchFriendships = () => { // Fat arrow functions do not break the connection to this
@@ -102,14 +119,28 @@ class Profile extends Component {
       .then(() => this.findMatches())
   }
 
-  findMatches = () => {
-    console.log("finding matches");
-    console.log(this.state.friendships);
-    const user = _.find(this.state.friendships, (user) => {
-      return user.id === this.state.user_id
+  findMatches = async() => {
+    const user = _.filter(this.state.friendships, (user) => {
+      return user.user_id === this.state.user.id && user.active === true
     })
-    console.log(user);
+    const other = _.filter(this.state.friendships, (user) => {
+      return user.friend_id === this.state.user.id && user.active === true
+    })
+    await this.setState({ matched: [...user, ...other]})
+
+
+    let array = this.state.matched.map( m => {
+      if (m.user_id === this.state.user.id) {
+        return _.filter(this.state.all_users, { 'id': m.friend_id })
+      }
+      if (m.friend_id === this.state.user.id) {
+        return _.filter(this.state.all_users, { 'id': m.user_id })
+      }
+    })
+    console.log(array);
+    this.setState({friends: array});
   }
+
 
 
   render() {
@@ -120,34 +151,16 @@ class Profile extends Component {
   )
   }
     return (
-      <div>
-      <h2>{this.state.user.name}</h2>
-      <img src={this.state.user.avatar.url} alt={this.state.user.name}/>
-      <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
-      <p>{this.state.user.bio}</p>
-      <p><strong>Interests:</strong> {this.state.user.interests}</p>
-      <h3>Friends</h3>
-      <div>
-          { this.state.user.matched.map( f =>
-              <p key={f.id}>{f.name}</p>
-          )}
-      </div>
-      <h3>Events</h3>
-      <div>
-          { this.state.user.events.map( e =>
-              <div key={e.id}>
-                <p >{e.name} {e.date} : <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a></p>
-
-              </div>
-          )}
-      </div>
-
-=======
-      <h3>{this.state.user.matched.length} Friends</h3>
-      <Friends user= {this.state.user}/>
-      <h3>{this.state.user.events.length} Events</h3>
-      <Events user= {this.state.user}/>
->>>>>>> 7c8a6908e29afb789c9d2af6d46f78ecd7002092
+      <div key={this.state.user.id}>
+        <h2>{this.state.user.name}</h2>
+        <img src={this.state.user.avatar.url} alt={this.state.user.name}/>
+        <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
+        <p>{this.state.user.bio}</p>
+        <p><strong>Interests:</strong> {this.state.user.interests}</p>
+        <h3>{this.state.matched.length} Friends</h3>
+        <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
+        <h3>{this.state.user.events.length} Events</h3>
+        <Events user={this.state.user}/>
       </div>
     )
   }
