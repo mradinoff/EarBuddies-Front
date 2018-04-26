@@ -3,6 +3,7 @@ import Cable from "actioncable";
 import jwtDecoder from "jwt-decode";
 import "./Chatroom.css";
 import axios from 'axios';
+import './Chatroom.css';
 
 class Chatroom extends Component {
   constructor(props) {
@@ -90,6 +91,7 @@ class Chatroom extends Component {
       console.log(el);
       return (
         <li key={`chat_${i}`}>
+          <span className="chat-message">{el.user_name}</span>
           <span className="chat-message">{el.content}</span>
           <span className="chat-created-at">{el.created_at}</span>
 
@@ -103,6 +105,8 @@ class Chatroom extends Component {
     if (this.state.loading) {
       return <h1>Initiating Chatroom...</h1>;
     }
+    console.log(this.state)
+    console.log(this.props)
 
     return (
       <div className="App">

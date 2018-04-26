@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import Dropzone from "react-dropzone";
 import CircularProgress from "material-ui/CircularProgress";
+import CSS from "./Users.css"
 import axios from "axios";
 
 class AddPhoto extends Component {
@@ -39,20 +40,20 @@ class AddPhoto extends Component {
 
   render() {
     return (
-      <div style={{ maxWidth: 400, margin: 20 }} className="">
+      <div style={{ maxWidth: 400, margin: 20 }} className="addImage">
         {!this.state.imageId && (
-          <Dropzone
+          <Dropzone className="dropZone"
             onDrop={this.onDrop}
             accept="image/*"
             maxSize={300000}
             multiple={false}
           >
-            <div>Drop an image or click to choose</div>
+            <div class="addImage">Drop an image or click to choose</div>
           </Dropzone>
         )}
 
         {this.state.onDrop && (
-          <div>
+          <div class="addImage">
             <CircularProgress size={60} thickness={7} />
           </div>
         )}
