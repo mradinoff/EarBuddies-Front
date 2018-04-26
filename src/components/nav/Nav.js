@@ -32,6 +32,7 @@ class Nav extends Component {
 
           {window.localStorage.jwtToken ? (
             <div>
+            <Link to = "/profile" class ="navLinkHelp">Profile</Link>
             <Link to = "/editprofile" class ="navLinkHelp">Settings</Link>
             <Link to ="#"></Link>
             <Link to="/">

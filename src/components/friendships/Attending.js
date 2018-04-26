@@ -7,7 +7,7 @@ const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
 const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
 const FRIENDSHIPS_URL = 'https://earbuddies1.herokuapp.com/friendships.json';
 
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ3MTY3NTksInN1YiI6MTEsImVtYWlsIjoicnlhbkB1c2VyLmNvbSIsImFkbWluIjpudWxsfQ.0nyEL0lQtd0gr2JeLtT8K_TR860i5EYHBLNVzDVcfF8";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQ3OTQxMTMsInN1YiI6MjcsImVtYWlsIjoidGFyeW5AdGFyeW4uY29kZXMiLCJhZG1pbiI6bnVsbH0.o3cmhVp2s3tPRz6Q1Km2Y2Vx8wm833kSPCv8NO0hhh0";
 const current_user = jwtDecoder(token);
 
 class Attending extends Component {

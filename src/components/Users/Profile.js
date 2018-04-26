@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
 
-const USER_URL = 'https://earbuddies1.herokuapp.com/users/21.json';
+const USER_URL = 'https://earbuddies1.herokuapp.com/users/27.json';
 
 
 class Profile extends Component {
