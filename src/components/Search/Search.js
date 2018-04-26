@@ -28,6 +28,10 @@ class Search extends Component {
   _handleSubmit = e => {
     e.preventDefault();
     console.log(e.target[0].value);
+    console.log(window)
+    if(e.target[0].value === ""){
+      window.location.reload(false);
+    }
     this.props.onSubmit("name", e.target[0].value);
     this.setState({
       name: ""
