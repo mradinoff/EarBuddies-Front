@@ -89,8 +89,10 @@ class SignUp extends Component {
             onClick={this.handleClick}
           />
         </div>
-
+        <p>Must be over 18 years of age.</p>
+        <p>By signing up you agree to our <a href="#">Terms & Conditions</a></p>.
         <p>{this.state.success}</p>
+
       </div>
     );
   }
