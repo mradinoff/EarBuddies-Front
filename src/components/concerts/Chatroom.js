@@ -3,8 +3,7 @@ import Cable from "actioncable";
 import jwtDecoder from "jwt-decode";
 import "./Chatroom.css";
 import axios from 'axios';
-import icon from '../images/chat.png'
-import { Link } from "react-router-dom";
+import './Chatroom.css';
 
 class Chatroom extends Component {
   constructor(props) {
@@ -86,13 +85,24 @@ class Chatroom extends Component {
   renderChatLog() {
     console.log(this.state)
     return this.state.chatLogs.map((el, i) => {
-      return (
-        <li key={`chat_${i}`}>
-          <span className="chat-message">{el.user_name}</span>
-          <span className="chat-message">{el.content}</span>
-          <span className="chat-created-at">{el.created_at}</span>
-        </li>
-      );
+      if(el.user_name === null){
+        return(
+          <li key={`chat_${i}`}>
+            <span className="chat-message">{"Anonymous"}</span>
+            <span className="chat-message">{el.content}</span>
+            <span className="chat-created-at">{el.created_at}</span>
+          </li>
+        );
+      }
+      else{
+        return (
+          <li key={`chat_${i}`}>
+            <span className="chat-message">{el.user_name}</span>
+            <span className="chat-message">{el.content}</span>
+            <span className="chat-created-at">{el.created_at}</span>
+          </li>
+        );
+      }
     });
   }
 
@@ -121,10 +131,6 @@ class Chatroom extends Component {
             Send
           </button>
         </div>
-        <br />
-        <Link to="/">
-          <img src={icon} alt="link to home"/>
-        </Link>
       </div>
     );
   }
