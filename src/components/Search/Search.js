@@ -2,6 +2,7 @@ import React, { PureComponent as Component } from "react";
 import Select from "react-select";
 import "react-select/dist/react-select.css";
 
+
 class Search extends Component {
   state = {
     selectedOption: "",

@@ -4,6 +4,8 @@ import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
+import icon from '../images/event.png'
+import { Link } from "react-router-dom";
 import moment from "moment";
 import _ from 'lodash';
 
@@ -67,15 +69,8 @@ class Concert extends Component {
       isAttending: null
     };
     this.findVenue = this.findVenue.bind(this);
-    console.log(this.props);
 
-    mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${
-      this.state.venue.latitude
-    },+${
-      this.state.venue.longitude
-    }&zoom=14&scale=1&size=700x400&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:med%7Ccolor:0xff0000%7Clabel:1%7C${
-      this.state.venue.latitude
-    },+${this.state.venue.longitude}`;
+
   }
 
   componentDidMount = async () => {
@@ -111,7 +106,16 @@ class Concert extends Component {
         venue.push(v.data);
         this.setState({ venue });
         console.log(venue);
+        mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${
+          venue[0].latitude
+        },+${
+          venue[0].longitude
+        }&zoom=14&scale=1&size=700x400&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:med%7Ccolor:0xff0000%7Clabel:1%7C${
+          venue[0].latitude
+        },+${venue[0].longitude}`;
       }.bind(this)
+
+
     );
   }
 
@@ -270,7 +274,12 @@ class Concert extends Component {
           ) : (
             <div />
           )}
+
         </div>
+        <br />
+        <Link to="/" className="icon-link">
+          <img src={icon} alt="link to home"/>
+        </Link>
       </div>
     );
   }

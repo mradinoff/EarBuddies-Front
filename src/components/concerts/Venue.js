@@ -1,5 +1,8 @@
 import React, {PureComponent as Component} from 'react';
+import icon from '../images/venue-page.png'
+import { Link } from "react-router-dom";
 let mapsLink = ""
+
 
 class Venue extends Component{
   constructor(props){
@@ -58,8 +61,9 @@ class Venue extends Component{
             <h1>Events</h1>
             {this.renderConcerts()}
           </div>
-
-
+          <Link to="/" className="icon-link">
+            <img src={icon} alt="link to home"/>
+          </Link>
       </div>
 
     );
