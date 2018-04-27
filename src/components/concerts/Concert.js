@@ -273,7 +273,7 @@ class Concert extends Component {
             <h2>Map</h2>
             <img src={mapsLink} alt={this.state.venue.name} />
           </section>
-          {window.localStorage.jwtToken || this.state.isAttending ? (
+          {window.localStorage.jwtToken && this.state.isAttending ? (
             <div className="attendees">
               <Attending users={this.state.users} token={this.props.token} />
             </div>
