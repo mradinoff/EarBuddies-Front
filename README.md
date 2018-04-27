@@ -53,6 +53,7 @@ Features will include;
 - View own profile, including attending events and "matched" friends
 - Like other users to "match" with them
 - Find events and say you're attending
+- Search events via genre, and use geolocation to show events near you
 - Live chat with other users for that event. Make plans before the event, discuss the gig, chat during the gig!
 - Edit profile
 
@@ -89,6 +90,9 @@ We plan to continue working on this with our to do list below.
 - [ ] One on one direct messaging between matched friends
 - [ ] Interactive google map on event page
 - [ ] Improve search function
+- [ ] Backend access for venues to upload their events
+- [ ] Be able to view friends profiles
+- [ ] Make responsive
 
 ## License
 This project is licensed under the MIT license.

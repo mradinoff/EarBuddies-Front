@@ -17,10 +17,6 @@ class Chatroom extends Component {
     };
   }
 
-  // componentWillMount = async () => {
-
-  // }
-
   componentDidMount = async () => {
     const user = await jwtDecoder(this.props.token);
 
