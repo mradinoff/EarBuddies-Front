@@ -19,7 +19,7 @@ class AttendingButton extends Component {
         this.props.user.sub > 0
       ) {
         check++;
-        user_name += this.props.attending[i].name;
+        user_name = this.props.attending[i].name;
       }
     }
     if (this.props.user.sub === undefined) {
@@ -188,7 +188,7 @@ class Concert extends Component {
   };
 
   onJoinChatroom = () => {
-    
+
     const location = {
       pathname: `/events/${this.state.concert.id}/chatroom`,
       state: this.state.concert,
