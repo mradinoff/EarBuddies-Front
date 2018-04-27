@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import axios from "axios";
+import icon from '../images/signup.png'
+import { Link } from "react-router-dom";
 
 class SignUp extends Component {
   state = {
@@ -93,6 +95,10 @@ class SignUp extends Component {
         <p>By signing up you agree to our <a href="#">Terms & Conditions</a></p>.
         <p>{this.state.success}</p>
 
+
+        <Link to="/">
+          <img src={icon} alt="link to home"/>
+        </Link>
       </div>
     );
   }

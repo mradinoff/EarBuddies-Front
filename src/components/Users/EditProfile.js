@@ -6,6 +6,8 @@ import AddPhoto from "./AddPhoto";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
 import CircularProgress from "material-ui/CircularProgress";
+import icon from '../images/settings.png'
+import { Link } from "react-router-dom";
 
 const style = {
   margin: 15
@@ -198,7 +200,9 @@ class EditProfile extends Component {
 
 
 
-
+        <Link to="/" className="icon-link">
+          <img src={icon} alt="link to home"/>
+        </Link>
 
       </div>
     );

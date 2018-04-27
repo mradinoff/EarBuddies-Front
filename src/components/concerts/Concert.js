@@ -4,6 +4,8 @@ import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
+import icon from '../images/event.png'
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 let mapsLink = "";
@@ -272,7 +274,12 @@ class Concert extends Component {
           ) : (
             <div />
           )}
+
         </div>
+        <br />
+        <Link to="/" className="icon-link">
+          <img src={icon} alt="link to home"/>
+        </Link>
       </div>
     );
   }
