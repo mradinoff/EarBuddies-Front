@@ -245,20 +245,24 @@ class Concert extends Component {
                   </a>
                   <p>{this.state.venue[0].address}</p>
 
-                  {this.state.isAttending ? (
+                  {this.props.token && this.state.isAttending && (
                     <button
                     className="attendingBtn"
                     onClick={this.onJoinChatroom}
                   >
                     Join Chat
                   </button>
-                  ) : (
-                    <button
-                    className="attendingBtn"
-                    onClick={this.addUserToEventList}
-                  >
-                    Attending
-                  </button>
+                  )}
+
+                  {this.props.token && !this.state.isAttending && (
+                    (
+                      <button
+                      className="attendingBtn"
+                      onClick={this.addUserToEventList}
+                    >
+                      Attending
+                    </button>
+                    )
                   )}
                   
                 </div>
