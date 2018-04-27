@@ -72,16 +72,11 @@ class Concert extends Component {
   }
 
   componentDidMount = async () => {
-    this.findVenue();
-    this.findUsers();
+    await this.findVenue();
+    await this.findUsers();
     const user = jwtDecoder(this.props.token);
-    const isAttending = _.filter(this.props.location.state.users, u => {
-      return u.id === user.sub;
-    });
-    console.log(isAttending);
-    
     await this.setState({
-      isAttending: isAttending.length > 0 ? true : false
+      current_user: user
     });
   };
 
@@ -130,17 +125,31 @@ class Concert extends Component {
       }.json`,
       responseType: "json"
     })
-      .then(
-        function(res) {
+      .then(async(res) => {
           console.log(res);
-          this.setState({ current_concert: res });
-        }.bind(this)
+          await this.setState({ 
+            concert: res.data,
+            users: res.data.users 
+          });
+
+          const user = await jwtDecoder(this.props.token);
+          console.log(user);
+          const isAttending = await res.data.users.map(u => {
+            if (u.id === user.sub) {
+              return true
+            } else {
+              return false;
+            }
+          });
+          this.setState({
+            isAttending: isAttending[0]
+          });
+        }
       )
-      .then(() =>
-        this.setState({ users: this.state.current_concert.data.users })
-      )
-      .then(() => {
-        this.setState({ loading: false });
+      .then(async() => {
+        this.setState(prevState => ({
+          loading: !prevState.loading
+        }));
       });
   };
 
@@ -219,7 +228,7 @@ class Concert extends Component {
 
   render() {
     console.log(this.state.isAttending);
-    if (this.state.loading || this.state.venue[0] === undefined) {
+    if (this.state.loading || this.state.venue.length === 0) {
       return <CircularProgress size={60} thickness={7} />;
     }
     return (
