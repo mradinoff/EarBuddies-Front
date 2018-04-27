@@ -51,7 +51,7 @@ class Concert extends Component {
       loading: false
     };
     this.findVenue = this.findVenue.bind(this);
-    console.log(this.props.location.state);
+    console.log(this.props);
 
 
     mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.venue.latitude},+${this.state.venue.longitude}&zoom=14&scale=1&size=700x400&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:med%7Ccolor:0xff0000%7Clabel:1%7C${this.state.venue.latitude},+${this.state.venue.longitude}`
@@ -175,10 +175,10 @@ class Concert extends Component {
 
 
   render() {
+    console.log(mapsLink)
     if (this.state.loading || this.state.venue[0] === undefined) {
       return <CircularProgress size={60} thickness={7} />;
     }
-    console.log(this.state)
     return (
       <div>
 

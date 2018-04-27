@@ -36,14 +36,22 @@ class Events extends Component {
     } else {
       return (
         <div>
-            { this.props.user.events.map( e =>
+            { this.props.user.events.map( e => {
+              const event = {
+                pathname: `/events/${e.id}`,
+                state: e
+              }
+              return (
                 <div key={e.id}>
                   <h5>{e.name}</h5>
                   <img className="profileEventImg" src={e.image} alt=""/>
                   <p>
-                    <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a>
+                    <Link to={event}>See Event</Link>
                   </p>
                 </div>
+              )
+            }
+
             )}
         </div>
       );
@@ -62,14 +70,6 @@ class Profile extends Component {
       friends: []
     };
   }
-
-  _handleClick = e => {
-    const event = {
-      pathname: `/events/${e.id}`,
-      state: e
-    };
-    this.props.history.push(event);
-  };
 
   componentDidMount = async () => {
     await this.fetchUser();
