@@ -52,9 +52,9 @@ class Chatroom extends Component {
   }
 
   createSocket = () => {
-    const user = this.state.user;
+    const user_name = this.state.user.email;
     const concert = this.state.concert;
-    const user_name = this.props.location.user_name;
+    const user_id = this.state.user.sub;
 
     let cable = Cable.createConsumer("wss://earbuddies1.herokuapp.com/cable");
     this.chats = cable.subscriptions.create(
@@ -72,7 +72,7 @@ class Chatroom extends Component {
         create: function(message) {
           this.perform("create", {
             content: message,
-            user_id: user.sub,
+            user_id: user_id,
             event_id: concert.id,
             user_name: user_name,
             event_name: concert.name
