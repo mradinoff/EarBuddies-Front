@@ -12,18 +12,28 @@ let user_name = ""
 class AttendingButton extends Component {
 
   render(){
+    console.log(this.props.user.sub === undefined)
     let check = 0
     for(let i = 0; i < this.props.attending.length; i++){
-      if(this.props.user.sub === this.props.attending[i].id){
+      if(this.props.user.sub === this.props.attending[i].id && this.props.user.sub > 0){
         check++;
         user_name += this.props.attending[i].name;
       }
     }
-    if (check > 0){
-      return ("")
+    if (this.props.user.sub === undefined){
+      return("")
     }
+    else if (check > 0){
+      return (<button className="attendingBtn" onClick = {() => this.props.chatJoin(user_name)} value ={this.props.users}>Join Chat</button>)
+    }
+
     else{
-      return(<button className="attendingBtn" onClick={this.addUserToEventList}>Attending</button>)
+      return(
+        <div>
+          <button className="attendingBtn" onClick={this.props.attendingFunction}>Attending</button>
+          <button className="attendingBtn" id ="opaque" >Join Chat</button>
+        </div>
+        )
     }
   }
 }
@@ -167,6 +177,7 @@ class Concert extends Component {
     if (this.state.loading || this.state.venue[0] === undefined) {
       return <CircularProgress size={60} thickness={7} />;
     }
+    console.log(this.state)
     return (
       <div>
 
@@ -201,8 +212,7 @@ class Concert extends Component {
                   {this.state.venue[0].name}
                 </a>
                 <p>{this.state.venue[0].address}</p>
-                <AttendingButton user={this.state.current_user} attending={this.state.users}/>
-                <button className="attendingBtn" onClick = {() => this.onJoinChatroom(user_name)} value ={this.state.users}>Join Chat</button>
+                <AttendingButton user={this.state.current_user} attending={this.state.users} attendingFunction={this.addUserToEventList} chatJoin={this.onJoinChatroom}/>
                 {/* <p>{this.state.concert.genre}</p> */}
               </div>
             </div>
