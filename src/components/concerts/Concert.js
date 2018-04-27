@@ -211,33 +211,6 @@ class Concert extends Component {
         </div>
 
         <div className="concertContainer">
-<<<<<<< HEAD
-
-
-        <div className="concertMain">
-          <img className="concertImg" src={this.state.concert.image} alt={this.state.concert.name} />
-
-          <section className="eventDetails">
-            <h2>Details</h2>
-            <p className="descriptionP">{this.state.concert.description}</p>
-            <div className="dateLocation">
-              <h5>DATE AND TIME</h5>
-              <p>Fri. 25 May 2018</p>
-              <p>9:00 am – 3:00 pm AEST</p>
-              <p>{this.state.concert.date}</p>
-              <div className="location">
-                <h5>LOCATION</h5>
-                <a
-                  onClick={() => this._venueClick(this.state.venue[0])}
-                  value={this.state.venue[0]}
-                  href={`/venues/${this.state.venue[0].id}`}
-                >
-                  {this.state.venue[0].name}
-                </a>
-                <p>{this.state.venue[0].address}</p>
-                <AttendingButton user={this.state.current_user} attending={this.state.users} attendingFunction={this.addUserToEventList} chatJoin={this.onJoinChatroom}/>
-                {/* <p>{this.state.concert.genre}</p> */}
-=======
           <div className="concertMain">
             <img
               className="concertImg"
@@ -283,7 +256,6 @@ class Concert extends Component {
                   </button>
                   )}
                 </div>
->>>>>>> d303acd0a917023b389cc0f44c1f3b301c807484
               </div>
             </section>
           </div>
