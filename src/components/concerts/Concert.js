@@ -77,10 +77,12 @@ class Concert extends Component {
     this.findVenue();
     this.findUsers();
     const user = jwtDecoder(this.props.token);
+    const isAttending = _.filter(this.props.location.state.users, (u) => {
+      return u.id === user.sub
+    });
+
     await this.setState({
-      isAttending: _.filter(this.props.location.state.users, (u) => {
-        return u.id === user.sub
-      })
+      isAttending: isAttending.length > 0 ? true : false
     })
   };
 
@@ -202,7 +204,7 @@ class Concert extends Component {
   };
 
   render() {
-    console.log(mapsLink);
+    console.log(this.state.isAttending);
     if (this.state.loading || this.state.venue[0] === undefined) {
       return <CircularProgress size={60} thickness={7} />;
     }
@@ -243,7 +245,14 @@ class Concert extends Component {
                   </a>
                   <p>{this.state.venue[0].address}</p>
 
-                  {!this.state.isAttending && (
+                  {this.state.isAttending ? (
+                    <button
+                    className="attendingBtn"
+                    onClick={this.onJoinChatroom}
+                  >
+                    Join Chat
+                  </button>
+                  ) : (
                     <button
                     className="attendingBtn"
                     onClick={this.addUserToEventList}
@@ -251,14 +260,7 @@ class Concert extends Component {
                     Attending
                   </button>
                   )}
-                  {this.state.isAttending && (
-                    <button
-                    className="attendingBtn"
-                    onClick={this.onJoinChatroom}
-                  >
-                    Join Chat
-                  </button>
-                  )}
+                  
                 </div>
               </div>
             </section>
