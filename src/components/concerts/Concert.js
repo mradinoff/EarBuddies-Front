@@ -78,7 +78,8 @@ class Concert extends Component {
     const isAttending = _.filter(this.props.location.state.users, u => {
       return u.id === user.sub;
     });
-
+    console.log(isAttending);
+    
     await this.setState({
       isAttending: isAttending.length > 0 ? true : false
     });
