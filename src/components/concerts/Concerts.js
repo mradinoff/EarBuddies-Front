@@ -20,6 +20,7 @@ class Concerts extends Component {
   };
 
   renderConcerts = () => {
+    console.log(this.state)
     return this.props.concerts.map(concert => {
       return (
         <div className="crd" key={concert.id}>
