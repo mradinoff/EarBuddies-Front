@@ -48,12 +48,12 @@ class AddPhoto extends Component {
             maxSize={300000}
             multiple={false}
           >
-            <div class="addImage">Drop an image or click to choose</div>
+            <div className="addImage">Drop an image or click to choose</div>
           </Dropzone>
         )}
 
         {this.state.onDrop && (
-          <div class="addImage">
+          <div className="addImage">
             <CircularProgress size={60} thickness={7} />
           </div>
         )}

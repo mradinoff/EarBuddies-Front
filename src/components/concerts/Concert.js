@@ -72,17 +72,15 @@ class Concert extends Component {
   }
 
   componentDidMount = async () => {
-    this.findVenue();
-    this.findUsers();
-    const user = jwtDecoder(this.props.token);
-    const isAttending = _.filter(this.props.location.state.users, u => {
-      return u.id === user.sub;
-    });
-    console.log(isAttending);
-    
+    const user = await jwtDecoder(this.props.token);
     await this.setState({
-      isAttending: isAttending.length > 0 ? true : false
+      current_user: user
     });
+    await this.findUsers();
+    await this.findVenue();
+    
+    //console.log(user.sub)
+    
   };
 
   _venueClick = v => {
@@ -130,17 +128,33 @@ class Concert extends Component {
       }.json`,
       responseType: "json"
     })
-      .then(
-        function(res) {
+      .then(async(res) => {
           console.log(res);
-          this.setState({ current_concert: res });
-        }.bind(this)
-      )
-      .then(() =>
-        this.setState({ users: this.state.current_concert.data.users })
+          await this.setState({ 
+            concert: res.data,
+            users: res.data.users 
+          });
+
+          const isAttending = await _.filter(res.data.users, u => {
+            return u.id === this.state.current_user.sub
+          })
+          
+          // const isAttending = await res.data.users.map(u => {
+          //   console.log(u.id);
+          //   console.log(this.state.current_user.sub)
+          //   return u.id === this.state.current_user.sub
+          // });
+          console.log(isAttending);
+          this.setState({
+            isAttending: isAttending[0]
+          });
+          
+        }
       )
       .then(() => {
-        this.setState({ loading: false });
+        this.setState({
+          loading: false
+        });
       });
   };
 
@@ -219,7 +233,7 @@ class Concert extends Component {
 
   render() {
     console.log(this.state.isAttending);
-    if (this.state.loading || this.state.venue[0] === undefined) {
+    if (this.state.loading || this.state.venue.length === 0) {
       return <CircularProgress size={60} thickness={7} />;
     }
     return (
