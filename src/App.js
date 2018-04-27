@@ -4,6 +4,9 @@ import "./index.css";
 import axios from "axios";
 import Search from "./components/Search/Search";
 import _ from "lodash";
+import Hero from './components/Home/Hero'
+import Home from "./components/nav/Home";
+import Footer from "./components/Footer/Footer";
 import CircularProgress from "material-ui/CircularProgress";
 
 
@@ -142,6 +145,7 @@ class App extends Component {
         <div style={styles.main}>
           <Concerts concerts={this.state.events} history={this.props.history} />
         </div>
+        <Footer />
       </div>
     );
   }

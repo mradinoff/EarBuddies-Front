@@ -66,11 +66,21 @@
 }
 
 .attendingBtn {
-  padding: 1em 6em;
+  padding: 1em 1em;
   cursor: pointer;
   border-radius: 4px;
   border: none;
   background-color: #00c1d8;
+  color: white;
+  margin-top: 1em;
+}
+
+.selfBtn {
+  padding: 1em 6em;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: lightgrey;;
   color: white;
   margin-top: 1em;
 }

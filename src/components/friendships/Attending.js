@@ -3,8 +3,6 @@ import axios from "axios";
 import jwtDecoder from "jwt-decode";
 import _ from 'lodash';
 
-// const EVENT_URL = "https://earbuddies1.herokuapp.com/events.json";
-// const USERS_URL = 'https://earbuddies1.herokuapp.com/users.json';
 const FRIENDSHIPS_URL = 'https://earbuddies1.herokuapp.com/friendships.json';
 
 
@@ -78,7 +76,7 @@ class Attending extends Component {
             return (<button className="attendingBtn" onClick={() => this._handleDeleteUserCurrentClick(id)}>Dislike EarBuddy</button>)
 
           } if (this.state.current_user_id === id){
-            return (<p></p>)
+            return (<button className="selfBtn">Attending</button>)
             console.log("User")
           }
         }
@@ -226,7 +224,7 @@ console.log(friendship);
 
             { this.state.users.map( u =>
               <div className="crd crd-user" key={u.id}>
-                <img className="dp" src={u.avatar.url} alt={u.name}/>
+                <img className="dp" src={u.avatar.thumb.url} alt={u.name}/>
                 <div className="cardBody">
                   <h5 className="cardHeading">{u.name}</h5>
                   <p className="genreHeading">From {u.hometown}</p>
