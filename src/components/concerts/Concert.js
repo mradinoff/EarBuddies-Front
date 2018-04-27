@@ -4,59 +4,79 @@ import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
-import moment from 'moment';
 import icon from '../images/event.png'
 import { Link } from "react-router-dom";
+import moment from "moment";
 
+let mapsLink = "";
+// let user_name = "";
 
-let mapsLink = ""
-let user_name = ""
-
-class AttendingButton extends Component {
-
-  render(){
-    console.log(this.props.user.sub === undefined)
-    let check = 0
-    for(let i = 0; i < this.props.attending.length; i++){
-      if(this.props.user.sub === this.props.attending[i].id && this.props.user.sub > 0){
-        check++;
-        user_name += this.props.attending[i].name;
-      }
-    }
-    if (this.props.user.sub === undefined){
-      return("")
-    }
-    else if (check > 0){
-      return (<button className="attendingBtn" onClick = {() => this.props.chatJoin(user_name)} value ={this.props.users}>Join Chat</button>)
-    }
-
-    else{
-      return(
-        <div>
-          <button className="attendingBtn" onClick={this.props.attendingFunction}>Attending</button>
-          <button className="attendingBtn" id ="opaque" >Join Chat</button>
-        </div>
-        )
-    }
-  }
-}
-
+// class AttendingButton extends Component {
+//   render() {
+//     console.log(this.props.user.sub === undefined);
+//     let check = 0;
+//     for (let i = 0; i < this.props.attending.length; i++) {
+//       if (
+//         this.props.user.sub === this.props.attending[i].id &&
+//         this.props.user.sub > 0
+//       ) {
+//         check++;
+//         user_name = this.props.attending[i].name;
+//       }
+//     }
+//     if (this.props.user.sub === undefined) {
+//       return "";
+//     }
+//     // else if (check > 0) {
+//     //   return (
+//     //     <button
+//     //       className="attendingBtn"
+//     //       onClick={() => this.props.chatJoin(user_name)}
+//     //       value={this.props.users}
+//     //     >
+//     //       Join Chat
+//     //     </button>
+//     //   );
+//     // }
+//     else {
+//       return (
+//         <div>
+//           <button
+//             className="attendingBtn"
+//             onClick={this.props.attendingFunction}
+//           >
+//             Attending
+//           </button>
+//           <button className="attendingBtn" id="opaque">
+//             Join Chat
+//           </button>
+//         </div>
+//       );
+//     }
+//   }
+// }
 
 class Concert extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      venue: '',
+      venue: "",
       concert: this.props.location.state,
       current_user: {},
       users: [],
-      loading: false
+      loading: false,
+      isAttending: false
     };
     this.findVenue = this.findVenue.bind(this);
     console.log(this.props);
 
-
-    mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.venue.latitude},+${this.state.venue.longitude}&zoom=14&scale=1&size=700x400&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:med%7Ccolor:0xff0000%7Clabel:1%7C${this.state.venue.latitude},+${this.state.venue.longitude}`
+    mapsLink += `https://maps.googleapis.com/maps/api/staticmap?center=${
+      this.state.venue.latitude
+    },+${
+      this.state.venue.longitude
+    }&zoom=14&scale=1&size=700x400&maptype=roadmap&key=AIzaSyCtM7U4yMBRlIwtoyOGu-AV36y7vCMk86c&format=png&visual_refresh=true&markers=size:med%7Ccolor:0xff0000%7Clabel:1%7C${
+      this.state.venue.latitude
+    },+${this.state.venue.longitude}`;
   }
 
   componentDidMount = () => {
@@ -119,7 +139,7 @@ class Concert extends Component {
         this.setState({ users: this.state.current_concert.data.users })
       )
       .then(() => {
-        this.setState({ loading: false })
+        this.setState({ loading: false });
       });
   };
 
@@ -157,92 +177,108 @@ class Concert extends Component {
     })
       .then(response => {
         console.log(response);
+        this.setState({
+          isAttending: true
+        });
       })
       .catch(error => {
         console.log(error.response);
+        this.setState({
+          isAttending: true
+        });
       });
   };
 
-  onJoinChatroom = (users) => {
-    console.log(users)
+  onJoinChatroom = () => {
+
     const location = {
       pathname: `/events/${this.state.concert.id}/chatroom`,
       state: this.state.concert,
-      user_name: users
     };
 
     this.props.history.push(location);
-  }
-
-
+  };
 
   render() {
-    console.log(mapsLink)
+    console.log(mapsLink);
     if (this.state.loading || this.state.venue[0] === undefined) {
       return <CircularProgress size={60} thickness={7} />;
     }
     return (
       <div>
-
         <div className="concertHeader">
           <div className="concertHeaderInner">
             <h1 className="concertH1">{this.state.concert.name}</h1>
           </div>
         </div>
 
-
         <div className="concertContainer">
+          <div className="concertMain">
+            <img
+              className="concertImg"
+              src={this.state.concert.image}
+              alt={this.state.concert.name}
+            />
 
+            <section className="eventDetails">
+              <h2>Details</h2>
+              <p className="descriptionP">{this.state.concert.description}</p>
+              <div className="dateLocation">
+                <h5>DATE AND TIME</h5>
+                <p>
+                  {moment(this.state.concert.date).format(
+                    "dddd, MMMM Do YYYY, h:mm:ss a"
+                  )}
+                </p>
+                <div className="location">
+                  <h5>LOCATION</h5>
+                  <a
+                    onClick={() => this._venueClick(this.state.venue[0])}
+                    value={this.state.venue[0]}
+                    href={`/venues/${this.state.venue[0].id}`}
+                  >
+                    {this.state.venue[0].name}
+                  </a>
+                  <p>{this.state.venue[0].address}</p>
 
-        <div className="concertMain">
-          <img className="concertImg" src={this.state.concert.image} alt={this.state.concert.name} />
-
-          <section className="eventDetails">
-            <h2>Details</h2>
-            <p className="descriptionP">{this.state.concert.description}</p>
-            <div className="dateLocation">
-              <h5>DATE AND TIME</h5>
-              <p>{moment(this.state.concert.date).format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
-              <div className="location">
-                <h5>LOCATION</h5>
-                <a
-                  onClick={() => this._venueClick(this.state.venue[0])}
-                  value={this.state.venue[0]}
-                  href={`/venues/${this.state.venue[0].id}`}
-                >
-                  {this.state.venue[0].name}
-                </a>
-                <p>{this.state.venue[0].address}</p>
-                <AttendingButton user={this.state.current_user} attending={this.state.users} attendingFunction={this.addUserToEventList} chatJoin={this.onJoinChatroom}/>
-                {/* <p>{this.state.concert.genre}</p> */}
+                  {!this.state.isAttending && (
+                    <button
+                    className="attendingBtn"
+                    onClick={this.addUserToEventList}
+                  >
+                    Attending
+                  </button>
+                  )}
+                  {this.state.isAttending && (
+                    <button
+                    className="attendingBtn"
+                    onClick={this.onJoinChatroom}
+                  >
+                    Join Chat
+                  </button>
+                  )}
+                </div>
               </div>
-            </div>
-          </section>
-
-
-
-
-        </div>
-      <section className="map">
-        <h2>Map</h2>
-        <img src= {mapsLink} alt={this.state.venue.name}/>
-      </section>
-      {window.localStorage.jwtToken ? (
-        <div className="attendees">
-          <Attending users={this.state.users} token={this.props.token}/>
-        </div>
-
-      ) : (
-        <div>
-        </div>
-      )}
-
+            </section>
           </div>
-          <br />
-          <Link to="/" className="icon-link">
-            <img src={icon} alt="link to home"/>
-          </Link>
+          <section className="map">
+            <h2>Map</h2>
+            <img src={mapsLink} alt={this.state.venue.name} />
+          </section>
+          {window.localStorage.jwtToken ? (
+            <div className="attendees">
+              <Attending users={this.state.users} token={this.props.token} />
+            </div>
+          ) : (
+            <div />
+          )}
+
         </div>
+        <br />
+        <Link to="/" className="icon-link">
+          <img src={icon} alt="link to home"/>
+        </Link>
+      </div>
     );
   }
 }
