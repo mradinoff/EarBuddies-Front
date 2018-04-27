@@ -4,6 +4,7 @@ import jwtDecoder from "jwt-decode";
 import "./Chatroom.css";
 import axios from 'axios';
 import './Chatroom.css';
+import moment from "moment";
 
 class Chatroom extends Component {
   constructor(props) {
@@ -90,7 +91,9 @@ class Chatroom extends Component {
           <li key={`chat_${i}`}>
             <span className="chat-message">{"Anonymous"}</span>
             <span className="chat-message">{el.content}</span>
-            <span className="chat-created-at">{el.created_at}</span>
+            <span className="chat-created_at">{moment(el.created_at).format(
+              "h:mm:ss a"
+            )}</span>
           </li>
         );
       }
@@ -99,7 +102,9 @@ class Chatroom extends Component {
           <li key={`chat_${i}`}>
             <span className="chat-message">{el.user_name}</span>
             <span className="chat-message">{el.content}</span>
-            <span className="chat-created-at">{el.created_at}</span>
+            <span className="chat-created_at">{moment(el.created_at).format(
+              "h:mm:ss a"
+            )}</span>
           </li>
         );
       }
