@@ -52,7 +52,7 @@ class Chatroom extends Component {
   }
 
   createSocket = () => {
-    const user_name = this.state.user.email;
+    const user_name = this.state.user.name;
     const concert = this.state.concert;
     const user_id = this.state.user.sub;
 

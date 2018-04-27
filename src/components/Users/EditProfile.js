@@ -1,5 +1,5 @@
 import React, { PureComponent as Component } from "react";
-import AppBar from "material-ui/AppBar";
+
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import AddPhoto from "./AddPhoto";
@@ -130,8 +130,6 @@ class EditProfile extends Component {
             <div className="venuesHeader">
               <h1>Edit Profile</h1>
             </div>
-
-            {/* <AppBar title="Edit Profile" /> */}
             <h4>Upload Photo</h4>
               <AddPhoto user={this.state.user} />
               <h4>Update Profile</h4>

@@ -20,7 +20,7 @@ class Nav extends Component {
           <Link to="/">
             <img src={logo} alt=""/>
           </Link>
-          <Link to = "/search" className ="navLink">Events</Link>
+          <Link to = "/events" className ="navLink">Events</Link>
           <Link to = '/venues' className="navLink">Venues</Link>
           <Link to ="#"></Link>
 

@@ -7,52 +7,52 @@ import CircularProgress from "material-ui/CircularProgress";
 import moment from "moment";
 
 let mapsLink = "";
-let user_name = "";
+// let user_name = "";
 
-class AttendingButton extends Component {
-  render() {
-    console.log(this.props.user.sub === undefined);
-    let check = 0;
-    for (let i = 0; i < this.props.attending.length; i++) {
-      if (
-        this.props.user.sub === this.props.attending[i].id &&
-        this.props.user.sub > 0
-      ) {
-        check++;
-        user_name = this.props.attending[i].name;
-      }
-    }
-    if (this.props.user.sub === undefined) {
-      return "";
-    }
-    // else if (check > 0) {
-    //   return (
-    //     <button
-    //       className="attendingBtn"
-    //       onClick={() => this.props.chatJoin(user_name)}
-    //       value={this.props.users}
-    //     >
-    //       Join Chat
-    //     </button>
-    //   );
-    // }
-    else {
-      return (
-        <div>
-          <button
-            className="attendingBtn"
-            onClick={this.props.attendingFunction}
-          >
-            Attending
-          </button>
-          <button className="attendingBtn" id="opaque">
-            Join Chat
-          </button>
-        </div>
-      );
-    }
-  }
-}
+// class AttendingButton extends Component {
+//   render() {
+//     console.log(this.props.user.sub === undefined);
+//     let check = 0;
+//     for (let i = 0; i < this.props.attending.length; i++) {
+//       if (
+//         this.props.user.sub === this.props.attending[i].id &&
+//         this.props.user.sub > 0
+//       ) {
+//         check++;
+//         user_name = this.props.attending[i].name;
+//       }
+//     }
+//     if (this.props.user.sub === undefined) {
+//       return "";
+//     }
+//     // else if (check > 0) {
+//     //   return (
+//     //     <button
+//     //       className="attendingBtn"
+//     //       onClick={() => this.props.chatJoin(user_name)}
+//     //       value={this.props.users}
+//     //     >
+//     //       Join Chat
+//     //     </button>
+//     //   );
+//     // }
+//     else {
+//       return (
+//         <div>
+//           <button
+//             className="attendingBtn"
+//             onClick={this.props.attendingFunction}
+//           >
+//             Attending
+//           </button>
+//           <button className="attendingBtn" id="opaque">
+//             Join Chat
+//           </button>
+//         </div>
+//       );
+//     }
+//   }
+// }
 
 class Concert extends Component {
   constructor(props) {
