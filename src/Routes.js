@@ -31,7 +31,7 @@ const Routes = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/Search" component={App} />
+        <Route exact path="/events" component={App} />
         <Route exact path="/Profile" render={props => (
           token ? (
             <Profile {...props} token={token}/>
