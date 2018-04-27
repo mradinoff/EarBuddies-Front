@@ -5,13 +5,13 @@ See it in action here: https://earbuddies-react.herokuapp.com/
 
 It is a social media platform allowing users to find events, see who's attending and "match" with a friend Tinder style, as well as live chat with the other attending users of the event.
 
-![alt text](screenshots/Screen Shot 2018-04-27 at 9.14.18 am.png "Screenshot of home page")
+![alt text](./screenshots/Screen Shot 2018-04-27 at 9.14.18 am.png "Screenshot of home page")
 
 ## How to use
 - Follow the sign up link to create an account, then update your profile.
 - Explore events you might like to attend. Click "attending" to add yourself to the attending list.
 
-![alt text](screenshots/Screen Shot 2018-04-27 at 8.38.05 am.png "Screenshot of explore events page")
+![alt text](./screenshots/Screen Shot 2018-04-27 at 8.38.05 am.png "Screenshot of explore events page")
 
 - Take a look through other people attending and "like" the people you would like to hang out with at the event.
 - Changed your mind? You can unlike them too!
@@ -20,11 +20,11 @@ It is a social media platform allowing users to find events, see who's attending
 
 - If they like you back, they'll show up in your friends list but don't worry - you can always remove them if need be! No pressure "friendships". Did they not like you? Did they just not see you were attending? You can't be offended, because you'll never know!
 
-![alt text](screenshots/Screen Shot 2018-04-27 at 8.39.01 am.png "Screenshot of event details on event page")
+![alt text](./screenshots/Screen Shot 2018-04-27 at 8.39.01 am.png "Screenshot of event details on event page")
 
 - Click the "Join Chat" button on each event to enter that events live chat and see what others are saying about the event!
 
-![alt text](screenshots/Screen Shot 2018-04-27 at 8.48.51 am.png "Screenshot of live chat function")
+![alt text](./screenshots/Screen Shot 2018-04-27 at 8.48.51 am.png "Screenshot of live chat function")
 
 
 
