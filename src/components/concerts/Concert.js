@@ -4,10 +4,10 @@ import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
-import icon from '../images/event.png'
+import icon from "../images/event.png";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import _ from 'lodash';
+import _ from "lodash";
 
 let mapsLink = "";
 // let user_name = "";
@@ -69,21 +69,19 @@ class Concert extends Component {
       isAttending: null
     };
     this.findVenue = this.findVenue.bind(this);
-
-
   }
 
   componentDidMount = async () => {
     this.findVenue();
     this.findUsers();
     const user = jwtDecoder(this.props.token);
-    const isAttending = _.filter(this.props.location.state.users, (u) => {
-      return u.id === user.sub
+    const isAttending = _.filter(this.props.location.state.users, u => {
+      return u.id === user.sub;
     });
 
     await this.setState({
       isAttending: isAttending.length > 0 ? true : false
-    })
+    });
   };
 
   _venueClick = v => {
@@ -116,8 +114,6 @@ class Concert extends Component {
           venue[0].latitude
         },+${venue[0].longitude}`;
       }.bind(this)
-
-
     );
   }
 
@@ -194,13 +190,30 @@ class Concert extends Component {
   };
 
   onJoinChatroom = () => {
-
     const location = {
       pathname: `/events/${this.state.concert.id}/chatroom`,
-      state: this.state.concert,
+      state: this.state.concert
     };
 
     this.props.history.push(location);
+  };
+
+  renderButtons = () => {
+    if (this.props.token && this.state.isAttending) {
+      return (
+        <button className="attendingBtn" onClick={this.onJoinChatroom}>
+          Join Chat
+        </button>
+      );
+    }
+
+    if (this.props.token && !this.state.isAttending) {
+      return (
+        <button className="attendingBtn" onClick={this.addUserToEventList}>
+          Attending
+        </button>
+      );
+    }
   };
 
   render() {
@@ -244,31 +257,29 @@ class Concert extends Component {
                     {this.state.venue[0].name}
                   </a>
                   <p>{this.state.venue[0].address}</p>
+                  {this.renderButtons()}
 
-                  {this.props.token && this.state.isAttending ? (
+                  {/* {this.props.token || this.state.isAttending ? (
                     <button
-                    className="attendingBtn"
-                    onClick={this.onJoinChatroom}
-                  >
-                    Join Chat
-                  </button>
+                      className="attendingBtn"
+                      onClick={this.onJoinChatroom}
+                    >
+                      Join Chat
+                    </button>
                   ) : (
                     <div />
                   )}
 
                   {this.props.token && !this.state.isAttending ? (
-                    (
-                      <button
+                    <button
                       className="attendingBtn"
                       onClick={this.addUserToEventList}
                     >
                       Attending
                     </button>
-                    )
                   ) : (
                     <div />
-                  )}
-                  
+                  )} */}
                 </div>
               </div>
             </section>
@@ -284,11 +295,10 @@ class Concert extends Component {
           ) : (
             <div />
           )}
-
         </div>
         <br />
         <Link to="/" className="icon-link">
-          <img src={icon} alt="link to home"/>
+          <img src={icon} alt="link to home" />
         </Link>
       </div>
     );
