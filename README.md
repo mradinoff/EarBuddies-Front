@@ -5,28 +5,13 @@ See it in action here: https://earbuddies-react.herokuapp.com/
 
 It is a social media platform allowing users to find events, see who's attending and "match" with a friend Tinder style, as well as live chat with the other attending users of the event.
 
-![alt text](./screenshots/Screen Shot 2018-04-27 at 9.14.18 am.png "Screenshot of home page")
-
 ## How to use
 - Follow the sign up link to create an account, then update your profile.
 - Explore events you might like to attend. Click "attending" to add yourself to the attending list.
-
-![alt text](./screenshots/Screen Shot 2018-04-27 at 8.38.05 am.png "Screenshot of explore events page")
-
 - Take a look through other people attending and "like" the people you would like to hang out with at the event.
 - Changed your mind? You can unlike them too!
-
-
-
 - If they like you back, they'll show up in your friends list but don't worry - you can always remove them if need be! No pressure "friendships". Did they not like you? Did they just not see you were attending? You can't be offended, because you'll never know!
-
-![alt text](./screenshots/Screen Shot 2018-04-27 at 8.39.01 am.png "Screenshot of event details on event page")
-
 - Click the "Join Chat" button on each event to enter that events live chat and see what others are saying about the event!
-
-![alt text](./screenshots/Screen Shot 2018-04-27 at 8.48.51 am.png "Screenshot of live chat function")
-
-
 
 
 ## Objectives
@@ -37,12 +22,14 @@ It is a social media platform allowing users to find events, see who's attending
 - User Login. Make sure there is basic authentication and authorization set up.
 - Heroku. Deploy code to Heroku.
 
+
 ## Built With
 - HTML
 - CSS
 - React
 - Ruby on Rails
 - Bootstrap
+
 
 ## Scope
 EarBuddies - Find buddies to go to a gig with!
@@ -57,6 +44,7 @@ Features will include;
 - Live chat with other users for that event. Make plans before the event, discuss the gig, chat during the gig!
 - Edit profile
 
+
 ## Object models
 - User has and belongs to many events. Has many friends through friendships. Has many messages.
 - Event has and belongs to many users. Belongs to a venue.
@@ -64,8 +52,8 @@ Features will include;
 - Message belongs to user, and belongs to event.
 - Friendship belongs to user, and friend (user).
 
-## Approach
 
+## Approach
 Our approach for this project was firstly to find a topic all group members had a common interest in, and discussed our life hopes and dreams, before deciding on our idea for the app.
 
 We initially focused on the back end and planning out our main features and the models they would require. We worked together to get the rails back end up and running, although many extra migrations were needed later to refactor once we realised some of our theories didn't quite work in practise (eg. "friendships" that needed to be "matched" Tinder style).
