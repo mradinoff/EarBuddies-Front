@@ -3,7 +3,8 @@ import Cable from "actioncable";
 import jwtDecoder from "jwt-decode";
 import "./Chatroom.css";
 import axios from 'axios';
-import './Chatroom.css';
+import icon from '../images/chat.png'
+import { Link } from "react-router-dom";
 
 class Chatroom extends Component {
   constructor(props) {
@@ -120,6 +121,10 @@ class Chatroom extends Component {
             Send
           </button>
         </div>
+        <br />
+        <Link to="/">
+          <img src={icon} alt="link to home"/>
+        </Link>
       </div>
     );
   }

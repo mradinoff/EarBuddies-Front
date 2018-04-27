@@ -6,6 +6,7 @@ import "./Profile.css";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import CircularProgress from "material-ui/CircularProgress";
+import icon from '../images/profile.png'
 
 class Friends extends Component {
   render() {
@@ -174,7 +175,9 @@ class Profile extends Component {
             <Events user={this.state.user}/>
           </section>
         </div>
-
+        <Link to="/">
+          <img src={icon} alt="link to home"/>
+        </Link>
        <Footer />
       </div>
     );

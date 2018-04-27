@@ -2,6 +2,8 @@ import React, {PureComponent as Component} from 'react';
 import axios from 'axios';
 import "./Venues.css";
 import Footer from "../Footer/Footer";
+import icon from '../images/venues.png'
+import { Link } from "react-router-dom";
 
 const SERVER_URL = 'https://earbuddies1.herokuapp.com/venues.json';
 
@@ -48,6 +50,9 @@ class Venues extends Component {
           <h1>Venues List.</h1>
         </div>
         {this.gallery()}
+        <Link to="/">
+          <img src={icon} alt="link to home"/>
+        </Link>
         <Footer />
       </div>
 

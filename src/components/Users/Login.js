@@ -3,9 +3,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import { Redirect } from 'react-router';
 import axios from 'axios';
-
-
-
+import icon from '../images/signin.png'
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -62,7 +61,7 @@ class Login extends Component {
       <div>
 
           <div>
-            
+
             <h2 style={{marginTop: '3em' }}>Log In</h2>
             <TextField
               hintText="Enter your Email"
@@ -91,6 +90,10 @@ class Login extends Component {
           </div>
 
         {this.state.redirect ? <Redirect to='/'/>:null}
+        <br />
+        <Link to="/">
+          <img src={icon} alt="link to home"/>
+        </Link>
       </div>
     );
   }

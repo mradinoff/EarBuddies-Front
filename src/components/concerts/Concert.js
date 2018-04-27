@@ -5,6 +5,8 @@ import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
 import moment from 'moment';
+import icon from '../images/event.png'
+import { Link } from "react-router-dom";
 
 
 let mapsLink = ""
@@ -236,6 +238,10 @@ class Concert extends Component {
       )}
 
           </div>
+          <br />
+          <Link to="/">
+            <img src={icon} alt="link to home"/>
+          </Link>
         </div>
     );
   }
