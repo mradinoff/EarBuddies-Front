@@ -109,3 +109,7 @@
   width: 8em;
   border-radius: 5px;
 }
+button#opaque.attendingBtn{
+  opacity: 0.2;
+  background-color: #dc3545c7;
+}
