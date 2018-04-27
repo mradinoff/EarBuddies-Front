@@ -4,6 +4,7 @@ import jwtDecoder from "jwt-decode";
 import _ from "lodash";
 import "./Profile.css";
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 import CircularProgress from "material-ui/CircularProgress";
 
 class Friends extends Component {
@@ -35,21 +36,15 @@ class Events extends Component {
     } else {
       return (
         <div>
-          {this.props.user.events.map(e => (
-            <div key={e.id}>
-              <p>
-                {e.name}
-                <a
-                  onClick={() => this._handleClick(e)}
-                  value={e}
-                  href={`/events/${e.id}`}
-                >
-                  See Event
-                </a>
-              </p>
-              <img className="profileEventImg" src={e.image} alt="" />
-            </div>
-          ))}
+            { this.props.user.events.map( e =>
+                <div key={e.id}>
+                  <h5>{e.name}</h5>
+                  <img className="profileEventImg" src={e.image} alt=""/>
+                  <p>
+                    <a onClick = {() => this._handleClick(e)} value ={e} href={`/events/${e.id}`}>See Event</a>
+                  </p>
+                </div>
+            )}
         </div>
       );
     }
@@ -150,7 +145,7 @@ class Profile extends Component {
     }
     return (
       <div className="profile" key={this.state.user.id}>
-        <div className="profileHero" />
+        <div className="venuesHeader"></div>
 
         <div className="profileWrapper">
           <section className="profileContainerLeft">
@@ -167,23 +162,20 @@ class Profile extends Component {
             </div>
           </section>
           <section className="profileRight">
-            <p>
-              <strong>Hometown:</strong> {this.state.user.hometown}
-            </p>
+            <p><strong>Hometown</strong></p>
+            <p>{this.state.user.hometown}</p>
+            <p><strong>Bio</strong> </p>
             <p>{this.state.user.bio}</p>
-            <p>
-              <strong>Interests:</strong> {this.state.user.interests}
-            </p>
-            <h3>{this.state.matched.length} Friends</h3>
-            <Friends
-              matched={this.state.matched}
-              users={this.state.all_users}
-              friends={this.state.friends}
-            />
-            <h3>{this.state.user.events.length} Events</h3>
-            <Events user={this.state.user} />
+            <p><strong>Interests</strong> </p>
+            <p>{this.state.user.interests}</p>
+            <p><strong>{this.state.matched.length} Friends</strong></p>
+            <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
+            <p style={{marginBottom: '1em'}}><strong>{this.state.user.events.length} Events</strong></p>
+            <Events user={this.state.user}/>
           </section>
         </div>
+
+       <Footer />
       </div>
     );
   }
