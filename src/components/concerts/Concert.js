@@ -5,6 +5,7 @@ import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
 import moment from "moment";
+import _ from 'lodash';
 
 let mapsLink = "";
 // let user_name = "";
@@ -63,7 +64,7 @@ class Concert extends Component {
       current_user: {},
       users: [],
       loading: false,
-      isAttending: false
+      isAttending: null
     };
     this.findVenue = this.findVenue.bind(this);
     console.log(this.props);
@@ -77,16 +78,15 @@ class Concert extends Component {
     },+${this.state.venue.longitude}`;
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     this.findVenue();
     this.findUsers();
-    const token = localStorage.getItem("jwtToken");
-    if (token) {
-      const user = jwtDecoder(token);
-      this.setState({
-        current_user: user
-      });
-    }
+    const user = jwtDecoder(this.props.token);
+    await this.setState({
+      isAttending: _.filter(this.props.location.state.users, (u) => {
+        return u.id === user.sub
+      })
+    })
   };
 
   _venueClick = v => {
@@ -263,7 +263,7 @@ class Concert extends Component {
             <h2>Map</h2>
             <img src={mapsLink} alt={this.state.venue.name} />
           </section>
-          {window.localStorage.jwtToken ? (
+          {window.localStorage.jwtToken || this.state.isAttending ? (
             <div className="attendees">
               <Attending users={this.state.users} token={this.props.token} />
             </div>
