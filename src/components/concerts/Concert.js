@@ -4,7 +4,6 @@ import Attending from "../friendships/Attending.js";
 import jwtDecoder from "jwt-decode";
 import "./Concerts.css";
 import CircularProgress from "material-ui/CircularProgress";
-import moment from 'moment';
 
 
 let mapsLink = ""
@@ -200,7 +199,9 @@ class Concert extends Component {
             <p className="descriptionP">{this.state.concert.description}</p>
             <div className="dateLocation">
               <h5>DATE AND TIME</h5>
-              <p>{moment(this.state.concert.date).format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
+              <p>Fri. 25 May 2018</p>
+              <p>9:00 am – 3:00 pm AEST</p>
+              <p>{this.state.concert.date}</p>
               <div className="location">
                 <h5>LOCATION</h5>
                 <a
