@@ -72,12 +72,15 @@ class Concert extends Component {
   }
 
   componentDidMount = async () => {
-    await this.findVenue();
-    await this.findUsers();
-    const user = jwtDecoder(this.props.token);
+    const user = await jwtDecoder(this.props.token);
     await this.setState({
       current_user: user
     });
+    await this.findUsers();
+    await this.findVenue();
+    
+    //console.log(user.sub)
+    
   };
 
   _venueClick = v => {
@@ -132,24 +135,26 @@ class Concert extends Component {
             users: res.data.users 
           });
 
-          const user = await jwtDecoder(this.props.token);
-          console.log(user);
-          const isAttending = await res.data.users.map(u => {
-            if (u.id === user.sub) {
-              return true
-            } else {
-              return false;
-            }
-          });
+          const isAttending = await _.filter(res.data.users, u => {
+            return u.id === this.state.current_user.sub
+          })
+          
+          // const isAttending = await res.data.users.map(u => {
+          //   console.log(u.id);
+          //   console.log(this.state.current_user.sub)
+          //   return u.id === this.state.current_user.sub
+          // });
+          console.log(isAttending);
           this.setState({
             isAttending: isAttending[0]
           });
+          
         }
       )
-      .then(async() => {
-        this.setState(prevState => ({
-          loading: !prevState.loading
-        }));
+      .then(() => {
+        this.setState({
+          loading: false
+        });
       });
   };
 
