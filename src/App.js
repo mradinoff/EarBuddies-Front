@@ -4,11 +4,9 @@ import "./index.css";
 import axios from "axios";
 import Search from "./components/Search/Search";
 import _ from "lodash";
-import Hero from './components/Home/Hero'
-import Home from "./components/nav/Home";
 import Footer from "./components/Footer/Footer";
 import CircularProgress from "material-ui/CircularProgress";
-import jwtDecoder from 'jwt-decode';
+
 
 class App extends Component {
   state = {

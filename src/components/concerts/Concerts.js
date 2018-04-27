@@ -1,5 +1,4 @@
 import React, { PureComponent as Component } from "react";
-import moment from "moment";
 
 
 class Concerts extends Component {
