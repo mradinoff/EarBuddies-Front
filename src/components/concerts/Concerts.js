@@ -1,6 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import moment from "moment";
-
+import icon from '../images/events.png'
+import { Link } from "react-router-dom";
 
 class Concerts extends Component {
   constructor(props) {
@@ -50,8 +51,13 @@ class Concerts extends Component {
 
   render() {
     return (
+      <div>
       <div className="gallery">
         {this.renderConcerts()}
+      </div>
+      <Link to="/" className="icon-link">
+        <img src={icon} alt="link to home"/>
+      </Link>
       </div>
     );
   }

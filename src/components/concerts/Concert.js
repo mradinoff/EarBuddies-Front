@@ -239,7 +239,7 @@ class Concert extends Component {
 
           </div>
           <br />
-          <Link to="/">
+          <Link to="/" className="icon-link">
             <img src={icon} alt="link to home"/>
           </Link>
         </div>

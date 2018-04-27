@@ -91,7 +91,7 @@ class Login extends Component {
 
         {this.state.redirect ? <Redirect to='/'/>:null}
         <br />
-        <Link to="/">
+        <Link to="/" className="icon-link">
           <img src={icon} alt="link to home"/>
         </Link>
       </div>

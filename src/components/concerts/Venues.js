@@ -50,7 +50,7 @@ class Venues extends Component {
           <h1>Venues List.</h1>
         </div>
         {this.gallery()}
-        <Link to="/">
+        <Link to="/" className="icon-link">
           <img src={icon} alt="link to home"/>
         </Link>
         <Footer />

@@ -61,7 +61,7 @@ class Venue extends Component{
             <h1>Events</h1>
             {this.renderConcerts()}
           </div>
-          <Link to="/">
+          <Link to="/" className="icon-link">
             <img src={icon} alt="link to home"/>
           </Link>
       </div>

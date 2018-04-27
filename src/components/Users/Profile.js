@@ -175,7 +175,7 @@ class Profile extends Component {
             <Events user={this.state.user}/>
           </section>
         </div>
-        <Link to="/">
+        <Link to="/" className="icon-link">
           <img src={icon} alt="link to home"/>
         </Link>
        <Footer />
