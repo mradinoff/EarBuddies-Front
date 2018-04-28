@@ -88,6 +88,7 @@ class Search extends Component {
               type="text"
               onChange={this.handleInputChange}
               value={this.state.name}
+              placeholder="Search for Event"
             />
             <input type="submit" className="btn btn-outline-info searchButton" />
           </form>
