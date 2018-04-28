@@ -2,7 +2,7 @@
 ### Collaboration between [Ryan Liu](https://github.com/shiang), [Mac Radinoff](https://github.com/mradinoff), [Joseph Ocampo](https://github.com/joseph-michael) & [Taryn Ewens](https://github.com/tarynelise).
 
 See it in action here: https://earbuddies-react.herokuapp.com/
-See band end code in Ruby on Rails here: https://github.com/mradinoff/EarBuddies
+See back end code in Ruby on Rails here: https://github.com/mradinoff/EarBuddies
 
 It is a social media platform allowing users to find events, see who's attending and "match" with a friend Tinder style, as well as live chat with the other attending users of the event.
 
