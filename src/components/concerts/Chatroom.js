@@ -5,6 +5,7 @@ import "./Chatroom.css";
 import axios from 'axios';
 import './Chatroom.css';
 import moment from "moment";
+import Footer from "../Footer/Footer";
 
 class Chatroom extends Component {
   constructor(props) {
@@ -136,6 +137,7 @@ class Chatroom extends Component {
             Send
           </button>
         </div>
+        < Footer />
       </div>
     );
   }

@@ -8,6 +8,7 @@ import icon from "../images/event.png";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import _ from "lodash";
+import Footer from "../Footer/Footer";
 
 let mapsLink = "";
 // let user_name = "";
@@ -315,6 +316,7 @@ class Concert extends Component {
         <Link to="/" className="icon-link">
           <img src={icon} alt="link to home" />
         </Link>
+        <Footer />
       </div>
     );
   }

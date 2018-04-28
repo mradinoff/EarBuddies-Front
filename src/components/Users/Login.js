@@ -5,6 +5,7 @@ import { Redirect } from 'react-router';
 import axios from 'axios';
 import icon from '../images/signin.png'
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 class Login extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class Login extends Component {
         <Link to="/" className="icon-link">
           <img src={icon} alt="link to home"/>
         </Link>
+        <Footer />
       </div>
     );
   }

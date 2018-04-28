@@ -1,6 +1,7 @@
 import React, {PureComponent as Component} from 'react';
 import icon from '../images/venue-page.png'
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 let mapsLink = ""
 
 
@@ -64,6 +65,7 @@ class Venue extends Component{
           <Link to="/" className="icon-link">
             <img src={icon} alt="link to home"/>
           </Link>
+          <Footer />
       </div>
 
     );

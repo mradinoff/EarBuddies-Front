@@ -4,6 +4,7 @@ import TextField from "material-ui/TextField";
 import axios from "axios";
 import icon from '../images/signup.png'
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 class SignUp extends Component {
   state = {
@@ -99,6 +100,7 @@ class SignUp extends Component {
         <Link to="/">
           <img src={icon} alt="link to home"/>
         </Link>
+        <Footer />
       </div>
     );
   }
