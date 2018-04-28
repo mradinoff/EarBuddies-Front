@@ -9,7 +9,9 @@ body {
   background-color: #f7f7f7;
 }
 
-
+a {
+  color: #00c1d8;
+}
 .nav_bar {
   display: flex;
   justify-content: flex-end;
