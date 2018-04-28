@@ -78,9 +78,9 @@ class Concert extends Component {
     });
     await this.findUsers();
     await this.findVenue();
-    
+
     //console.log(user.sub)
-    
+
   };
 
   _venueClick = v => {
@@ -130,15 +130,15 @@ class Concert extends Component {
     })
       .then(async(res) => {
           console.log(res);
-          await this.setState({ 
+          await this.setState({
             concert: res.data,
-            users: res.data.users 
+            users: res.data.users
           });
 
           const isAttending = await _.filter(res.data.users, u => {
             return u.id === this.state.current_user.sub
           })
-          
+
           // const isAttending = await res.data.users.map(u => {
           //   console.log(u.id);
           //   console.log(this.state.current_user.sub)
@@ -148,7 +148,7 @@ class Concert extends Component {
           this.setState({
             isAttending: isAttending[0]
           });
-          
+
         }
       )
       .then(() => {

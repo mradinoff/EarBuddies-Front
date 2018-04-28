@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import CircularProgress from "material-ui/CircularProgress";
 import icon from '../images/profile.png'
+import moment from "moment";
 
 class Friends extends Component {
   render() {
@@ -19,7 +20,7 @@ class Friends extends Component {
         </div>
       );
     } else {
-      return <div>{flatten.map(f => <p key={f.id}>{f.name}</p>)}</div>;
+      return <div>{flatten.map(f => <p key={f.id}>{f.name} from {f.hometown}</p>)}</div>;
     }
   }
 }
@@ -44,7 +45,9 @@ class Events extends Component {
               }
               return (
                 <div key={e.id}>
-                  <h5>{e.name}</h5>
+                  <Link to={event}><h5>{e.name} - {moment(e.date).format(
+                    "dddd, MMMM Do YYYY, h:mm:ss a"
+                  )}</h5></Link>
                   <img className="profileEventImg" src={e.image} alt=""/>
                   <p>
                     <Link to={event}>See Event</Link>
@@ -163,14 +166,13 @@ class Profile extends Component {
             </div>
           </section>
           <section className="profileRight">
-            <p><strong>Hometown</strong></p>
-            <p>{this.state.user.hometown}</p>
-            <p><strong>Bio</strong> </p>
+            <p><strong>Hometown:</strong> {this.state.user.hometown}</p>
             <p>{this.state.user.bio}</p>
-            <p><strong>Interests</strong> </p>
-            <p>{this.state.user.interests}</p>
-            <p><strong>{this.state.matched.length} Friends</strong></p>
+            <p><strong>Interests:</strong> {this.state.user.interests}</p>
+            <hr />
+            <p><strong>{this.state.matched.length} Buddies </strong></p>
             <Friends matched={this.state.matched} users={this.state.all_users} friends={this.state.friends}/>
+            <hr />
             <p style={{marginBottom: '1em'}}><strong>{this.state.user.events.length} Events</strong></p>
             <Events user={this.state.user}/>
           </section>

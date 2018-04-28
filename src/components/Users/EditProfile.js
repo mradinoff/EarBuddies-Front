@@ -168,7 +168,7 @@ class EditProfile extends Component {
               onChange={this._handleChange}
             />
             <br /><br /><br />
-            <h4>Change Password</h4>
+            <h5>Confirm Password</h5>
             <TextField
               id="password-field"
               type="password"
